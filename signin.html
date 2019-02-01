@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Politico&trade;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/modal.css" />
+</head>
+<body>
+    <nav class="topnav" id="myTopnav">
+        <a href="index.html" class="logo">Politico&trade;</a>
+        <a href="signin.html" class="menu">Sign In</a>
+        <a href="signup.html" class="menu">Sign Up</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </nav>
+    <div class="content">
+        <div class="center">
+                <h3>Sign In</h3>
+                <hr>
+                <form method="POST" enctype="text/plain" action="user_dash.html?referer=signin">
+                    <label for="user">Username/Email</label>
+                        <input type="text" id="user_signin" name="user" required>
+                    <label for="pass">Password</label>
+                        <input type="password" name="pass" required>
+                        <input type="submit" name="signin" value="Sign In">
+                </form>
+                <p>Forgot your password? <a href="reset_pass.html">Reset it</a></p>
+        </div>
+    </div>
+    <!-- Pass Reset Sucess Modal -->
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Reset password success</p>
+        </div>
+
+    </div>
+    <div id="signup_succ" class="modal">
+
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Registration success</p>
+        </div>
+
+    </div> 
+    <script src="scripts/main.js"></script>
+    <script src="scripts/user.js"></script>
+</body>
+</html>
