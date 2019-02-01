@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Political Parties</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/dash.css" />
+</head>
+<body>
+    <nav class="topnav" id="myTopnav">
+        <a href="admin_dash.html" class="logo">Admin</a>
+        <a href="admin_offices.html" class="menu">Government Offices</a>
+        <a href="admin_parties.html" class="menu">Political Parties</a>
+        <a href="#" class="menu">Sign Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </nav>
+        <div class="content">
+                <div class="center">
+            <h3>List of Political Parties</h5>
+                <hr>
+                <button id="delete" hidden>Delete</button>
+                <ol>
+                        <li>
+                            <img src="" alt="logo" title="party logo"> Party Name <span id="edit">&#9998; </span>
+                            <input type="checkbox" name="" hidden>
+                        </li>
+                        <li>
+                            <img src="" alt="logo" title="party logo"> Party Name <span id="edit">&#9998; </span>
+                            <input type="checkbox" name="" hidden>
+                        </li>
+                </ol>
+                <button id="add">Add Party</button>
+                <div id="add_party_form" hidden>
+                    <fieldset>
+                        <legend>Add Party Form</legend>
+                        <form method="POST" enctype="multipart/form-data" action="">
+                            <label for="party">Party Name</label>
+                                <input type="text" name="party">
+                            <label for="logo">Logo</label>
+                                <input type="image" name="logo">
+                                <input type="submit" name="add" value="Add Party">
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/main.js"></script>
+</body>
+</html>
