@@ -6,8 +6,8 @@
     <title>Politico&trade;</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="single_form.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -32,12 +32,12 @@
                         <label for="pass2">Password (Re-Enter)</label>
                             <input type="password" name="pass2" required>
                         <label for="user">User Type</label>
-                            <input type="radio" name="user" value="User" required> User
-                            <input type="radio" name="user" value="Politician" required> Politician
+                            <ul><li><input type="radio" name="user" value="User" required> User</li>
+                        </li><input type="radio" name="user" value="Politician" required> Politician</li></ul>
                             <input type="submit" name="signup" value="Sign Up">
                     </form>
             </div>
     </div>
-    <script src="main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
