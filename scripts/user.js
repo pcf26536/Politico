@@ -7,7 +7,7 @@ var modal = document.getElementById('myModal');
 var span1 = document.getElementsByClassName("close")[0];
 
 //after sign in show the modal
-if (referer == 'signin' || referer == 'reset' || referer == 'add_party') {
+if (referer == 'signin' || referer == 'reset' || referer == 'add_party' || referer == 'add_office') {
     modal.style.display = "block";
 }
 
