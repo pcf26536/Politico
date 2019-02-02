@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Political Parties</title>
+    <title>Government Offices</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/dash.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/admin.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/modal.css" />
 </head>
 <body>
@@ -22,46 +23,44 @@
     </nav>
         <div class="content">
                 <div class="center">
-            <h3>List of Political Parties</h5>
+            <h3>Government Offices</h5>
                 <hr>
-                <ol id="party_list">
+                <ol id="offices_list">
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> Party Name <span id="edit" onclick="">&#9998; </span></a>
+                            Office 1 Title <a href="edit_office.html?office=1"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="" class="action" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo"  height="40" width="40"> Party Name <span id="edit" onclick="">&#9998; </span></a>
+                            Office 2 Title <a href="edit_office.html?office=2"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="" class="action" onclick="showDelete()">
                         </li>
                 </ol>
-                <button id="add_party" onclick="showAddForm()">Add Party</button>
-                <div id="add_party_form" hidden>
+                <button id="add_office" onclick="showAddForm()">Add Office</button>
+                <div id="add_office_form">
                     <fieldset>
-                        <legend>Add Party Form</legend>
-                        <form method="POST" enctype="multipart/form-data" action="admin_parties.html?referer=add_party">
-                            <label for="party">Party Name</label>
-                                <input type="text" name="party" required>
-                            <label for="logo">Logo</label>
-                                <input input type="file" accept="image/*" name="logo" required>
-                                <span class="twins"><input type="submit" name="add" value="Add Party">
-                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></span>
+                        <legend><span class="title">Add Government Office</span></legend>
+                        <form method="POST" enctype="multipart/form-data" action="admin_offices.html?referer=add_office">
+                            <label for="party">Office Name</label>
+                                <input type="text" name="Office" required>
+                                <span class="twins"><input type="submit" name="add" value="Add">
+                                <button class="cancel" type="button" id="cancel_add_office">Cancel</button></span>
                         </form>
+                        <span id="delete" class="hide"><button class="cancel">Delete</button></span>
                     </fieldset>
                 </div>
-                <span id="delete" class="hide"><button class="cancel">Delete</button></span>
             </div>
         </div>
-        <!-- Party Add Success Modal -->
+        <!-- Party add Success Modal -->
         <div id="myModal" class="modal">
 
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <p>Party added successfully</p>
+                <p>Government Office Added successfully</p>
             </div>
 
         </div>
         <script src="scripts/main.js"></script>
+        <script src="scripts/admin_offices.js"></script>
         <script src="scripts/user.js"></script>
-        <script src="scripts/admin_parties.js"></script>
 </body>
 </html>
