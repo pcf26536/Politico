@@ -1,10 +1,8 @@
 var referer = getUrlParam('referer','Empty');
 //var referer2 = getUrlVars()["referer"];*/
 
-
 // Get the modal
 var modal = document.getElementById('myModal');
-
 
 // Get the registration success modal
 var reg_suc = document.getElementById('signup_succ');
