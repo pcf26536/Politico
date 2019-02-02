@@ -1,0 +1,24 @@
+fieldset {
+    margin-top: 2%;
+    width: 90%;
+}
+
+.neg_status {
+    color: red;
+}
+
+.pos_status {
+    color: green;
+}
+
+.votes {
+    font-weight: bolder;
+}
+
+li:not(.nav_item) {
+    margin: 10px;
+}
+
+.hide {
+    display: none;
+}

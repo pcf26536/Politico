@@ -8,7 +8,7 @@ document.getElementById('cancel_add_party').onclick = function () {
     document.getElementById('add_party_form').style.display = "none";
     document.getElementById('add_party').style.display = "block";
     document.getElementById('party_list').style.display = "block";
-}
+};
 
 function showDelete() {
     /*elems = document.getElementsByClassName('hide');

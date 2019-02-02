@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/dash.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/modal.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -38,16 +40,25 @@
                         <legend>Add Party Form</legend>
                         <form method="POST" enctype="multipart/form-data" action="">
                             <label for="party">Party Name</label>
-                                <input type="text" name="party">
+                                <input type="text" name="party" required>
                             <label for="logo">Logo</label>
-                                <input type="image" name="logo">
+                                <input input type="file" accept="image/*" name="logo" required>
                                 <span class="twins"><input type="submit" name="add" value="Add Party">
-                                <button class="cancel" type="button" id="cancel_add_office">Cancel</button></span>
+                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></span>
                         </form>
-                        <span id="delete" class="hide"><button class="cancel">Delete</button></span>
                     </fieldset>
                 </div>
+                <span id="delete" class="hide"><button class="cancel">Delete</button></span>
             </div>
+        </div>
+        <!-- Party Add Success Modal -->
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Party added successfully</p>
+            </div>
+
         </div>
         <script src="scripts/main.js"></script>
         <script src="scripts/admin_parties.js"></script>
