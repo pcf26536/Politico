@@ -24,29 +24,35 @@
                 <div class="center">
             <h3>Political Parties</h5>
                 <hr>
+                <button id="add_party" onclick="showAddForm()">Add Party</button>
+                <button id="delete_party" class="cancel">Delete Party</button></span>
                 <ul id="party_list">
                         <li>
-                            <img src="images/logo3.png" alt="logo" title="party logo"  height="40" width="40"> Orange Democractic Movement - ODM <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
-                            <input type="checkbox" name="" class="action" onclick="showDelete()">
+                            <img src="images/logo3.png" alt="logo" title="party logo"  height="40" width="40"> Orange Democractic Movement - ODM 
+                            <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
+                            <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> African National Congress - ANC <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
-                            <input type="checkbox" name="" class="action" onclick="showDelete()">
+                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> African National Congress - ANC 
+                            <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
+                            <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo1.png" alt="logo" title="party logo"  height="40" width="40"> Labour Party - LP <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
-                            <input type="checkbox" name="" class="action" onclick="showDelete()">
+                            <img src="images/logo1.png" alt="logo" title="party logo"  height="40" width="40"> Labour Party - LP 
+                            <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
+                            <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo2.png" alt="logo" title="party logo"  height="40" width="40"> Jubilee Party - JP <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
-                            <input type="checkbox" name="" class="action" onclick="showDelete()">
+                            <img src="images/logo2.png" alt="logo" title="party logo"  height="40" width="40"> Jubilee Party - JP 
+                            <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
+                            <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> Democractic Party - DP <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
-                            <input type="checkbox" name="" class="action" onclick="showDelete()">
+                            <img src="images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> Democractic Party - DP 
+                            <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
+                            <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                 </ul>
-                <button id="add_party" onclick="showAddForm()">Add Party</button>
                 <div id="add_party_form" hidden>
                     <fieldset>
                         <legend>Add Party Form</legend>
@@ -60,7 +66,6 @@
                         </form>
                     </fieldset>
                 </div>
-                <span id="delete" class="hide"><button class="cancel">Delete</button></span>
             </div>
         </div>
         <!-- Party Add Success Modal -->

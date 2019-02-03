@@ -8,6 +8,13 @@ function typeOf(variable) {
     return typeof variable;
 }
 
+
+//get elements by class, id or tag name
+function getById(id) { return document.getElementById(id); }
+
+function getByClass(elem_class) { return document.getElementsByClassName(elem_class); }
+
+
                      /*hide elements functions*/
 function hide(element) {
     element.style.display = "none";
@@ -38,8 +45,12 @@ function show(element, type) {
 }
 
 // This function hides an element by Id
-function showById(element_id, type) {
-    show(document.getElementById(element_id), type);
+function showById(element_id, display_type) {
+    var type = typeOf(element_id);
+    if (type == object) {
+        for(var i = 0; i < element_id.length; i++) { show(document.getElementById(element_id[i]), display_type); }
+    } 
+    else if(type == string) { show(document.getElementById(element_id), display_type); }
 }
 
 // This function hides an element by class
