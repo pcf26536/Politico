@@ -22,3 +22,4 @@ function getUrlParam(parameter, defaultvalue){
       }
   return urlparameter;
 }
+
