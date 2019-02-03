@@ -163,6 +163,14 @@ button {
   font-weight: bold;
 }
 
+.error {
+  color: red;
+}
+
+.success {
+  color: lawngreen;
+}
+
 .close:hover,
 .close:focus {
   color: black;

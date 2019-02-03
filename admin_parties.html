@@ -25,7 +25,9 @@
             <h3>Political Parties</h5>
                 <hr>
                 <button id="add_party" onclick="showAddForm()">Add Party</button>
-                <button id="delete_party" class="cancel">Delete Party</button></span>
+                <button id="delete_party" class="cancel">Delete Party</button>
+                <button class="hide" id="cancel_delete">Cancel</button>
+                <button class="hide cancel" id="delete_selected">Delete Selected</button>
                 <ul id="party_list">
                         <li>
                             <img src="images/logo3.png" alt="logo" title="party logo"  height="40" width="40"> Orange Democractic Movement - ODM 
@@ -73,7 +75,7 @@
 
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <p>Party added successfully</p>
+                <p class="success">Party added successfully</p>
             </div>
 
         </div>
@@ -82,10 +84,28 @@
 
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <p>Party edited successfully</p>
+                <p class="success">Party edited successfully</p>
             </div>
 
         </div>
+        <!-- No party Selectec Modal -->
+        <div id="no_party_selected" class="modal">
+
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p class="error">No party is selected</p>
+            </div>
+
+        </div>
+        <!-- No party Selectec Modal -->
+        <div id="party_delete_success" class="modal">
+
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p class="success">Parties deleted successfully</p>
+                </div>
+    
+            </div>
         <script src="scripts/utilities.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/user.js"></script>

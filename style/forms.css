@@ -9,16 +9,6 @@ input[type=email], input[type=password], input[type=text], input[type=file], sel
     align-self: auto;
   }
 
-  input[type=checkbox] {
-    /*width: 100%;*/
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    align-self: auto;
-  }
-
   .twins {
     display: inline;
   }
