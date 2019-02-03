@@ -26,31 +26,31 @@
                 <hr>
                 <button id="add_party" onclick="showAddForm()">Add Party</button>
                 <button id="delete_party" class="cancel">Delete Party</button>
-                <button class="hide" id="cancel_delete">Cancel</button>
+                <button class="hide" id="cancel_delete">Cancel Delete</button>
                 <button class="hide cancel" id="delete_selected">Delete Selected</button>
                 <ul id="party_list">
                         <li>
-                            <img src="images/logo3.png" alt="logo" title="party logo"  height="40" width="40"> Orange Democractic Movement - ODM 
+                            <img src="images/logo3.png" alt="logo" title="party logo"  height="40" width="40"><span>Orange Democractic Movement - ODM</span>
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> African National Congress - ANC 
+                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"><span>African National Congress - ANC</span>
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo1.png" alt="logo" title="party logo"  height="40" width="40"> Labour Party - LP 
+                            <img src="images/logo1.png" alt="logo" title="party logo"  height="40" width="40"><span>Labour Party - LP</span>
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo2.png" alt="logo" title="party logo"  height="40" width="40"> Jubilee Party - JP 
+                            <img src="images/logo2.png" alt="logo" title="party logo"  height="40" width="40"><span>Jubilee Party - JP</span>
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> Democractic Party - DP 
+                            <img src="images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> <span>Democractic Party - DP</span>
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
@@ -97,6 +97,18 @@
             </div>
 
         </div>
+        <!-- confirm delete Modal -->
+        <div id="confirm_delete" class="modal">
+
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p>Are you sure? Delete</p>
+                    <div id="delete_list"></div>
+                    <button id="delete_no">Cancel</button>
+                    <button class="cancel" id="delete_yes">Yes</button>
+                </div>
+    
+            </div>
         <!-- No party Selectec Modal -->
         <div id="party_delete_success" class="modal">
 

@@ -9,6 +9,12 @@ function typeOf(variable) {
 }
 
 
+// redirection
+function redirect(url) {
+    setTimeout(
+        window.location.href = url, 5000);
+}
+
 //get elements by class, id or tag name
 function getById(id) { return document.getElementById(id); }
 
@@ -16,6 +22,7 @@ function getByClass(elem_class) { return document.getElementsByClassName(elem_cl
 
 
                      /*hide elements functions*/
+                     
 function hide(element) {
     element.style.display = "none";
 }
@@ -36,10 +43,12 @@ function hideByClass(class_name) {
         hide(elements[i]);
     }
 }
+
                     /*hide elements functions*/
 
 
                     /*Show elements functions*/
+
 function show(element, type) {
     element.style.display = type;
 }
@@ -60,4 +69,5 @@ function showByClass(class_name, type) {
         show(elements[i], type);
     }
 }
+
                 /*Show elements functions*/
