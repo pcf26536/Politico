@@ -26,11 +26,11 @@
                 <hr>
                 <ol id="party_list">
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> Party Name <span id="edit" onclick="">&#9998; </span></a>
+                            <img src="images/logo.png" alt="logo" title="party logo" height="40" width="40"> Party Name <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="" class="action" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="images/logo.png" alt="logo" title="party logo"  height="40" width="40"> Party Name <span id="edit" onclick="">&#9998; </span></a>
+                            <img src="images/logo.png" alt="logo" title="party logo"  height="40" width="40"> Party Name <a href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="" class="action" onclick="showDelete()">
                         </li>
                 </ol>
@@ -60,8 +60,18 @@
             </div>
 
         </div>
+        <!-- Party Edit Success Modal -->
+        <div id="party_edit_success" class="modal">
+
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Party edited successfully</p>
+            </div>
+
+        </div>
         <script src="scripts/main.js"></script>
         <script src="scripts/user.js"></script>
         <script src="scripts/admin_parties.js"></script>
+        <script src="scripts/edit_party.js"></script>
 </body>
 </html>
