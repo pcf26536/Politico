@@ -6,6 +6,7 @@ body {
       sans-serif;
       /*background-image: url("../images/background.jpg");*/
       color: #38003c;
+      font-weight: bold;
   }
 
 .topnav {
@@ -52,13 +53,23 @@ body {
 .content {
   padding:5%;
   margin-top:0;
-  height:550px;
+  padding-bottom: 10%;
+  height:110%;
   background-color: #f2f2f2;
   border-radius: 5px;
   width: 90%;
   display: grid;
   grid-template-columns: auto;
   grid-gap: 10%;
+}
+
+.border-form {
+  border: #00ff85 solid;
+  padding: 5%;
+}
+
+a {
+  color:#e90052;
 }
 
 input[type=submit]:hover {
