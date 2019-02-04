@@ -41,5 +41,5 @@
 
 @media only screen and (max-width: 480px) {
 	.colmn { margin: 1% 0 1% 0%;}
-	.column_1, .column_2/*, .column_3*/ { width: 80%; }
+	.column_1, .column_2, .center/*, .column_3*/ { width: 80%; }
 }
