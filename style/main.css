@@ -4,10 +4,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
+      /*background-image: url("../images/background.jpg");*/
+      color: #38003c;
+      font-weight: bold;
   }
 
 .topnav {
-  background-color: #333;
+  background-color: #00ff85;
   overflow: hidden;
   padding-left: 10%;
   padding-right: 10%;
@@ -20,7 +23,7 @@ body {
 
 .topnav a {
   display: block;
-  color: #f2f2f2;
+  color: #38003c;
   text-align: center;
   padding: 1.5% 1.5%;
   text-decoration: none;
@@ -50,10 +53,31 @@ body {
 .content {
   padding:5%;
   margin-top:0;
-  height:550px;
+  padding-bottom: 10%;
+  height:110%;
   background-color: #f2f2f2;
   border-radius: 5px;
   width: 90%;
+}
+
+.border-form {
+  border: #00ff85 solid;
+  padding: 2%;
+  align-items: center;
+}
+
+a {
+  color:#e90052;
+}
+
+.h_center {
+  text-align: center;
+}
+
+.grid {
+  grid-gap: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 input[type=submit]:hover {
@@ -76,7 +100,6 @@ input[type=email]:focus{
   margin: auto;
   width: 60%;
   padding: 1%;
-  
   align-items: center;
 }
 
@@ -212,3 +235,78 @@ button {
   .content { width:100%; }
   #secondary { width:100%; margin:0; border:none; }
 }
+
+/*@-ms-viewport {
+  width: device-width;
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.content {
+  width: 100%;
+  /*padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .content {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content {
+    max-width: 1140px;
+  }
+}
+
+.content-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+*/
