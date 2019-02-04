@@ -58,18 +58,26 @@ body {
   background-color: #f2f2f2;
   border-radius: 5px;
   width: 90%;
-  display: grid;
-  grid-template-columns: auto;
-  grid-gap: 10%;
 }
 
 .border-form {
   border: #00ff85 solid;
-  padding: 5%;
+  padding: 2%;
+  align-items: center;
 }
 
 a {
   color:#e90052;
+}
+
+.h_center {
+  text-align: center;
+}
+
+.grid {
+  grid-gap: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 input[type=submit]:hover {
@@ -92,7 +100,6 @@ input[type=email]:focus{
   margin: auto;
   width: 60%;
   padding: 1%;
-  
   align-items: center;
 }
 
@@ -228,3 +235,78 @@ button {
   .content { width:100%; }
   #secondary { width:100%; margin:0; border:none; }
 }
+
+/*@-ms-viewport {
+  width: device-width;
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.content {
+  width: 100%;
+  /*padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .content {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content {
+    max-width: 1140px;
+  }
+}
+
+.content-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+*/

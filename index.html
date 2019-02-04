@@ -8,6 +8,7 @@
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/grid.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -19,15 +20,18 @@
         </a>
     </nav>
     <div class="content">
-        <div id="home_message">
+        <div class="section group">
+        <div class="colmn column_1" id="home_message">
             <h4>Hello there, welcome to Politico&trade;</h4>
             <p>What is Politico&trade;? Politico&trade; is a platform which enables citizens 
                 give their mandate to politicians running for different government offices.</p>
         </div>
             
-        <div id="signup" class="border-form">
+        <div id="signup" class="border-form colmn column_2">
                 <!--fieldset-->
                     <!--legend><h3>Sign Up</h3></legend-->
+                    <h3 class="h_center">Register here</h3>
+                    <hr>
                     <p>Already registered?, <a href="templates/signin.html">Sign In.</a></p>
                     <form method="POST" enctype="text/plain" action="templates/signin.html">
                         <label for="username">Username</label>
@@ -47,6 +51,7 @@
                     </form>
                 <!--/fieldset-->
             </div>
+        </div>
     </div>
 </body>
 </html>
