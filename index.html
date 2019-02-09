@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Politico&trade; - gVotie</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style/grid.css" />
+</head>
+<body>
+    <nav class="topnav" id="myTopnav">
+        <a href="index.html" class="logo">Politico&trade;</a>
+        <a href="templates/signin.html" class="menu">Sign In</a>
+        <a href="templates/signup.html" class="menu">Sign Up</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars" style="font-size:24px"></i>
+        </a>
+    </nav>
+    <div class="content">
+        <div class="row">
+        <div class="col-5 col-s-5" id="home_message">
+            <h1 class="info">Hello there, welcome to Politico&trade;</h1>
+            <p class="dash">The general elections are around the corner, hence it’s a political season. Get into the mood of
+the season and help build a platform which both the politicians and citizens can use.</p>
+            <p class="dash">What is Politico&trade;? Politico&trade; is a platform which enables citizens 
+                give their mandate to politicians running for different government offices.</p>
+        </div>
+            
+        <div id="signup" class="col-5 col-s-5 border-form">
+                <!--fieldset-->
+                    <!--legend><h3>Sign Up</h3></legend-->
+                    <h2 class="h_center">Please login</h3>
+                        
+                    <hr>
+                    <form method="GET" enctype="text/plain" action="user/user_dash.html?referer=signin">
+                        <label for="user">Username/Email</label>
+                            <input type="text" id="user_signin" name="user" required>
+                        <label for="pass">Password</label>
+                            <input type="password" name="pass" required>
+                            <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
+                    </form>
+                    <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
+                    <p></p>
+                <!--/fieldset-->
+            </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>

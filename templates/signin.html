@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign In | Politico&trade;</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/grid.css" />
+</head>
+<body>
+    <nav class="topnav" id="myTopnav">
+        <a href="../index.html" class="logo">Politico&trade;</a>
+        <a href="signin.html" class="menu">Sign In</a>
+        <a href="signup.html" class="menu">Sign Up</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars" style="font-size:24px"></i>
+        </a>
+    </nav>
+    <div class="content">
+        <div class="row">
+        <div class="center">
+                <h2 class="h_center">Sign In</h2>
+                <hr>
+                <form method="GET" enctype="text/plain" action="user/index.html?referer=signin">
+                    <label for="user">Username/Email</label>
+                        <input type="text" id="user_signin" name="user" required>
+                    <label for="pass">Password</label>
+                        <input type="password" name="pass" required>
+                        <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
+                </form>
+                <p class="h_center">Can't sign in? <a href="reset_pass.html">Reset Password</a></p>
+        </div>
+    </div>
+    <!-- Pass Reset Sucess Modal -->
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Reset password success</p>
+        </div>
+
+    </div>
+    <div id="signup_succ" class="modal">
+
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Registration success</p>
+        </div>
+
+    </div>
+</div> 
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/user.js"></script>
+    <script src="../scripts/signin.js"></script>
+</body>
+</html>
