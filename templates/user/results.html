@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
 </head>
 <body>
         <nav class="topnav" id="myTopnav">
@@ -46,7 +47,8 @@
                             <h3>Submit Petiton</h3>
                             <form method="GET" enctype="text/plain" action=".">
                                 <label for="office">Office</label>
-                                    <select name="office">
+                                    <select name="office" required>
+                                            <option name="office" value="">-----</option>
                                         <option name="office">Office 1</option>
                                         <option name="office">Office 2</option>
                                     </select>
