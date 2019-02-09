@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../style/forms.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/alerts.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -27,6 +28,7 @@
         <div class="center">
                 <h2 class="h_center">Sign In</h2>
                 <hr>
+                <div id="alert_div"></div>
                 <form method="GET" enctype="text/plain" action="user/index.html">
                     <label for="user">Username/Email</label>
                         <input type="text" id="user_signin" name="user" required>
@@ -56,6 +58,7 @@
     </div>
 </div> 
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/utilities.js"></script>
     <script src="../scripts/user.js"></script>
     <script src="../scripts/signin.js"></script>
 </body>
