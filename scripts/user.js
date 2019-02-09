@@ -1,5 +1,5 @@
-var referer = getUrlParam('referer','Empty');
-
+//var referer = getUrlParam('signin','Empty');
+//alert(referer);
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -7,7 +7,7 @@ var modal = document.getElementById('myModal');
 var span1 = document.getElementsByClassName("close")[0];
 
 //after sign in show the modal
-if (referer == 'signin' || referer == 'reset' || referer == 'add_party' || referer == 'add_office') {
+if (getUrlParam('signin','Empty') || getUrlParam('reset','Empty') || getUrlParam('add_party','Empty') || getUrlParam('add_office','Empty')) {
     modal.style.display = "block";
 }
 
