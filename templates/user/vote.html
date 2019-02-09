@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vote</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
-        <a href="user_dash.html" class="logo">User</a>
+        <a href="index.html" class="logo">User</a>
         <a href="user_offices.html" class="menu">Offices</a>
         <a href="user_parties.html" class="menu">Parties</a>
         <a href="vote.html" class="menu">Vote</a>
@@ -18,14 +21,14 @@
         <a href="results.html" class="menu">Results</a>
         <a href="#" class="menu">Sign Out</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
         <div class="content">
-            <div class="center">
+            <div class="center row">
                 <h3>Voting Page</h3>
                 <hr>
-                    <fieldset>
+                    <div class="h_center"><fieldset>
                             <legend><span class="title">Office Title 1</span></legend>
                                 <form method="GET" enctype="text/plain" action="">
                                     <p>Select one candidate<p></p>
@@ -47,7 +50,7 @@
                                         </ul>
                                         <input type="submit" name="vote" id="vote" value="Submit Vote">
                                     </form>
-                            </fieldset>
+                            </fieldset></div>
                 </div>
             </div>
 
