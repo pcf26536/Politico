@@ -7,7 +7,7 @@ var modal = document.getElementById('myModal');
 var span1 = document.getElementsByClassName("close")[0];
 
 //after sign in show the modal
-if (getUrlParam('signin','Empty') || getUrlParam('reset','Empty') || getUrlParam('add_party','Empty') || getUrlParam('add_office','Empty')) {
+if (getUrlParam('signin') || getUrlParam('reset') || getUrlParam('add_party') || getUrlParam('add_office')) {
     modal.style.display = "block";
 }
 

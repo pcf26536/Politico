@@ -5,7 +5,7 @@ var reg_suc = document.getElementById('signup_succ');
 
 var span2 = document.getElementsByClassName("close")[1];
 
-if (getUrlParam('signup','Empty')) {
+if (getUrlParam('signup')) {
     reg_suc.style.display = "block";
 }
 

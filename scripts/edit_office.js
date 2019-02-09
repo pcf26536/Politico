@@ -1,3 +1,3 @@
-var referer = getUrlParam('office','Empty');
+//var referer = getUrlParam('office','Empty');
 
-document.getElementById('office').innerHTML = referer;
+//document.getElementById('office').innerHTML = referer;

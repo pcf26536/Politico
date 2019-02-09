@@ -9,7 +9,7 @@ var party_suc = document.getElementById('party_edit_success');
 
 var span2 = document.getElementsByClassName("close")[1];
 
-if (getUrlParam('edit_party','Empty')) {
+if (getUrlParam('edit_party')) {
     party_suc.style.display = "block";
 }
 
