@@ -23,7 +23,8 @@
             <div class="center">
                 <h1 class="info h_center">Password Reset</h1>
                 <hr>
-                    <form method="GET" enctype="text/plain" action="signin.html">
+                <div id="alert_div"></div>
+                    <form method="GET" enctype="text/plain" action="reset_pass.html">
                         <label for="email">Enter Your Email</label>
                             <input type="email" name="email" required>
                             <div class="submit-wrap"><input type="submit" name="reset" value="Reset Password"></div>
@@ -32,5 +33,7 @@
             </div>
         </div>
         <script src="../scripts/main.js"></script>
+        <script src="../scripts/utilities.js"></script>
+        <script src="../scripts/user.js"></script>
 </body>
 </html>
