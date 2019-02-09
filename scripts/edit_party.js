@@ -2,14 +2,14 @@
 
 document.getElementById('party').innerHTML = referer;*/
 
-var referer = getUrlParam('referer','Empty');
+//var referer = getUrlParam('referer','Empty');
 
 // Get the registration success modal
 var party_suc = document.getElementById('party_edit_success');
 
 var span2 = document.getElementsByClassName("close")[1];
 
-if (referer == 'edit_party') {
+if (getUrlParam('edit_party')) {
     party_suc.style.display = "block";
 }
 

@@ -15,11 +15,12 @@ function getUrlVars() {
   return vars;
 }
 
-function getUrlParam(parameter, defaultvalue){
-  var urlparameter = defaultvalue;
+function getUrlParam(parameter){
+  var urlparameter = '';
   if(window.location.href.indexOf(parameter) > -1){
       urlparameter = getUrlVars()[parameter];
       }
+      console.log(urlparameter);
   return urlparameter;
 }
 
