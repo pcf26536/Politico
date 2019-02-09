@@ -22,40 +22,33 @@
         </a>
     </nav>
     <div class="content">
-        <div class="section group">
-        <div class="colmn column_1" id="home_message">
-            <h4>Hello there, welcome to Politico&trade;</h4>
-            <p>The general elections are around the corner, hence it’s a political season. Get into the mood of
+        <div class="row">
+        <div class="col-5 col-s-5" id="home_message">
+            <h1 class="info">Hello there, welcome to Politico&trade;</h1>
+            <p class="dash">The general elections are around the corner, hence it’s a political season. Get into the mood of
 the season and help build a platform which both the politicians and citizens can use.</p>
-            <p>What is Politico&trade;? Politico&trade; is a platform which enables citizens 
+            <p class="dash">What is Politico&trade;? Politico&trade; is a platform which enables citizens 
                 give their mandate to politicians running for different government offices.</p>
         </div>
             
-        <div id="signup" class="border-form colmn column_2">
+        <div id="signup" class="col-5 col-s-5 border-form">
                 <!--fieldset-->
                     <!--legend><h3>Sign Up</h3></legend-->
-                    <h3 class="h_center">Register here</h3>
+                    <h2 class="h_center">Please login</h3>
+                        
                     <hr>
-                    <p>Already registered?, <a href="templates/signin.html">Sign In.</a></p>
-                    <form method="GET" enctype="text/plain" action="templates/signin.html">
-                        <label for="username">Username</label>
-                            <input type="text" name="username" required>
-                        <label for="email">Email</label>
-                            <input type="email" name="email" required>
-                        <label for="pass1">Password</label>
-                            <input type="password" name="pass1" required>
-                        <label for="pass2">Password (Re-Enter)</label>
-                            <input type="password" name="pass2" required>
-                        <label for="user">User Type</label>
-                            <ul>
-                                <li><input type="radio" name="user" value="User" required> User</li>
-                                <li><input type="radio" name="user" value="Politician" required> Politician</li>
-                            </ul>
-                            <input type="submit" name="signup" value="Sign Up">
+                    <form method="GET" enctype="text/plain" action="user/user_dash.html?referer=signin">
+                        <label for="user">Username/Email</label>
+                            <input type="text" id="user_signin" name="user" required>
+                        <label for="pass">Password</label>
+                            <input type="password" name="pass" required>
+                            <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
                     </form>
+                    <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
+                    <p></p>
                 <!--/fieldset-->
             </div>
-        </div>
+    </div>
     </div>
     <script type="text/javascript" src="scripts/main.js"></script>
 </body>
