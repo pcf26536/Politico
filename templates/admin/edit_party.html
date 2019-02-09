@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Edit Party</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/admin.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+</head>
+<body>
+        <nav class="topnav" id="myTopnav">
+            <a href="index.html" class="logo">Admin</a>
+            <a href="admin_offices.html" class="menu">Government Offices</a>
+            <a href="admin_parties.html" class="menu">Political Parties</a>
+            <a href="../../index.html" class="menu">Sign Out</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars" style="font-size:24px"></i>
+            </a>
+        </nav>
+        <div class="content">
+                <div class="center row">
+            <h3>Edit Political Party</h5>
+                <hr>
+                <h4>Edit political party details<span id="office"></span></h4>
+                <form method="GET" enctype="multipart/form-data" action="admin_parties.html">
+                    <label for="party">New Party Name</label>
+                        <input type="text" name="party" required>
+                    <label for="logo">Upload New Logo</label>
+                        <input input type="file" accept="image/*" name="logo" required>
+                        <span class="twins"><input type="submit" name="add" value="Add Party">
+                        <button class="cancel" type="button" id="cancel_add_party">Cancel</button></span>
+                </form>
+            </div>
+        </div>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/admin_parties.js"></script>
+</body>
+</html>

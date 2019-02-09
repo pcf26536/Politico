@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/modal.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+</head>
+<body>
+        <nav class="topnav" id="myTopnav">
+            <a href="index.html" class="logo">User</a>
+            <a href="user_offices.html" class="menu">Offices</a>
+            <a href="user_parties.html" class="menu">Parties</a>
+            <a href="vote.html" class="menu">Vote</a>
+            <a href="profile.html" class="menu">Profile</a>
+            <a href="results.html" class="menu">Results</a>
+            <a href="../../index.html" class="menu">Sign Out</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars" style="font-size:24px"></i>
+            </a>
+        </nav>
+        <div class="content">
+                <div class="row">
+            <div class="center">
+                <h1>Howdy, user! Welcome to your gVotie dashboard page</h1>
+                    <hr>
+                    <p class="dash">Use the menu to view <a href="user_parties.html">Political Parties</a> and <a href="user_offices.html">Politicians runnning for Government Offices</a>, 
+                        to <a href="vote.html">Vote</a> and view the <a href="profile.html">Voting Profile</a> and lastly, to view the <a href="results.html">Election results</a>.</p>
+            </div>
+        </div>
+
+        <!-- Sucess Modal -->
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Sign In Success</p>
+            </div>
+
+        </div>
+    </div> 
+        <script src="./../../scripts/main.js"></script>
+        <script src="./../../scripts/user.js"></script>
+</body>
+</html>
