@@ -1,11 +1,11 @@
-var referer = getUrlParam('referer','Empty');
+//var referer = getUrlParam('referer','Empty');
 
 // Get the registration success modal
 var reg_suc = document.getElementById('signup_succ');
 
 var span2 = document.getElementsByClassName("close")[1];
 
-if (referer == 'signup') {
+if (getUrlParam('signup','Empty')) {
     reg_suc.style.display = "block";
 }
 
