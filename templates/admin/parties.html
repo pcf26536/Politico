@@ -16,60 +16,72 @@
 <body>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">Admin</a>
-        <a href="admin_offices.html" class="menu">Government Offices</a>
-        <a href="admin_parties.html" class="menu">Political Parties</a>
+        <a href="offices.html" class="menu">Government Offices</a>
+        <a href="parties.html" class="menu">Political Parties</a>
         <a href="../../index.html" class="menu">Sign Out</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
             <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
         <div class="content">
                 <div class="center row">
-            <h3>Political Parties</h5>
+            <h3 class="h_center">Political Parties Manager</h5>
                 <hr>
-                <button id="add_party" onclick="showAddForm()">Add Party</button>
-                <button id="delete_party" class="cancel">Delete Party</button>
-                <button class="hide" id="cancel_delete">Cancel Delete</button>
-                <button class="hide cancel" id="delete_selected">Delete Selected</button>
-                <ul id="party_list">
+                <div id="alert_div"></div>
+                <div class="submit-wrap">
+                    <button id="add_party" onclick="showAddForm()">Add Party</button>
+                    <button id="delete_party" class="cancel">Delete Party</button>
+                    <button class="hide" id="cancel_delete">Cancel Delete</button>
+                    <button class="hide cancel" id="delete_selected">Delete Selected</button>
+                </div>
+                <ul id="party_list" class="dash">
                         <li>
-                            <img src="./../../images/logo3.png" alt="logo" title="party logo"  height="40" width="40"><span>Orange Democractic Movement - ODM</span>
+                            <img src="./../../images/logo3.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Orange Democractic Movement [ODM]</span>; 20156-0100, Siaya
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo.png" alt="logo" title="party logo" height="40" width="40"><span>African National Congress - ANC</span>
+                            <img src="./../../images/logo.png" alt="logo" title="party logo" height="40" width="40">
+                            <span>African National Congress [ANC]</span>; 31455-0110, Kismayu
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo1.png" alt="logo" title="party logo"  height="40" width="40"><span>Labour Party - LP</span>
+                            <img src="./../../images/logo1.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Labour Party [LP]</span>; 31454-0100, Nandi
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo2.png" alt="logo" title="party logo"  height="40" width="40"><span>Jubilee Party - JP</span>
+                            <img src="./../../images/logo2.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Jubilee Party [JP]</span>; 215445-0100, Eldoret
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> <span>Democractic Party - DP</span>
+                            <img src="./../../images/logo5.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Democractic Party [DP]</span>; 6235-0200, Githurai
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                 </ul>
                 <div id="add_party_form" hidden>
-                    <fieldset>
-                        <legend>Add Party Form</legend>
+                        <p>Add Party Form</p>
                         <form method="GET" enctype="multipart/form-data" action="admin_parties.html">
-                            <label for="party">Party Name</label>
+                            <label for="party-name">Party Name</label>
                                 <input type="text" name="party" required>
+                            <label for="address">Address</label>
+                                <input type="number" name="address" required>
+                            <label for="postal-code">Postal Code</label>
+                                <input type="number" name="postal-code" required>
+                            <label for="town">Town / City</label>
+                                <input type="text" name="town" required>
                             <label for="logo">Logo</label>
                                 <input input type="file" accept="image/*" name="logo" required>
-                                <span class="twins"><input type="submit" name="add" value="Add Party">
-                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></span>
+                                <div class="submit-wrap"><input type="submit" name="add" value="Add Party">
+                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></div>
                         </form>
-                    </fieldset>
                 </div>
             </div>
         </div>
@@ -122,7 +134,6 @@
     
             </div>
         <script src="./../../scripts/utilities.js"></script>
-        <script src="./../../scripts/main.js"></script>
         <script src="./../../scripts/user.js"></script>
         <script src="./../../scripts/admin_parties.js"></script>
         <script src="./../../scripts/edit_party.js"></script>

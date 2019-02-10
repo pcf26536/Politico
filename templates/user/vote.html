@@ -10,47 +10,88 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/alerts.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
-        <a href="user_offices.html" class="menu">Offices</a>
-        <a href="user_parties.html" class="menu">Parties</a>
+        <a href="offices.html" class="menu">Offices</a>
+        <a href="parties.html" class="menu">Parties</a>
         <a href="vote.html" class="menu">Vote</a>
         <a href="profile.html" class="menu">Profile</a>
         <a href="results.html" class="menu">Results</a>
         <a href="../../index.html" class="menu">Sign Out</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
             <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
         <div class="content">
-            <div class="center row">
+            <div class="row">
                 <h3>Voting Page</h3>
                 <hr>
-                    <div class="h_center"><fieldset>
-                            <legend><span class="title">Office Title 1</span></legend>
-                                <form method="GET" enctype="text/plain" action="">
-                                    <p>Select one candidate<p></p>
+                <div class="col-11 col-s-11">
+                    <div id="alert_div">
+                        <div class="alert info"> 
+                                <span class="closebtn">&times;</span>
+                                Use the office list to vote for each office; remember, only one vote per office!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-s-3 menu">
+                    <p class="dash" id="office-menu">
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction('candidates')">
+                            <i class="fa fa-bars" style="font-size:24px"></i>
+                        </a>Office List
+                    </p>
+                    <ul class="office-list" id="officeList">
+                        <li class="office" id="prezzo">Presidential</li>
+                        <li class="office" id="governer">Gubernatorial</li>
+                        <li class="office" id="senator">Senatorial</li>
+                        <li class="office">Women Representative</li>
+                        <li class="office">Member of County Assembly</li>
+                    </ul>
+                    <div class="submit-wrap" id="btn-ctrls">
+                        <button id="show-all" class="blend">Show All Offices</button> 
+                    </div>
+                </div>
+    
+                <div class="col-6 col-s-6 candidates-and-offices">
+                    <div id="all-candidates">
+                        <div id="prezzo-candidates" class="hide dash candidates-item">
+                            <p class="h_center">Presidential Candidates</p>
+                            <hr>
+                            <div class="col-6 col-s-6">
+                                <form enctype="text/plain" action="">
                                     <ul>
-                                    <li><input type="radio" name="user" value="candidatex" required> Politician 1</li>
-                                    <li><input type="radio" name="user" value="candidatey" required> Politician 2</li>
+                                        <li><label class="container"><input type="radio" name="prezzo" value="rao" required> RAO Baba</label><span class="checkmark"></span></li>
+                                        <li><label class="container"><input type="radio" name="prezzo" value="ruto" required> Ruto MyFren</label><span class="checkmark"></span></li>
+                                        <li><label class="container"><input type="radio" name="prezzo" value="ruto" required> Bifwoli Wakoli</label><span class="checkmark"></span></li>
                                     </ul>
-                                    <input type="submit" name="vote" id="vote" value="Submit Vote">
-                                </form>
-                                <!--button id="vote1">Submit Vote</button-->
-                        </fieldset>
-                        <fieldset>
-                                <legend><span class="title">Office Title 2</span></legend>
-                                    <form method="GET" enctype="text/plain" action="">
-                                        <p>Select one candidate<p></p>
-                                        <ul>
-                                        <li><input type="radio" name="user" value="candidate1" required> Politician 1</li>
-                                        <li><input type="radio" name="user" value="candidate2" required> Politician 2</li>
-                                        </ul>
-                                        <input type="submit" name="vote" id="vote" value="Submit Vote">
-                                    </form>
-                            </fieldset></div>
+                                </div>
+                            <div class="col-3 col-s-3 submit-div">
+                                <input type="submit" name="prezzo-vote" id="vote" value="Submit Vote" onsubmit="addVote()">
+                            </div>
+                            </form>
+                        </div>
+                        <div id="governer-candidates" class="hide dash candidates-item">
+                            <p class="h_center">Gubernatorial Candidates</p>
+                            <hr>
+                            <div class="col-6 col-s-6">
+                                <form enctype="text/plain" action="">
+                                    <ul>
+                                    <li><label class="container"><input type="radio" name="gavana" value="waititu" required> Waititu Baba Yao</label><span class="checkmark"></span></li>
+                                    <li><label class="container"><input type="radio" name="gavana" value="mbuvi" required> Mbuvi Sonko Kioko</label><span class="checkmark"></span></li>
+                                    <li><label class="container"><input type="radio" name="gavana" value="kidero" required> Kidero Macho Nne</label><span class="checkmark"></span></li>
+                                    </ul>
+                            </div>
+                            <div class="col-3 col-s-3 submit-div">
+                                <input type="submit" name="governer-vote" id="vote" value="Submit Vote">
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
@@ -64,7 +105,7 @@
             </div>
 
         </div>
+        <script src="./../../scripts/utilities.js"></script>
         <script src="./../../scripts/vote.js"></script>
-        <script src="./../../scripts/main.js"></script>
 </body>
 </html>

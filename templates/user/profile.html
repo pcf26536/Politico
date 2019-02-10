@@ -14,31 +14,38 @@
 <body>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
-        <a href="user_offices.html" class="menu">Offices</a>
-        <a href="user_parties.html" class="menu">Parties</a>
+        <a href="offices.html" class="menu">Offices</a>
+        <a href="parties.html" class="menu">Parties</a>
         <a href="vote.html" class="menu">Vote</a>
         <a href="profile.html" class="menu">Profile</a>
         <a href="results.html" class="menu">Results</a>
         <a href="../../index.html" class="menu">Sign Out</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
             <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
     
         <div class="content">
             <div class="center row">
-            <h3>Profile Page</h3>
+            <h3 class="h_center">Profile Page</h3>
             <hr>
-                <fieldset>
-                        <legend><span class="title">Office Title 1</span></legend>
-                            <div><span class="pos_status">Voted </span>for <span id="candidate">Politician1</span></div>
-                    </fieldset>
-                    <fieldset>
-                            <legend><span class="title">Office Title 2</span></legend>
-                                    <div><span class="neg_status">Not Voted </span></div>
-                        </fieldset>
+                <div>
+                    <div class="vote-list-title">
+                        <span class="dash">Candidate Voted
+                            <span class="office-title-title">Office Title</span>
+                        </span>
+                    </div>
+                    <div class="vote-item">
+                        <span class="dash"><span class="office-title">Presidential</span>
+                            <span class="candidate-name">Bifwoli Wakwoli</span></span>
+                    </div>
+                    <div class="vote-item">
+                        <span class="dash"><span class="office-title">Gubernatorial</span>
+                            <span class="candidate-name">Mbuvi Sonko Kioko</span></span>
+                    </div>
+                </div>
             </div>
             </div>
-            <script src="./../../scripts/main.js"></script>
+            <script src="./../../scripts/utilities.js"></script>
 </body>
 </html>

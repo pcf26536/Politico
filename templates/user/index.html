@@ -10,17 +10,18 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/modal.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/alerts.css" />
 </head>
 <body>
         <nav class="topnav" id="myTopnav">
             <a href="index.html" class="logo">User</a>
-            <a href="user_offices.html" class="menu">Offices</a>
-            <a href="user_parties.html" class="menu">Parties</a>
+            <a href="offices.html" class="menu">Offices</a>
+            <a href="parties.html" class="menu">Parties</a>
             <a href="vote.html" class="menu">Vote</a>
             <a href="profile.html" class="menu">Profile</a>
             <a href="results.html" class="menu">Results</a>
             <a href="../../index.html" class="menu">Sign Out</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
                 <i class="fa fa-bars" style="font-size:24px"></i>
             </a>
         </nav>
@@ -29,6 +30,7 @@
             <div class="center">
                 <h1>Howdy, user! Welcome to your gVotie dashboard page</h1>
                     <hr>
+                    <div id="alert_div"></div>
                     <p class="dash">Use the menu to view <a href="user_parties.html">Political Parties</a> and <a href="user_offices.html">Politicians runnning for Government Offices</a>, 
                         to <a href="vote.html">Vote</a> and view the <a href="profile.html">Voting Profile</a> and lastly, to view the <a href="results.html">Election results</a>.</p>
             </div>
@@ -44,7 +46,7 @@
 
         </div>
     </div> 
-        <script src="./../../scripts/main.js"></script>
+        <script src="./../../scripts/utilities.js"></script>
         <script src="./../../scripts/user.js"></script>
 </body>
 </html>

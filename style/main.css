@@ -1,14 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
+/*************************************************START FOR TOP-NAV******************************************************************/
 /* nav menu */
 .topnav .icon {
   display: none;
 }
 
 .topnav {
-  background-color: #00ff85;
+  background-color: #38003c;
   overflow: hidden;
   padding-left: 10%;
   padding-right: 10%;
@@ -21,7 +18,7 @@
 
 .topnav a {
   display: block;
-  color: #38003c;
+  color: #00ff85;
   text-align: center;
   padding: 1.5% 1.5%;
   text-decoration: none;
@@ -42,28 +39,68 @@
   float: left;
 }
 
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+p .icon {
+  display: none;
 }
 
-/* nav menu */
+        /******************query for mobile phones******************************/
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
 
+    .topnav.responsive {position: relative;}
+    .topnav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .office-list li {display: none;}
+    p a.icon {
+      display: inline;
+    }
+    .office-list.responsive li {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .submit-wrap button {
+      display: none;
+    }
+    .submit-wrap.responsive button { display: inline };
+    
+
+    .office-list.responsive {position: relative; top: 10%; left: 0%;} 
+    /*p a.icon {
+      position: absolute;
+    }*/
+
+    .candidate, .votes {
+      display: inline-block;
+      text-align: center;
+    }
+    .votes {
+      float: center;
+    }
+
+    .results {
+        padding: 0;
+    }
+  }
+/******************query for mobile phones******************************/
+/*************************************************END FOR NAVS******************************************************************/
+
+
+
+/*************************************************************START PAGE CONTENT/BODY*******************************************/
 body {
     margin: 0;
     padding: 0;
@@ -76,6 +113,19 @@ body {
       background-color: #f2f2f2;
   }
 
+body.home {
+  background-image: url("../images/background.jpg");
+  color: #04f5ff;
+}
+
+/*body.home .topnav {
+  background-color: #04f5ff;
+}
+
+body.home .topnav a {
+  color: #38003c;
+}*/
+
 .content {
   padding:5%;
   margin-top:0;
@@ -87,47 +137,7 @@ body {
 }
 
 hr {
-  color:  #00ff85;
-}
-
-.info {
-  color: #0e7746;
-}
-
-.border-form {
-  border: #00ff85 solid;
-  padding: 2%;
-  align-items: center;
-  background-image: url("../images/background2.png");
-  color: white;
-}
-
-.dash {
-  font-size: 120%;
-}
-
-a {
-  color:#e90052;
-}
-
-.h_center {
-  text-align: center;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-input[type=text]:focus{
-  border: 3px solid #555;
-}
-
-input[type=password]:focus{
-  border: 3px solid #555;
-}
-
-input[type=email]:focus{
-  border: 3px solid #555;
+  color:  #04f5ff;
 }
 
 .center {
@@ -142,59 +152,328 @@ input[type=email]:focus{
   height: 10px;
 }
 
-.submit-wrap {
+.dash {
+  font-size: 120%;
+}
+
+a {
+  color:#e90052;
+}
+
+.h_center, .submit-wrap {
   text-align: center;
 }
 
-input[type=radio] {
+li:not(.nav_item) {
   margin: 10px;
 }
 
-input[type=submit]{
+.hide {
+  display: none;
+}
+
+.action {
+  display: none;
+}
+/*************************************************************END PAGE CONTENT/BODY*******************************************/
+
+
+
+/*************************************************START FOR GRID******************************************************************/
+* {
+  box-sizing: border-box;
+}
+
+/* For mobile phones: */
+[class*="col-"], .center {
+	width: 93%;
+	float: left;
+	margin-left: 2.5%;
+	margin-right: 5%;
+}
+ 
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.col-s-1 {width: 8.33%;}
+	.col-s-2 {width: 16.66%;}
+	.col-s-3 {width: 25%;}
+	.col-s-4 {width: 33.33%;}
+	.col-s-5 {width: 41.66%;}
+	.col-s-6 {width: 50%;}
+	.col-s-7 {width: 58.33%;}
+	.col-s-8 {width: 66.66%;}
+	.col-s-9 {width: 75%;}
+	.col-s-10 {width: 83.33%;}
+	.col-s-11 {width: 91.66%;}
+	.col-s-12 {width: 100%;}
+	.center {
+		margin: auto;
+		width: 100%;
+		padding-left: 15%;
+		padding-right: 15%;
+		align-items: center;
+	}
+  }
+  
+  @media only screen and (min-width: 768px) {
+	/* For desktop: */
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+  }
+
+  @media only screen and (orientation: landscape) {
+	.topnav {
+		max-height: 20%;
+	  }
+	  .border-form {
+		margin-top: 5%;
+	  }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+	.example {background: blue;}
+  }
+
+  .row::after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+/*************************************************END FOR FORMS******************************************************************/
+
+
+
+/*************************************************START FOR FORMS******************************************************************/
+input[type=email], input[type=password], input[type=text], input[type=number], input[type=file], select, textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #38003c;
+  border-radius: 4px;
+  box-sizing: border-box;
+  align-self: auto;
+  font-weight: bold;
+  font-size:  97%;
+  text-align: center;
+}
+
+.large-form .submit-wrap {
+    padding-top: 3%;
+}
+
+input[type=submit]:hover, button:hover {
+  background-color: #00ff85;
+  color: #38003c;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus{
+  border: 3px solid #00ff85;
+}
+
+input[type=submit], button {
   width: fit-content;
-  background-color: #0e7746;
-  color: white;
+  background-color: #38003c;
+  color: #00ff85;
   padding: 12px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  /*display: block;*/
 }
 
-button {
-  width: fit-content;
-  background-color: #0e7746;
+button.cancel:hover {
+  background-color: #ff0800;
   color: white;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.cancel {
-  background-color: lightcoral;
-  display: inline;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-#add {
-  width: fit-content;
-  background-color: #4CAF50;
+.border-form {
+  border: #00ff85 solid;
+  padding: 2%;
+  align-items: center;
+  /*background-image: url("../images/background2.png");*/
+  color:#00ff85;
+}
+
+.border-form input[type=submit] {
+  background-color: #00ff85;
+  color: #38003c;
+}
+
+.border-form input[type=email]:focus,.border-form input[type=password]:focus{
+  border: 3px solid white;
+}
+
+.border-form input[type=email], .border-form input[type=password]{
+  background-color: #04f5ff;
+  color: #38003c;
+  border: 3px solid #38003c;
+}
+
+.border-form p {
+  color: #04f5ff;
+}
+
+.border-form a {
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
 }
 
+form li {
+  list-style-position: inside;
+  list-style-type: none; 
+}
+/*************************************************END FOR FORMS******************************************************************/
+
+
+
+/***********************************************************FOR ALERTS******************************************************/
+.alert {
+  padding: 1%;
+  color: #38003c;
+  text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.alert.success {background-color: rgb(146, 255, 4);}
+.alert.info {background-color: #04f5ff;}
+.alert.warning {background-color: #ff9800;}
+.alert.danger {background-color: #ff0800;}
+/***********************************************************FOR ALERTS******************************************************/
+
+
+
+/***********************************************************FOR MENU LISTS INSIDE BODY******************************************************/
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color:  #00ff85;
+  color: #38003c;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #38003c;
+  color: #00ff85;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/***********************************************************FOR MENU LISTS INSIDE BODY******************************************************/
+
+
+/*******************************************FOR RESULTS, VOTE, OFFICES PAGES******************************************/
+.results {
+  padding: 2%;
+}
+
+.result-item {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color: #38003c;
+  color: white;
+}
+
+.result-item p {
+  color: #04f5ff;
+}
+
+#petition-div {
+margin: 2%;
+padding: 2% 5% 2% 5%;
+/*background-color: #00ff85;*/
+border: #38003c dashed;
+}
+
+.winner {
+/*background-color: #04f5ff;*/
+color: #00ff85;
+}
+
+.votes {
+float: right;
+font-weight: bold;
+}
+
+.result-item li {
+padding-right: 2%;
+border-bottom: white solid;
+height: 50px;
+border-bottom-width: 90%;
+margin-right: 2%;
+}
+.vote-list-title {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color: #38003c;
+  color: white;
+}
+
+.vote-item {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color:  #38003c;
+}
+
+.office-title {
+  float: right;
+  color: #04f5ff;
+}
+
+.office-title-title {
+  float: right
+}
+
+.candidate-name {
+  color: #00ff85;
+}
+
+button.blend {
+  background-color: #38003c;
+}
+
+.submit-div {
+  padding: 10%;
+}
+
+.run-div {
+  padding: 5% 0% 10% 0%;
+}
+/*******************************************FOR RESULTS, VOTE, OFFICES PAGES******************************************/
+
+        /* modals */
 .modal {
   display: none; 
   position: fixed; 
@@ -239,3 +518,4 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+    /* modals */

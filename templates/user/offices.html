@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Government Offices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/alerts.css" />
+</head>
+<body>
+    <nav class="topnav" id="myTopnav">
+        <a href="index.html" class="logo">User</a>
+        <a href="offices.html" class="menu">Offices</a>
+        <a href="parties.html" class="menu">Parties</a>
+        <a href="vote.html" class="menu">Vote</a>
+        <a href="profile.html" class="menu">Profile</a>
+        <a href="results.html" class="menu">Results</a>
+        <a href="../../index.html" class="menu">Sign Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
+            <i class="fa fa-bars" style="font-size:24px"></i>
+        </a>
+    </nav>
+
+        <div class="content">
+            <div class="row">
+                <h3 class="h_center">Politicians Running for Political Offices</h3>
+                <hr>
+                <div class="col-11 col-s-11">
+                        <div id="alert_div">
+                            <div class="alert info"> 
+                                    <span class="closebtn">&times;</span>
+                                    Use the office list to view candidates running for each office; remember, you can only run for one(1) office!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 col-s-3 menu">
+                        <p class="dash" id="office-menu">
+                            <a href="javascript:void(0);" class="icon" onclick="myFunction('candidates')">
+                                <i class="fa fa-bars" style="font-size:24px"></i>
+                            </a>Office List
+                        </p>
+                        <ul class="office-list" id="officeList">
+                            <li class="office" id="prezzo">Presidential</li>
+                            <li class="office" id="governer">Gubernatorial</li>
+                            <li class="office" id="senator">Senatorial</li>
+                            <li class="office">Women Representative</li>
+                            <li class="office">Member of County Assembly</li>
+                        </ul>
+                        <div class="submit-wrap" id="btn-ctrls">
+                            <button id="show-all" class="blend">Show All Offices</button> 
+                        </div>
+                    </div>
+        
+                    <div class="col-6 col-s-6 candidates-and-offices">
+                        <div id="all-candidates">
+                            <div id="prezzo-candidates" class="hide dash candidates-item">
+                                <p class="h_center">Presidential Candidates</p>
+                                <hr>
+                                <div class="col-6 col-s-6">
+                                        <ul>
+                                            <li>RAO Baba</li>
+                                            <li> Ruto MyFren</li>
+                                            <li>Bifwoli Wakoli</li>
+                                        </ul>
+                                    </div>
+                                <div class="col-3 col-s-3 run-div">
+                                        <div class="submit-wrap">
+                                            <button class="blend">Run for this office</button> 
+                                        </div>
+                                </div>
+                            </div>
+                            <div id="governer-candidates" class="hide dash candidates-item">
+                                <p class="h_center">Gubernatorial Candidates</p>
+                                <hr>
+                                <div class="col-6 col-s-6">
+                
+                                        <ul>
+                                        <li>Waititu Baba Yao</li>
+                                        <li>Mbuvi Sonko Kioko</li>
+                                        <li>Kidero Macho Nne</li>
+                                        </ul>
+                                </div>
+                                <div class="col-3 col-s-3 run-div">
+                                    <div class="submit-wrap">
+                                        <button class="blend">Run for this office</button> 
+                                    </div>    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+        <script src="./../../scripts/utilities.js"></script>
+        <script src="./../../scripts/vote.js"></script>
+</body>
+</html>

@@ -18,30 +18,55 @@
         <a href="../index.html" class="logo">Politico&trade;</a>
         <a href="signin.html" class="menu">Sign In</a>
         <a href="signup.html" class="menu">Sign Up</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
           <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
     <div class="content">
-        <div class="center">
+        <div class="center row">
                 <h2 class="h_center">Sign Up</h2>
                 <hr>
-                    <form method="GET" enctype="text/plain" action="signin.html">
-                        <label for="username">Username</label>
-                            <input type="text" name="username" required minlength="3">
-                        <label for="email">Email</label>
-                            <input type="email" name="email" required>
-                        <label for="pass1">Password</label>
-                            <input type="password" name="pass1" required>
-                        <label for="pass2">Password (Re-Enter)</label>
-                            <input type="password" name="pass2" required>
-                        <label for="user">User Type</label>
-                            <ul><li><input type="radio" name="user" value="User" required> User</li>
-                        <li><input type="radio" name="user" value="Politician" required> Politician</li></ul>
-                        <div class="submit-wrap"><input type="submit" name="signup" value="Sign Up"></div>
-                    </form>
+                    <div class="large-form">
+                        <form method="GET" enctype="text/plain" action="signin.html">
+                            <div class="col-5 col-s-5">
+                                <label for="firstname">First Name</label>
+                                    <input type="text" name="firstname" required minlength="3">
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="lastname">Last Name</label>
+                                    <input type="text" name="lastname" required minlength="3">
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="othername">Other Name</label>
+                                    <input type="text" name="othername" minlength="3">
+                                </div>
+                            <div class="col-5 col-s-5">
+                                <label for="email">Email</label>
+                                    <input type="email" name="email" required>
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone" required>
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="passport">Passport</label>
+                                    <input input type="file" accept="image/*" name="passport" required>
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="pass1">Password</label>
+                                    <input type="password" name="pass1" required>
+                            </div>
+                            <div class="col-5 col-s-5">
+                                <label for="pass2">Password (Re-Enter)</label>
+                                    <input type="password" name="pass2" required>
+                            </div>
+                            <div class="col-11 col-s-11">
+                                <div class="submit-wrap"><input type="submit" name="signup" value="Sign Up"></div>
+                            </div>
+                        </form>
+                    </div>
             </div>
     </div>
-    <script src="../scripts/main.js"></script>
+    <script src="../scripts/utilities.js"></script>
 </body>
 </html>
