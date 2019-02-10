@@ -29,6 +29,10 @@
       color: white;
   }
 
+  .result-item p {
+      color: #04f5ff;
+  }
+
   #petition-div {
     margin: 2%;
     padding: 2% 5% 2% 5%;
