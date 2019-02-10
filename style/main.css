@@ -118,6 +118,14 @@ body.home {
   color: #04f5ff;
 }
 
+/*body.home .topnav {
+  background-color: #04f5ff;
+}
+
+body.home .topnav a {
+  color: #38003c;
+}*/
+
 .content {
   padding:5%;
   margin-top:0;
@@ -261,6 +269,9 @@ input[type=email], input[type=password], input[type=text], input[type=number], i
   text-align: center;
 }
 
+.large-form .submit-wrap {
+    padding-top: 3%;
+}
 
 input[type=submit]:hover, button:hover {
   background-color: #00ff85;
@@ -306,7 +317,6 @@ button.cancel:hover {
 }
 
 .border-form input[type=email], .border-form input[type=password]{
-  /*border: 3px solid #04f5ff;*/
   background-color: #04f5ff;
   color: #38003c;
   border: 3px solid #38003c;
