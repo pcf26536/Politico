@@ -158,6 +158,18 @@ a {
   text-align: center;
 }
 
+li:not(.nav_item) {
+  margin: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.action {
+  display: none;
+}
+
 input[type=email], input[type=password], input[type=text], input[type=number], input[type=file], select, textarea {
   width: 100%;
   padding: 12px 20px;
