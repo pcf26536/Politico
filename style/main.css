@@ -275,3 +275,31 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+
+.vote-list-title {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color: #38003c;
+  color: white;
+}
+
+.vote-item {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color:  #38003c;
+}
+
+.office-title {
+  float: right;
+  color: #04f5ff;
+}
+
+.office-title-title {
+  float: right
+}
+
+.candidate-name {
+  color: #00ff85;
+}
