@@ -67,17 +67,21 @@
                         </li>
                 </ul>
                 <div id="add_party_form" hidden>
-                    <fieldset>
-                        <legend>Add Party Form</legend>
+                        <p>Add Party Form</p>
                         <form method="GET" enctype="multipart/form-data" action="admin_parties.html">
-                            <label for="party">Party Name</label>
+                            <label for="party-name">Party Name</label>
                                 <input type="text" name="party" required>
+                            <label for="address">Address</label>
+                                <input type="number" name="address" required>
+                            <label for="postal-code">Postal Code</label>
+                                <input type="number" name="postal-code" required>
+                            <label for="town">Town / City</label>
+                                <input type="text" name="town" required>
                             <label for="logo">Logo</label>
                                 <input input type="file" accept="image/*" name="logo" required>
-                                <span class="twins"><input type="submit" name="add" value="Add Party">
-                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></span>
+                                <div class="submit-wrap"><input type="submit" name="add" value="Add Party">
+                                <button class="cancel" type="button" id="cancel_add_party">Cancel</button></div>
                         </form>
-                    </fieldset>
                 </div>
             </div>
         </div>
