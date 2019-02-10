@@ -27,17 +27,25 @@
                 <h2 class="h_center">Sign Up</h2>
                 <hr>
                     <form method="GET" enctype="text/plain" action="signin.html">
-                        <label for="username">Username</label>
-                            <input type="text" name="username" required minlength="3">
+                        <label for="firstname">First Name</label>
+                            <input type="text" name="firstname" required minlength="3">
+                        <label for="lastname">Last Name</label>
+                            <input type="text" name="lastname" required minlength="3">
+                        <label for="othername">Other Name</label>
+                            <input type="text" name="othername" minlength="3">
                         <label for="email">Email</label>
                             <input type="email" name="email" required>
+                        <label for="phone">Phone Number</label>
+                            <input type="text" name="phone" required>
+                        <label for="passport">Passport</label>
+                            <input input type="file" accept="image/*" name="passport" required>
                         <label for="pass1">Password</label>
                             <input type="password" name="pass1" required>
                         <label for="pass2">Password (Re-Enter)</label>
                             <input type="password" name="pass2" required>
                         <label for="user">User Type</label>
-                            <ul><li><input type="radio" name="user" value="User" required> User</li>
-                        <li><input type="radio" name="user" value="Politician" required> Politician</li></ul>
+                            <ul><li><input type="radio" name="user" value="Voter" required> Voter</li>
+                                <li><input type="radio" name="user" value="Politician" required> Politician</li></ul>
                         <div class="submit-wrap"><input type="submit" name="signup" value="Sign Up"></div>
                     </form>
             </div>
