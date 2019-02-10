@@ -303,6 +303,10 @@ button.blend {
   padding: 10%;
 }
 
+.run-div {
+  padding: 5% 0% 10% 0%;
+}
+
 form li {
   list-style-position: inside;
   list-style-type: none; 

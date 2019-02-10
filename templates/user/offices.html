@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/alerts.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -27,33 +27,77 @@
     </nav>
 
         <div class="content">
-            <div class="center row">
-                <h3>Government/Political Offices and Running Politicians</h3>
+            <div class="row">
+                <h3 class="h_center">Politicians Running for Political Offices</h3>
                 <hr>
-                <fieldset>
-                    <legend><span class="title">Office Title 1</span></legend>
-                        <ol>
-                            <li>Politician 1</li>
-                            <li>Politician 2</li>
-                        </ol>
-                </fieldset>
-                <fieldset>
-                        <legend><span class="title">Office Title 2</span></legend>
-                            <ol>
-                                <li>Politician 3</li>
-                                <li>Politician 4</li>
-                            </ol>
-                    </fieldset>
-                    <form method="GET" enctype="multipart/form-data" action="">
-                        <ol>
-                            <li>Office Title 1 <input type="radio" name="office" value="office1"></li>
-                            <li>Office Title 2 <input type="radio" name="office" value="office2"></li>
-                            <li>Office Title 3 <input type="radio" name="office" value="office3"></li>
-                            <input type="submit" name="vie" value="Run for selected office">             
-                        </ol>
-                    </form>
+                <div class="col-11 col-s-11">
+                        <div id="alert_div">
+                            <div class="alert info"> 
+                                    <span class="closebtn">&times;</span>
+                                    Use the office list to view candidates running for each office; remember, you can only run for one(1) office!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 col-s-3 menu">
+                        <p class="dash" id="office-menu">
+                            <a href="javascript:void(0);" class="icon" onclick="myFunction('candidates')">
+                                <i class="fa fa-bars" style="font-size:24px"></i>
+                            </a>Office List
+                        </p>
+                        <ul class="office-list" id="officeList">
+                            <li class="office" id="prezzo">Presidential</li>
+                            <li class="office" id="governer">Gubernatorial</li>
+                            <li class="office" id="senator">Senatorial</li>
+                            <li class="office">Women Representative</li>
+                            <li class="office">Member of County Assembly</li>
+                        </ul>
+                        <div class="submit-wrap" id="btn-ctrls">
+                            <button id="show-all" class="blend">Show All Offices</button> 
+                        </div>
+                    </div>
+        
+                    <div class="col-6 col-s-6 candidates-and-offices">
+                        <div id="all-candidates">
+                            <div id="prezzo-candidates" class="hide dash candidates-item">
+                                <p class="h_center">Presidential Candidates</p>
+                                <hr>
+                                <div class="col-6 col-s-6">
+                                        <ul>
+                                            <li>RAO Baba</li>
+                                            <li> Ruto MyFren</li>
+                                            <li>Bifwoli Wakoli</li>
+                                        </ul>
+                                    </div>
+                                <div class="col-3 col-s-3 run-div">
+                                        <div class="submit-wrap">
+                                            <button class="blend">Run for this office</button> 
+                                        </div>
+                                </div>
+                            </div>
+                            <div id="governer-candidates" class="hide dash candidates-item">
+                                <p class="h_center">Gubernatorial Candidates</p>
+                                <hr>
+                                <div class="col-6 col-s-6">
+                
+                                        <ul>
+                                        <li>Waititu Baba Yao</li>
+                                        <li>Mbuvi Sonko Kioko</li>
+                                        <li>Kidero Macho Nne</li>
+                                        </ul>
+                                </div>
+                                <div class="col-3 col-s-3 run-div">
+                                    <div class="submit-wrap">
+                                        <button class="blend">Run for this office</button> 
+                                    </div>    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
             </div>
         </div>
         <script src="./../../scripts/utilities.js"></script>
+        <script src="./../../scripts/vote.js"></script>
 </body>
 </html>
