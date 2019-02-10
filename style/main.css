@@ -113,6 +113,11 @@ body {
       background-color: #f2f2f2;
   }
 
+body.home {
+  background-image: url("../images/background.jpg");
+  color: #04f5ff;
+}
+
 .content {
   padding:5%;
   margin-top:0;
@@ -287,9 +292,34 @@ button.cancel:hover {
   border: #00ff85 solid;
   padding: 2%;
   align-items: center;
-  background-image: url("../images/background2.png");
+  /*background-image: url("../images/background2.png");*/
+  color:#00ff85;
+}
+
+.border-form input[type=submit] {
+  background-color: #00ff85;
+  color: #38003c;
+}
+
+.border-form input[type=email]:focus,.border-form input[type=password]:focus{
+  border: 3px solid white;
+}
+
+.border-form input[type=email], .border-form input[type=password]{
+  /*border: 3px solid #04f5ff;*/
+  background-color: #04f5ff;
+  color: #38003c;
+  border: 3px solid #38003c;
+}
+
+.border-form p {
+  color: #04f5ff;
+}
+
+.border-form a {
   color: white;
 }
+
 form li {
   list-style-position: inside;
   list-style-type: none; 

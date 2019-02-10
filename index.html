@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style/forms.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="style/grid.css" />
 </head>
-<body>
+<body class="home">
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">Politico&trade;</a>
         <a href="templates/signin.html" class="menu">Sign In</a>
@@ -37,7 +37,7 @@ the season and help build a platform which both the politicians and citizens can
                     <hr>
                     <form method="GET" action="templates/user/index.html">
                         <label for="user">Email Adress</label>
-                            <input placeholder="Email Address" type="text" id="user_signin" name="user" required>
+                            <input placeholder="Email Address" type="email" id="user_signin" name="user" required>
                         <label for="pass">Password</label>
                             <input type="password" name="pass" required placeholder="password">
                             <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
