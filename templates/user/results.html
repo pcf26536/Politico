@@ -33,9 +33,11 @@
             <h3 class="h_center">Results Page</h3>
             <hr>
             <div class="col-11 col-s-11">
-                <div class="alert info"> 
-                        <span class="closebtn">&times;</span>
-                        Use the office list to view the results for each office
+                <div id="alert_div">
+                    <div class="alert info"> 
+                            <span class="closebtn">&times;</span>
+                            Use the office list to view the results for each office
+                    </div>
                 </div>
             </div>
             <div class="col-3 col-s-3 menu">
@@ -81,12 +83,12 @@
                 <div id="petition-div" class="hide">
                     <h3 class="h_center">Create Petiton</h3>
                     <hr>
-                    <form method="GET" enctype="text/plain" action=".">
+                    <form method="GET" enctype="text/plain" action="results.html">
                         <label for="office">Office</label>
                             <select name="office" required>
                                     <option name="office" value="">-----</option>
-                                <option name="office">Gubernatorial</option>
-                                <option name="office">Presidential</option>
+                                <option name="office" value="Gubernatorial">Gubernatorial</option>
+                                <option name="office" value="Presidential">Presidential</option>
                             </select>
                         <label for="body">Petiton Body</label>
                             <textarea rows="10"name="body" required></textarea>

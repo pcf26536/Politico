@@ -42,3 +42,7 @@ getByClass("closebtn")[0].onclick = function(){
     // Set the opacity of div to 0 (transparent)
     div.style.opacity = "0";
 };
+
+if (getUrlParam('petition')) {
+    showAlert('info', makeAlertMessage('Success!', "You've successfuly submitted the petition for the " + getUrlParam('office') + " office."));
+}
