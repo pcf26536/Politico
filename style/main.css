@@ -1,3 +1,172 @@
+/*************************************************START FOR TOP-NAV******************************************************************/
+/* nav menu */
+.topnav .icon {
+  display: none;
+}
+
+.topnav {
+  background-color: #38003c;
+  overflow: hidden;
+  padding-left: 10%;
+  padding-right: 10%;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  max-height: 10%;
+}
+
+.topnav a {
+  display: block;
+  color: #00ff85;
+  text-align: center;
+  padding: 1.5% 1.5%;
+  text-decoration: none;
+  font-size: 111%;
+}
+
+.menu {
+    float: right;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.logo {
+  color: white;
+  float: left;
+}
+
+p .icon {
+  display: none;
+}
+
+        /******************query for mobile phones******************************/
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+
+    .topnav.responsive {position: relative;}
+    .topnav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .office-list li {display: none;}
+    p a.icon {
+      display: inline;
+    }
+    .office-list.responsive li {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .submit-wrap button {
+      display: none;
+    }
+    .submit-wrap.responsive button { display: inline };
+    
+
+    .office-list.responsive {position: relative; top: 10%; left: 0%;} 
+    /*p a.icon {
+      position: absolute;
+    }*/
+
+    .candidate, .votes {
+      display: inline-block;
+      text-align: center;
+    }
+    .votes {
+      float: center;
+    }
+
+    .results {
+        padding: 0;
+    }
+  }
+/******************query for mobile phones******************************/
+/*************************************************END FOR NAVS******************************************************************/
+
+
+
+/*************************************************************START PAGE CONTENT/BODY*******************************************/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+      /*background-image: url("../images/background.jpg");*/
+      color: #38003c;
+      font-weight: bold;
+      background-color: #f2f2f2;
+  }
+
+.content {
+  padding:5%;
+  margin-top:0;
+  padding-bottom: 10%;
+  margin-bottom: 0%;
+  height: 110%;
+  border-radius: 5px;
+  width: 100%;
+}
+
+hr {
+  color:  #04f5ff;
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 1%;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  height: 10px;
+}
+
+.dash {
+  font-size: 120%;
+}
+
+a {
+  color:#e90052;
+}
+
+.h_center, .submit-wrap {
+  text-align: center;
+}
+
+li:not(.nav_item) {
+  margin: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.action {
+  display: none;
+}
+/*************************************************************END PAGE CONTENT/BODY*******************************************/
+
+
+
+/*************************************************START FOR GRID******************************************************************/
 * {
   box-sizing: border-box;
 }
@@ -68,142 +237,9 @@
 	clear: both;
 	display: table;
   }
+/*************************************************END FOR FORMS******************************************************************/
 
-/* nav menu */
-.topnav .icon {
-  display: none;
-}
 
-.topnav {
-  background-color: #38003c;
-  overflow: hidden;
-  padding-left: 10%;
-  padding-right: 10%;
-  position: fixed;
-  top: 0;
-  margin: 0;
-  width: 100%;
-  max-height: 10%;
-}
-
-.topnav a {
-  display: block;
-  color: #00ff85;
-  text-align: center;
-  padding: 1.5% 1.5%;
-  text-decoration: none;
-  font-size: 111%;
-}
-
-.menu {
-    float: right;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.logo {
-  color: white;
-  float: left;
-}
-
-p .icon {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-
-  .office-list li {display: none;}
-  p a.icon {
-    display: inline;
-  }
-  .office-list.responsive li {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .submit-wrap button {
-    display: none;
-  }
-  .submit-wrap.responsive button { display: inline };
-  
-
-  .office-list.responsive {position: relative; top: 10%; left: 0%;} 
-  /*p a.icon {
-    position: absolute;
-  }*/
-
-  .candidate, .votes {
-    display: inline-block;
-    text-align: center;
-  }
-  .votes {
-    float: center;
-  }
-
-  .results {
-      padding: 0;
-  }
-}
-
-/* nav menu */
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-      /*background-image: url("../images/background.jpg");*/
-      color: #38003c;
-      font-weight: bold;
-      background-color: #f2f2f2;
-  }
-
-.content {
-  padding:5%;
-  margin-top:0;
-  padding-bottom: 10%;
-  margin-bottom: 0%;
-  height: 110%;
-  border-radius: 5px;
-  width: 100%;
-}
-
-hr {
-  color:  #04f5ff;
-}
-
-.center {
-  margin: auto;
-  width: 60%;
-  padding: 1%;
-  align-items: center;
-}
-
-.title {
-  font-weight: bold;
-  height: 10px;
-}
 
 /*************************************************START FOR FORMS******************************************************************/
 input[type=email], input[type=password], input[type=text], input[type=number], input[type=file], select, textarea {
@@ -254,31 +290,13 @@ button.cancel:hover {
   background-image: url("../images/background2.png");
   color: white;
 }
+form li {
+  list-style-position: inside;
+  list-style-type: none; 
+}
 /*************************************************END FOR FORMS******************************************************************/
 
-.dash {
-  font-size: 120%;
-}
 
-a {
-  color:#e90052;
-}
-
-.h_center, .submit-wrap {
-  text-align: center;
-}
-
-li:not(.nav_item) {
-  margin: 10px;
-}
-
-.hide {
-  display: none;
-}
-
-.action {
-  display: none;
-}
 
 /***********************************************************FOR ALERTS******************************************************/
 .alert {
@@ -309,6 +327,8 @@ li:not(.nav_item) {
 /***********************************************************FOR ALERTS******************************************************/
 
 
+
+/***********************************************************FOR MENU LISTS INSIDE BODY******************************************************/
 .menu li {
   padding: 8px;
   margin-bottom: 7px;
@@ -328,50 +348,8 @@ li:not(.nav_item) {
   padding: 0;
 }
 
-button.blend {
-  background-color: #38003c;
-}
+/***********************************************************FOR MENU LISTS INSIDE BODY******************************************************/
 
-.submit-div {
-  padding: 10%;
-}
-
-.run-div {
-  padding: 5% 0% 10% 0%;
-}
-
-form li {
-  list-style-position: inside;
-  list-style-type: none; 
-}
-
-.vote-list-title {
-  border: #38003c solid;
-  margin: 2%;
-  padding: 1%;
-  background-color: #38003c;
-  color: white;
-}
-
-.vote-item {
-  border: #38003c solid;
-  margin: 2%;
-  padding: 1%;
-  background-color:  #38003c;
-}
-
-.office-title {
-  float: right;
-  color: #04f5ff;
-}
-
-.office-title-title {
-  float: right
-}
-
-.candidate-name {
-  color: #00ff85;
-}
 
 /*******************************************FOR RESULTS, VOTE, OFFICES PAGES******************************************/
 .results {
@@ -413,6 +391,45 @@ border-bottom: white solid;
 height: 50px;
 border-bottom-width: 90%;
 margin-right: 2%;
+}
+.vote-list-title {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color: #38003c;
+  color: white;
+}
+
+.vote-item {
+  border: #38003c solid;
+  margin: 2%;
+  padding: 1%;
+  background-color:  #38003c;
+}
+
+.office-title {
+  float: right;
+  color: #04f5ff;
+}
+
+.office-title-title {
+  float: right
+}
+
+.candidate-name {
+  color: #00ff85;
+}
+
+button.blend {
+  background-color: #38003c;
+}
+
+.submit-div {
+  padding: 10%;
+}
+
+.run-div {
+  padding: 5% 0% 10% 0%;
 }
 /*******************************************FOR RESULTS, VOTE, OFFICES PAGES******************************************/
 
