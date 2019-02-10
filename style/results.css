@@ -28,6 +28,7 @@
 
 .votes {
     float: right;
+    font-weight: bold;
 }
 
 .result-item li {
