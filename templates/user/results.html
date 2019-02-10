@@ -11,53 +11,96 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/alerts.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/results.css" />
 </head>
 <body>
-        <nav class="topnav" id="myTopnav">
-                <a href="index.html" class="logo">User</a>
-                <a href="offices.html" class="menu">Offices</a>
-                <a href="parties.html" class="menu">Parties</a>
-                <a href="vote.html" class="menu">Vote</a>
-                <a href="profile.html" class="menu">Profile</a>
-                <a href="results.html" class="menu">Results</a>
-                <a href="../../index.html" class="menu">Sign Out</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars" style="font-size:24px"></i>
-                </a>
-            </nav>
+    <nav class="topnav" id="myTopnav">
+        <a href="index.html" class="logo">User</a>
+        <a href="offices.html" class="menu">Offices</a>
+        <a href="parties.html" class="menu">Parties</a>
+        <a href="vote.html" class="menu">Vote</a>
+        <a href="profile.html" class="menu">Profile</a>
+        <a href="results.html" class="menu">Results</a>
+        <a href="../../index.html" class="menu">Sign Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
+            <i class="fa fa-bars" style="font-size:24px"></i>
+        </a>
+    </nav>
 
-        <div class="content">
-                <div class="center row">
-                <h3>Results Page</h3>
-                <hr>
-                    <fieldset>
-                            <legend><span class="title">Office Title 1</span></legend>
-                                <ol>
-                                    <li>Candidate 1 - <span class="votes">X votes</span></li>
-                                    <li>Candidate 2 - <span class="votes">Y votes</span></li>
-                                </ol>
-                        </fieldset>
-                        <fieldset>
-                                <legend><span class="title">Office Title 2</span></legend>
-                                        <ol>
-                                                <li>Candidate 1 - <span class="votes">A votes</span></li>
-                                                <li>Candidate 2 - <span class="votes">B votes</span></li>
-                                            </ol>
-                            </fieldset>
-                            <h3>Submit Petiton</h3>
-                            <form method="GET" enctype="text/plain" action=".">
-                                <label for="office">Office</label>
-                                    <select name="office" required>
-                                            <option name="office" value="">-----</option>
-                                        <option name="office">Office 1</option>
-                                        <option name="office">Office 2</option>
-                                    </select>
-                                <label for="body">Petiton Body</label>
-                                    <textarea name="body"></textarea>
-                                    <div class="submit-wrap"><input type="submit" name="petition" value="Submit Petiton"></div>
-                            </form>
+    <div class="content">
+        <div class="row">
+            <h3 class="h_center">Results Page</h3>
+            <hr>
+            <div class="col-11 col-s-11">
+                <div class="alert info"> 
+                        <span class="closebtn">&times;</span>
+                        Use the office list to view the results for each office
                 </div>
+            </div>
+            <div class="col-3 col-s-3 menu">
+                <p class="dash" id="office-menu">
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction('results')">
+                        <i class="fa fa-bars" style="font-size:24px"></i>
+                    </a>Office List
+                </p>
+                <ul class="office-list" id="officeList">
+                    <li class="office" id="prezzo">Presidential</li>
+                    <li class="office" id="governer">Gubernatorial</li>
+                    <li class="office" id="senator">Senatorial</li>
+                    <li class="office">Women Representative</li>
+                    <li class="office">Member of County Assembly</li>
+                </ul>
+                <div class="submit-wrap" id="btn-ctrls">
+                    <button id="show-all" class="blend">Show All Results</button> 
+                    <button id="create-petition" class="blend">Create Petiton</button>
+                </div>
+            </div>
+
+            <div class="col-6 col-s-6 results">
+                <div id="all-results">
+                    <div id="prezzo-results" class="hide dash result-item">
+                        <p class="h_center">Presidential Seat</p>
+                        <hr>
+                        <ol>
+                            <li class="winner"><span class="candidate">RAO Baba*</span><span class="votes">12, 182, 685 votes*</span></li>
+                            <li><span class="candidate">Ruto MyFren</span><span class="votes">7, 658, 854 votes</span></li>
+                            <li><span class="candidate">Bifwoli Wakoli</span><span class="votes">2, 658, 854 votes</span></li>
+                        </ol>
+                    </div>
+                    <div id="governer-results" class="hide dash result-item">
+                        <p class="h_center">Gubernatorial Seat</p>
+                        <hr>
+                            <ol>
+                                <li class="winner"><span class="candidate">Waititu Baba Yao*</span><span class="votes">2,222, 125 votes*</span></li>
+                                <li><span class="candidate">Mbuvi Sonko</span><span class="votes">1,615,255 votes</span></li>
+                                <li><span class="candidate">Kidero Macho Nne</span><span class="votes">1,215,255 votes</span></li>
+                            </ol>
+                    </div>
+                </div>
+                <div id="petition-div" class="hide">
+                    <h3 class="h_center">Create Petiton</h3>
+                    <hr>
+                    <form method="GET" enctype="text/plain" action=".">
+                        <label for="office">Office</label>
+                            <select name="office" required>
+                                    <option name="office" value="">-----</option>
+                                <option name="office">Gubernatorial</option>
+                                <option name="office">Presidential</option>
+                            </select>
+                        <label for="body">Petiton Body</label>
+                            <textarea rows="10"name="body" required></textarea>
+                            <div class="submit-wrap">
+                                <input type="submit" name="petition" value="Submit Petiton">
+                                <Button class="cancel" id="cancel-petition">Cancel</Button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
-        <script src="./../../scripts/utilities.js"></script>
+    </div>
+    <script src="./../../scripts/utilities.js"></script>
+    <script type="text/javascript" src="./../../scripts/results.js"></script>
 </body>
 </html>

@@ -3,16 +3,6 @@ var block = "block";
 var object = 'object';
 var string = 'string';
 
-// shows the menu icon on small width
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  }
-
             /* get the get url params */
 function getUrlVars() {
   var vars = {};
@@ -157,3 +147,27 @@ function showAlert(type, message) {
 function makeAlertMessage(head, body) {
     return '<strong>' + head + '</strong> ' + body;
 }
+
+// shows the menu icon on small width
+function myFunction(instance) {
+    if (instance == 'menu') {
+        var x = getById("myTopnav");
+        if (x.className === "topnav") {
+        x.className += " responsive";
+        } else {
+        x.className = "topnav";
+        }
+    }
+    else if (instance == 'results') {
+        var y = getById("officeList");
+        var ctrls = getById("btn-ctrls");
+        if (y.className === "office-list") {
+            y.className += " responsive";
+            ctrls.className += " responsive";
+            //showAlert('danger', ctrls.className);
+        } else {
+            y.className = "office-list";
+            ctrls.className = "submit-wrap";
+        }
+    }
+  }

@@ -8,7 +8,7 @@
 }
 
 .topnav {
-  background-color: #00ff85;
+  background-color: #38003c;
   overflow: hidden;
   padding-left: 10%;
   padding-right: 10%;
@@ -21,7 +21,7 @@
 
 .topnav a {
   display: block;
-  color: #38003c;
+  color: #00ff85;
   text-align: center;
   padding: 1.5% 1.5%;
   text-decoration: none;
@@ -42,6 +42,10 @@
   float: left;
 }
 
+p .icon {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -59,6 +63,38 @@
     float: none;
     display: block;
     text-align: left;
+  }
+
+  .office-list li {display: none;}
+  p a.icon {
+    display: inline;
+  }
+  .office-list.responsive li {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .submit-wrap button {
+    display: none;
+  }
+  .submit-wrap.responsive button { display: inline };
+  
+
+  .office-list.responsive {position: relative; top: 10%; left: 0%;} 
+  /*p a.icon {
+    position: absolute;
+  }*/
+
+  .candidate, .votes {
+    display: inline-block;
+    text-align: center;
+  }
+  .votes {
+    float: center;
+  }
+
+  .results {
+      padding: 0;
   }
 }
 
@@ -152,7 +188,7 @@ input[type=radio] {
 
 input[type=submit]{
   width: fit-content;
-  background-color: #0e7746;
+  background-color: #38003c;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;
@@ -174,7 +210,7 @@ button {
   cursor: pointer;
 }
 .cancel {
-  background-color: lightcoral;
+  background-color: #ff0800;
   display: inline;
   padding: 12px 20px;
   margin: 8px 0;
