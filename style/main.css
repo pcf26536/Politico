@@ -205,38 +205,7 @@ hr {
   height: 10px;
 }
 
-.border-form {
-  border: #00ff85 solid;
-  padding: 2%;
-  align-items: center;
-  background-image: url("../images/background2.png");
-  color: white;
-}
-
-.dash {
-  font-size: 120%;
-}
-
-a {
-  color:#e90052;
-}
-
-.h_center, .submit-wrap {
-  text-align: center;
-}
-
-li:not(.nav_item) {
-  margin: 10px;
-}
-
-.hide {
-  display: none;
-}
-
-.action {
-  display: none;
-}
-
+/*************************************************START FOR FORMS******************************************************************/
 input[type=email], input[type=password], input[type=text], input[type=number], input[type=file], select, textarea {
   width: 100%;
   padding: 12px 20px;
@@ -277,6 +246,68 @@ button.cancel:hover {
   background-color: #ff0800;
   color: white;
 }
+
+.border-form {
+  border: #00ff85 solid;
+  padding: 2%;
+  align-items: center;
+  background-image: url("../images/background2.png");
+  color: white;
+}
+/*************************************************END FOR FORMS******************************************************************/
+
+.dash {
+  font-size: 120%;
+}
+
+a {
+  color:#e90052;
+}
+
+.h_center, .submit-wrap {
+  text-align: center;
+}
+
+li:not(.nav_item) {
+  margin: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.action {
+  display: none;
+}
+
+/***********************************************************FOR ALERTS******************************************************/
+.alert {
+  padding: 1%;
+  color: #38003c;
+  text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.alert.success {background-color: rgb(146, 255, 4);}
+.alert.info {background-color: #04f5ff;}
+.alert.warning {background-color: #ff9800;}
+.alert.danger {background-color: #ff0800;}
+/***********************************************************FOR ALERTS******************************************************/
+
 
 .menu li {
   padding: 8px;
