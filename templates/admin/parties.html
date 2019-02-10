@@ -25,36 +25,43 @@
     </nav>
         <div class="content">
                 <div class="center row">
-            <h3>Political Parties</h5>
+            <h3 class="h_center">Political Parties Manager</h5>
                 <hr>
                 <div id="alert_div"></div>
-                <button id="add_party" onclick="showAddForm()">Add Party</button>
-                <button id="delete_party" class="cancel">Delete Party</button>
-                <button class="hide" id="cancel_delete">Cancel Delete</button>
-                <button class="hide cancel" id="delete_selected">Delete Selected</button>
-                <ul id="party_list">
+                <div class="submit-wrap">
+                    <button id="add_party" onclick="showAddForm()">Add Party</button>
+                    <button id="delete_party" class="cancel">Delete Party</button>
+                    <button class="hide" id="cancel_delete">Cancel Delete</button>
+                    <button class="hide cancel" id="delete_selected">Delete Selected</button>
+                </div>
+                <ul id="party_list" class="dash">
                         <li>
-                            <img src="./../../images/logo3.png" alt="logo" title="party logo"  height="40" width="40"><span>Orange Democractic Movement - ODM</span>
+                            <img src="./../../images/logo3.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Orange Democractic Movement [ODM]</span>; 20156-0100, Siaya
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo.png" alt="logo" title="party logo" height="40" width="40"><span>African National Congress - ANC</span>
+                            <img src="./../../images/logo.png" alt="logo" title="party logo" height="40" width="40">
+                            <span>African National Congress [ANC]</span>; 31455-0110, Kismayu
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo1.png" alt="logo" title="party logo"  height="40" width="40"><span>Labour Party - LP</span>
+                            <img src="./../../images/logo1.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Labour Party [LP]</span>; 31454-0100, Nandi
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo2.png" alt="logo" title="party logo"  height="40" width="40"><span>Jubilee Party - JP</span>
+                            <img src="./../../images/logo2.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Jubilee Party [JP]</span>; 215445-0100, Eldoret
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
                         <li>
-                            <img src="./../../images/logo5.png" alt="logo" title="party logo"  height="40" width="40"> <span>Democractic Party - DP</span>
+                            <img src="./../../images/logo5.png" alt="logo" title="party logo"  height="40" width="40">
+                            <span>Democractic Party [DP]</span>; 6235-0200, Githurai
                             <a class="edit" href="edit_party.html"><span id="edit" onclick="">&#9998; </span></a>
                             <input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()">
                         </li>
