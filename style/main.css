@@ -468,8 +468,9 @@ button.blend {
   padding: 10%;
 }
 
-.run-div {
-  padding: 5% 0% 10% 0%;
+.run-div .submit-wrap {
+  padding: 25% 0% 30% 0%;
+  margin: 30%;
 }
 /*******************************************FOR RESULTS, VOTE, OFFICES PAGES******************************************/
 
