@@ -158,7 +158,7 @@ function myFunction(instance) {
         x.className = "topnav";
         }
     }
-    else if (instance == 'results') {
+    else if (instance == 'results' || instance == 'candidates') {
         var y = getById("officeList");
         var ctrls = getById("btn-ctrls");
         if (y.className === "office-list") {
