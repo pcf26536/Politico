@@ -3,6 +3,26 @@ var block = "block";
 var object = 'object';
 var string = 'string';
 
+
+const API_URL = 'https://gvotie.herokuapp.com/api/v2/';
+
+function fetchToken(){
+    var token = localStorage.getItem('token');
+    if(token)
+        return token;
+    window.location.replace('templates/signin.html')
+    return null
+}
+
+
+function invalidToken(status){
+    if(status === 401){
+        window.location.replace('templates/signin.html')
+        return true;
+    }
+    return false;
+}
+
             /* get the get url params */
 function getUrlVars() {
   var vars = {};
@@ -171,3 +191,25 @@ function myFunction(instance) {
         }
     }
   }
+
+  function loginHandler() {
+
+    fetch('https://gvotie.herokuapp.com/', {mode: 'cors', headers: {'Content-Type': 'application/json'}})
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data.data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+}

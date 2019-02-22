@@ -29,14 +29,15 @@
                 <h2 class="h_center">Sign In</h2>
                 <hr>
                 <div id="alert_div"></div>
-                <form method="GET" enctype="text/plain" action="user/index.html">
-                    <label for="user">Username/Email</label>
-                        <input type="text" id="user_signin" name="user" required>
-                    <label for="pass">Password</label>
-                        <input type="password" name="pass" required>
-                        <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
-                </form>
-                <p class="h_center">Can't sign in? <a href="reset_pass.html">Reset Password</a></p>
+                    <form  onsubmit="loginHandler()">
+                        <label for="user">Email Adress</label>
+                            <input placeholder="Email Address" type="email" id="user_email" name="user" required>
+                        <label for="pass">Password</label>
+                            <input type="password" name="pass" id="user_pass" required placeholder="password">
+                            <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
+                    </form>
+                    <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
+                    <p></p>
         </div>
     </div>
     <!-- Pass Reset Sucess Modal -->
@@ -59,6 +60,5 @@
 </div> 
     <script src="../scripts/utilities.js"></script>
     <script src="../scripts/user.js"></script>
-    <script src="../scripts/signin.js"></script>
 </body>
 </html>
