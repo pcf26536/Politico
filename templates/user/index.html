@@ -13,6 +13,7 @@
 <body>
         <script>
             let token = fetchToken();
+            if (userIsAdmin()) redirectTo(root_dir + templates_dir + admin_url);
         </script>
         <nav class="topnav" id="myTopnav">
             <a href="index.html" class="logo"><span class="user_name"></span></a>

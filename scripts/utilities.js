@@ -2,23 +2,26 @@ let inline = "inline";
 let block = "block";
 let object = 'object';
 let string = 'string';
+let root_dir = './../../';
 let templates_dir = 'templates/';
+let signin_url = './../../templates/signin.html';
+let admin_url = 'admin/index.html';
+let user_url = 'user/index.html';
+const API_URL = 'https://gvotie.herokuapp.com/api/v2';
+const LOGIN = API_URL + '/auth/login';
+const SIGNUP = API_URL + '/auth/signup';
+const RESET = API_URL + '/auth/reset';
 
 
 function logToConsole(value) {
   console.log(value);
 }
 
-const API_URL = 'https://gvotie.herokuapp.com/api/v2';
-const LOGIN = API_URL + '/auth/login';
-const SIGNUP = API_URL + '/auth/signup';
-const RESET = API_URL + '/auth/reset';
-
 function fetchToken(){
   let token = localStorage.getItem('token');
   if(token)
     return token;
-  window.location.replace('./../../templates/signin.html');
+  window.location.replace(signin_url);
   return null
 }
 
@@ -26,9 +29,19 @@ function justLoggedIn() {
   return localStorage.getItem('logged_in');
 }
 
+function userIsAdmin() {
+  let admin =  localStorage.getItem('admin');
+  if(admin == 'false') return false;
+  return true;
+}
+
+function redirectTo(url) {
+  window.location.replace(url);
+}
+
 function invalidToken(status){
   if(status === 401){
-    window.location.replace('templates/signin.html');
+    window.location.replace(signin_url);
     return true;
   }
   return false;
@@ -227,8 +240,7 @@ function loginHandler(location) {
         localStorage.setItem('email', user.email);
         localStorage.setItem('phone', user.phone);
         localStorage.setItem('admin', user.admin);
-        let admin_url = 'admin/index.html';
-        let user_url = 'user/index.html';
+
         if (!location) {
           admin_url = templates_dir + admin_url;
           user_url = templates_dir + user_url;
@@ -240,17 +252,16 @@ function loginHandler(location) {
           window.location.replace(user_url);
       }
       else {
-        console.log(data.error);
-        let error = data.error
-        showAlert('danger', makeAlertMessage('', error));
+        showAlert('danger', makeAlertMessage('', data.error));
       }})
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
-    showAlert('danger', 'Please check your connection');
+    showAlert('warning', 'Please check your connection');
   });
 }
 
 function logoutHandler(){
     localStorage.clear();
     window.location.replace('./../../index.html')
+    showAlert('warning', 'You\'re now logged out!');
 }

@@ -8,18 +8,15 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/dash.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/forms.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/admin.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/modal.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/grid.css" />
+    <script src="./../../scripts/utilities.js"></script>
 </head>
 <body>
+        <script src="./../../scripts/admin.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">Admin</a>
         <a href="offices.html" class="menu">Government Offices</a>
         <a href="parties.html" class="menu">Political Parties</a>
-        <a href="../../index.html" class="menu">Sign Out</a>
+        <a href="#" class="menu" onclick="logoutHandler()">Sign Out</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
             <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
