@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadParties()">
    <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -28,27 +28,9 @@
             <div class="center row">
                 <h3 class="h_center">List of Political Parties</h3>
                     <hr>
-                    <ol class="dash">
-                            <li>
-                                    <img src="./../../images/logo3.png" alt="logo" title="party logo"  height="40" width="40">
-                                    <span>Orange Democractic Movement - ODM</span>
-                                </li>
-                                <li>
-                                    <img src="./../../images/logo.png" alt="logo" title="party logo" height="40" width="40">
-                                    <span>African National Congress - ANC</span>
-                                </li>
-                                <li>
-                                    <img src="./../../images/logo1.png" alt="logo" title="party logo"  height="40" width="40">
-                                    <span>Labour Party - LP</span>
-                                </li>
-                                <li>
-                                    <img src="./../../images/logo2.png" alt="logo" title="party logo"  height="40" width="40">
-                                    <span>Jubilee Party - JP</span>
-                                </li>
-                                <li>
-                                    <img src="./../../images/logo5.png" alt="logo" title="party logo"  height="40" width="40">
-                                    <span>Democractic Party - DP</span>
-                                </li>
+                    <div id="alert_div"></div>
+                    <ol class="dash" id="parties_list">
+                        <p class="h_center"><img src="./../../images/loading.gif"></p>
                     </ol>
                 </div>
             </div>

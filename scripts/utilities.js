@@ -11,6 +11,7 @@ const API_URL = 'https://gvotie.herokuapp.com/api/v2';
 const LOGIN = API_URL + '/auth/login';
 const SIGNUP = API_URL + '/auth/signup';
 const RESET = API_URL + '/auth/reset';
+const PARTIES = API_URL + '/parties';
 
 
 function logToConsole(value) {
@@ -32,7 +33,7 @@ function justLoggedIn() {
 function userIsAdmin() {
   let admin =  localStorage.getItem('admin');
   if(admin == 'false') return false;
-  return true;
+  if(admin == 'true') return true;
 }
 
 function redirectTo(url) {
@@ -41,10 +42,15 @@ function redirectTo(url) {
 
 function invalidToken(status){
   if(status === 401){
+    localStorage.clear();
     window.location.replace(signin_url);
     return true;
   }
   return false;
+}
+
+function toInnerHTML(element, value) {
+  element.innerHTML = value;
 }
 
 /* get the get url params */
@@ -250,6 +256,7 @@ function loginHandler(location) {
           window.location.replace(admin_url);
         else
           window.location.replace(user_url);
+        logToConsole(user_url);
       }
       else {
         showAlert('danger', makeAlertMessage('', data.error));
@@ -264,4 +271,52 @@ function logoutHandler(){
     localStorage.clear();
     window.location.replace('./../../index.html')
     //showAlert('warning', 'You\'re now logged out!');
+}
+
+function loadParties() {
+  fetch(
+    PARTIES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let parties_list = '';
+        let parties_num = data.data.length;
+        if (parties_num > 0) {
+            for (let x = 0; x < parties_num; x++) {
+                parties_list = parties_list + '<li>' +
+                  '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
+                  'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
+                  '  height="40" width="40">' +
+                  '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
+                  '</li>';
+            }
+            toInnerHTML(getById('parties_list'), parties_list);
+        } else {
+          toInnerHTML(
+            getById('parties_list'),
+            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+            '<p class="h_center">No' +
+            ' Political' +
+          ' Parties Available' +
+            ' Currently!</p>');
+        }
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+    showAlert('warning', 'Please check your connection');
+  });
 }
