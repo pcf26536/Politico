@@ -263,5 +263,5 @@ function loginHandler(location) {
 function logoutHandler(){
     localStorage.clear();
     window.location.replace('./../../index.html')
-    showAlert('warning', 'You\'re now logged out!');
+    //showAlert('warning', 'You\'re now logged out!');
 }
