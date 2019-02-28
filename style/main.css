@@ -360,7 +360,7 @@ form li {
   color: black;
 }
 
-.alert.success {background-color: rgb(146, 255, 4);}
+.alert.success {background-color: #00ff85;}
 .alert.info {background-color: #04f5ff;}
 .alert.warning {background-color: #ff9800;}
 .alert.danger {background-color: #ff0800;}
@@ -509,9 +509,9 @@ button.blend {
   color: red;
 }
 
-.success {
+/*.success {
   color: lawngreen;
-}
+}*/
 
 .close:hover,
 .close:focus {

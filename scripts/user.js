@@ -1,6 +1,8 @@
 /*showModal('myModal', 0, 'signin');
 showAlert();*/
 
+
+
 if (getUrlParam('signin')) {
     showAlert('success', makeAlertMessage('Success!', "You're now logged in."));
 }
