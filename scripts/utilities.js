@@ -1,7 +1,7 @@
-var inline = "inline";
-var block = "block";
-var object = 'object';
-var string = 'string';
+let inline = "inline";
+let block = "block";
+let object = 'object';
+let string = 'string';
 
 
 function logToConsole(value) {
@@ -9,9 +9,9 @@ function logToConsole(value) {
 }
 
 const API_URL = 'https://gvotie.herokuapp.com/api/v2';
-const LOGIN = '/auth/login';
-const SIGNUP = '/auth/signup';
-const RESET = '/auth/reset';
+const LOGIN = API_URL + '/auth/login';
+const SIGNUP = API_URL + '/auth/signup';
+const RESET = API_URL + '/auth/reset';
 
 function fetchToken(){
   var token = localStorage.getItem('token');
@@ -200,23 +200,24 @@ function myFunction(instance) {
 }
 
 function loginHandler() {
-
-  fetch('https://gvotie.herokuapp.com/', {mode: 'cors', headers: {'Content-Type': 'application/json'}})
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
-
+  fetch(
+    LOGIN,
+    {
+    body: JSON.stringify({
+      email: getById('user_email').value,
+      password: getById('user_pass').value
+    }), mode: 'cors', method: 'post', headers: {'Content-Type': 'application/json'}})
+  .then(res=> res.json())
+  .then((data) => {
       // Examine the text in the response
-      response.json().then(function(data) {
-        logToConsole('at last');
-        alert(data.data);
-      });
-    }
-  )
+      if (data.status === 200) {
+        console.log(data.data[0]);
+      }
+      else {
+        console.log(data.error);
+        let error = data.error
+        showAlert('danger', makeAlertMessage('', error));
+      }})
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
