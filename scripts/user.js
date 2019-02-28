@@ -1,7 +1,7 @@
 let token = fetchToken();
-if (userIsAdmin()) redirectTo(root_dir + templates_dir + admin_url);
+if (userIsAdmin()) {redirectTo(root_dir + templates_dir + admin_url);}
 
-if (getUrlParam('signin')) {
+/*if (getUrlParam('signin')) {
     showAlert('success', makeAlertMessage('Success!', "You're now logged in."));
 }
 
@@ -20,3 +20,4 @@ else if (getUrlParam('add_office')) {
   showAlert('success', makeAlertMessage('Success!', "Political party has been added"));
 }
 
+*/
