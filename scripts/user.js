@@ -1,7 +1,5 @@
-/*showModal('myModal', 0, 'signin');
-showAlert();*/
-
-
+let token = fetchToken();
+if (userIsAdmin()) redirectTo(root_dir + templates_dir + admin_url);
 
 if (getUrlParam('signin')) {
     showAlert('success', makeAlertMessage('Success!', "You're now logged in."));
