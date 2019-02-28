@@ -2,6 +2,7 @@ let inline = "inline";
 let block = "block";
 let object = 'object';
 let string = 'string';
+let templates_dir = 'templates/';
 
 
 function logToConsole(value) {
@@ -14,17 +15,20 @@ const SIGNUP = API_URL + '/auth/signup';
 const RESET = API_URL + '/auth/reset';
 
 function fetchToken(){
-  var token = localStorage.getItem('token');
+  let token = localStorage.getItem('token');
   if(token)
     return token;
-  window.location.replace('templates/signin.html')
+  window.location.replace('./../../templates/signin.html');
   return null
 }
 
+function justLoggedIn() {
+  return localStorage.getItem('logged_in');
+}
 
 function invalidToken(status){
   if(status === 401){
-    window.location.replace('templates/signin.html')
+    window.location.replace('templates/signin.html');
     return true;
   }
   return false;
@@ -44,7 +48,7 @@ function getUrlParam(parameter){
   if(window.location.href.indexOf(parameter) > -1){
     urlparameter = getUrlVars()[parameter];
   }
-  console.log(urlparameter);
+  //console.log(urlparameter);
   return urlparameter;
 }
 /* get the get url params */
@@ -168,6 +172,7 @@ function showAlert(type, message) {
   getById('alert_div').innerHTML = '<div class="alert '+ type + '">' +
     '<span class="closebtn">&times;</span>' + message + '</div>';
   // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+  showById('alert_div', block);
   setTimeout(closeAlert, 3000);
 }
 
@@ -199,7 +204,8 @@ function myFunction(instance) {
   }
 }
 
-function loginHandler() {
+function loginHandler(location) {
+
   fetch(
     LOGIN,
     {
@@ -212,6 +218,26 @@ function loginHandler() {
       // Examine the text in the response
       if (data.status === 200) {
         console.log(data.data[0]);
+        let user = data.data[0].user;
+        logToConsole(user.admin);
+        localStorage.setItem('token', data.data[0].token);
+        localStorage.setItem('logged_in', 'true');
+        localStorage.setItem('fname', user.fname);
+        localStorage.setItem('lname', user.lname);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('phone', user.phone);
+        localStorage.setItem('admin', user.admin);
+        let admin_url = 'admin/index.html';
+        let user_url = 'user/index.html';
+        if (!location) {
+          admin_url = templates_dir + admin_url;
+          user_url = templates_dir + user_url;
+        }
+
+        if (user.admin)
+          window.location.replace(admin_url);
+        else
+          window.location.replace(user_url);
       }
       else {
         console.log(data.error);
@@ -220,5 +246,11 @@ function loginHandler() {
       }})
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
+    showAlert('danger', 'Please check your connection');
   });
+}
+
+function logoutHandler(){
+    localStorage.clear();
+    window.location.replace('./../../index.html')
 }

@@ -10,9 +10,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/forms.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/grid.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/alerts.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -29,7 +26,7 @@
                 <h2 class="h_center">Sign In</h2>
                 <hr>
                 <div id="alert_div"></div>
-                    <form  onsubmit="loginHandler()">
+                    <form  onsubmit="loginHandler('signin'); return false;">
                         <label for="user">Email Adress</label>
                             <input placeholder="Email Address" type="email" id="user_email" name="user" required>
                         <label for="pass">Password</label>

@@ -34,12 +34,13 @@ the season and help build a platform which both the politicians and citizens can
                     <h3 class="h_center">Please login</h3>
                         
                     <hr>
+                <div id="alert_div"></div>
                     <form onsubmit="loginHandler(); return false;">
                         <label for="user">Email Adress</label>
                             <input placeholder="Email Address" type="email" id="user_email" name="user" required>
                         <label for="pass">Password</label>
                             <input type="password" name="pass" id="user_pass" required placeholder="password">
-                      <div id="alert_div"></div>
+
                             <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
                     </form>
                     <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
