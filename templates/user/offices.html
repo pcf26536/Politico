@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadCandidates()">
      <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -44,37 +44,18 @@
                             </a>Office List
                         </p>
                         <ul class="office-list" id="officeList">
-                            <li class="office" id="prezzo">Presidential</li>
-                            <li class="office" id="governer">Gubernatorial</li>
-                            <li class="office" id="senator">Senatorial</li>
-                            <li class="office">Women Representative</li>
-                            <li class="office">Member of County Assembly</li>
+                            <p class="h_center">
+                                <img src="./../../images/loading.gif">
+                            </p>
                         </ul>
                         <div class="submit-wrap" id="btn-ctrls">
-                            <button id="show-all">Show All Offices</button> 
+                            <button id="show-all">Show All Candidates</button>
                         </div>
                     </div>
         
                     <div class="col-6 col-s-6 candidates-and-offices">
                         <div id="all-candidates">
-                            <div id="prezzo-candidates" class="hide dash candidates-item">
-                                <p class="h_center">Presidential Candidates</p>
-                                <hr>
-                                    <ul>
-                                        <li>RAO Baba</li>
-                                        <li> Ruto MyFren</li>
-                                        <li>Bifwoli Wakoli</li>
-                                    </ul>
-                            </div>
-                            <div id="governer-candidates" class="hide dash candidates-item">
-                                <p class="h_center">Gubernatorial Candidates</p>
-                                <hr>
-                                    <ul>
-                                        <li>Waititu Baba Yao</li>
-                                        <li>Mbuvi Sonko Kioko</li>
-                                        <li>Kidero Macho Nne</li>
-                                    </ul>
-                            </div>
+
                         </div>
                     </div>
                     

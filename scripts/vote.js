@@ -2,17 +2,7 @@ function listHide() {
   if(getById('officeList').className=='office-list responsive') myFunction('results');
 }
 
-var offices = getByClass('office');
-
-for (var x = 0; x < offices.length; x++) {
-  offices[x].onclick = function () {
-      //hideById('all-results');
-      showById('all-candidates', block);
-      hideByClass('candidates-item');
-      showById(this.getAttribute('id') + '-candidates', block);
-      listHide();
-  };
-}
+hideById('show-all');
 
 function showAllCandidates() {
   showById('all-candidates', block);
