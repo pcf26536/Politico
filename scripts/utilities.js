@@ -12,6 +12,12 @@ const LOGIN = API_URL + '/auth/login';
 const SIGNUP = API_URL + '/auth/signup';
 const RESET = API_URL + '/auth/reset';
 const PARTIES = API_URL + '/parties';
+const OFFICES = API_URL + '/offices';
+const OFFICE = API_URL + '/office/';
+const REGISTER = '/register';
+var office_ids = [];
+var office_names = [];
+var candid_list = '';
 
 
 function logToConsole(value) {
@@ -223,6 +229,11 @@ function myFunction(instance) {
   }
 }
 
+function connectionError(err) {
+    console.log('Fetch Error :-S', err);
+    showAlert('warning', 'Please check your connection');
+}
+
 function loginHandler(location) {
 
   fetch(
@@ -262,8 +273,7 @@ function loginHandler(location) {
         showAlert('danger', makeAlertMessage('', data.error));
       }})
   .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-    showAlert('warning', 'Please check your connection');
+    connectionError(err);
   });
 }
 
@@ -316,7 +326,124 @@ function loadParties() {
         showAlert('danger', makeAlertMessage('', data.error));
       }})
   .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-    showAlert('warning', 'Please check your connection');
+    connectionError(err);
+  });
+}
+
+
+function loadCandidates() {
+  fetch(
+    OFFICES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let offices_list = '';
+        let offices_num = data.data.length;
+        if (offices_num > 0) {
+            for (let x = 0; x < offices_num; x++) {
+                let id = data.data[x].id;
+                let name = data.data[x].name;
+                office_ids.push(id);
+                office_names.push(name);
+                offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
+            }
+            toInnerHTML(getById('officeList'), offices_list);
+
+            for (let y = 0; y < office_ids.length; y++) {
+                fetch( // Nested fetch for candidate names per office
+                    OFFICE + office_ids[y] + REGISTER,
+                    {
+                        mode: 'cors', method: 'get',
+                          headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + fetchToken()
+                          }})
+                      .then(res=> res.json())
+                      .then((candid_data) => {
+                          // Examine the text in the response
+                          if (candid_data.status === 200) {
+                            console.log(candid_data.data);
+
+                            let candid_num = candid_data.data.length;
+                            candid_list = candid_list + '<div id="' + office_ids[y] + '-candidates"' +
+                                  ' class="hide dash candidates-item">' +
+                                      '<p class="h_center">' + office_names[y] + ' Candidates</p>' +
+                                      '<hr>';
+                            if (candid_num > 0) {
+                                candid_list = candid_list + '<ul>';
+                                for (let x = 0; x < candid_num; x++) {
+                                      candid_list  = candid_list + '<li>' +
+                                        candid_data.data[x].first_name + ' '
+                                        + candid_data.data[x].last_name + ' &#183; '
+                                        + candid_data.data[x].party
+                                        + '</li>';
+                                }
+                                candid_list = candid_list + '</ul>';
+
+                            } else {
+                                candid_list = candid_list + '<div class="h_center">' +
+                                  '<img src="' + root_dir +'images/nothing.png"></div>' +
+                                '<p class="h_center">No' +
+                              ' Candidate(s) Registered for this Office' +
+                                '</p>';
+                            }
+                            candid_list = candid_list + '</div>';
+                            let div = document.createElement('div');
+                            div.innerHTML = candid_list;
+                            //getById('all-candidates')
+                            getById('all-candidates').appendChild(div);
+                            candid_list = '';
+                          }
+                          else if(invalidToken(candid_data.status)) {
+                            logToConsole(candid_data.error)
+                          }
+                          else {
+                            showAlert('danger', makeAlertMessage('', candid_data.error));
+                          }})
+                    .catch(function(err) {
+                      connectionError(err);
+                  });
+
+              }
+             let offices = getByClass('office');
+
+              for (let x = 0; x < offices.length; x++) {
+                offices[x].onclick = function () {
+                    //hideById('all-results');
+                    showById('all-candidates', block);
+                    hideByClass('candidates-item');
+                    showById(this.getAttribute('id') + '-candidates', block);
+                    listHide();
+                };
+              }
+
+              showById('show-all', inline);
+
+        } else {
+          toInnerHTML(
+            getById('officeList'),
+            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+            '<p class="h_center">No' +
+            ' Political' +
+          ' Offices Available' +
+            ' Currently!</p>');
+        }
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole(data.error)
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
   });
 }
