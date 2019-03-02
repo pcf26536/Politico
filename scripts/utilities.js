@@ -752,3 +752,59 @@ function loadVotes() {
     connectionError(err);
   });
 }
+
+
+function loadVoteProfile() {
+  fetch(
+    USER_VOTES + getLSItem('id'),
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let votes = data.data.length;
+        let profile = '';
+        if (votes > 0) {
+          profile = '<div class="vote-list-title">' +
+            '<span class="dash">Candidate Voted' +
+            '<span class="office-title-title">Office Title</span>' +
+            '</span>' +
+            '</div>';
+
+          for (let d = 0; d < votes; d++) {
+              profile = profile + '<div class="vote-item">' +
+                '<span class="dash"><span class="office-title">' + data.data[d].office + '</span>' +
+                '<span class="candidate-name">' +
+                data.data[d].first_name + ' ' + data.data[d].last_name +
+                '</span></span>' +
+                '</div>';
+          }
+
+        }else { // not vote yet
+          profile = '<div class="h_center">' +
+                    '<img src="' + root_dir +'images/nothing.png"></div>' +
+                    '<p class="h_center">You haven\'t casted any vote yet! ' +
+                    'Vote <a href="vote.html">here</a></p>';
+        }
+          toInnerHTML(getById('vote-profile'), profile);
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole(data.error)
+      }
+
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }
+
+       })
+        .catch(function(err) {
+          connectionError(err);
+      });
+
+}

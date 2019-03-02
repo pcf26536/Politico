@@ -33,5 +33,10 @@ getByClass("closebtn")[0].onclick = function(){
 };
 
 if (getUrlParam('petition')) {
-    showAlert('info', makeAlertMessage('Success!', "You've successfuly submitted the petition for the " + getUrlParam('office') + " office."));
+    showAlert(
+      'info',
+      makeAlertMessage(
+        'Success!',
+        "You've successfuly submitted the petition for the "
+        + getUrlParam('office') + " office."));
 }
