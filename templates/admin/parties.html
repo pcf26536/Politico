@@ -37,17 +37,17 @@
                 </ul>
                 <div id="add_party_form" hidden>
                         <p>Add Party Form</p>
-                        <form onsubmit="return false;">
+                        <form onsubmit="addParty(); return false;">
                             <label for="party-name">Party Name</label>
-                                <input type="text" name="party" required>
+                                <input type="text" name="party" id="name" required>
                             <label for="address">Address</label>
-                                <input type="number" name="address" required>
+                                <input type="number" name="address" id="address" required>
                             <label for="postal-code">Postal Code</label>
-                                <input type="number" name="postal-code" required>
+                                <input type="number" name="postal-code" id="code" required>
                             <label for="town">Town / City</label>
-                                <input type="text" name="town" required>
+                                <input type="text" name="town" id="town" required>
                             <label for="logo">Logo</label>
-                                <input input type="file" accept="image/*" name="logo" required>
+                                <input type="file" accept="image/*" name="logo" id="logo" required>
                                 <div class="submit-wrap"><input type="submit" name="add" value="Add Party">
                                 <button class="cancel" type="button" id="cancel_add_party">Cancel</button></div>
                         </form>
@@ -102,8 +102,6 @@
                 </div>
     
             </div>
-        <script src="./../../scripts/user.js"></script>
         <script src="./../../scripts/admin_parties.js"></script>
-        <script src="./../../scripts/edit_party.js"></script>
 </body>
 </html>
