@@ -1,3 +1,34 @@
+function addParty() {
+    fetch(
+    PARTIES,
+    {
+    body: JSON.stringify({
+      name: getById('name').value,
+        hqAddress: getById('address').value +'-'+ getById('code').value +', '+ getById('town').value,
+      logoUrl: getById('logo').value
+    }), mode: 'cors', method: 'post',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 201) {
+        console.log(data.data[0]);
+        showAlert('success', makeAlertMessage(data.data[0].name, 'added successfully!'));
+        //redirect('offices.html');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+
+}
+
+
 function showAddForm() {
     showById('add_party_form', block);
     hideById(['add_party', 'parties_list', 'delete_party']);

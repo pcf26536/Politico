@@ -35,7 +35,7 @@ function addOffice() {
       if (data.status === 201) {
         console.log(data.data[0]);
         showAlert('success', makeAlertMessage(data.data[0].name, 'added successfully!'));
-        redirect('offices.html');
+        redirect('offices.html', 10000);
       }
       else {
         showAlert('danger', makeAlertMessage('', data.error));
