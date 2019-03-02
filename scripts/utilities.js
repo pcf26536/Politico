@@ -20,6 +20,7 @@ const RESULT = '/result';
 var office_ids = [];
 var office_names = [];
 var candid_list = '';
+const FWD_SLASH = '/';
 
 
 function logToConsole(value) {
@@ -308,13 +309,13 @@ function loadParties() {
         if (parties_num > 0) {
             for (let x = 0; x < parties_num; x++) {
               if (userIsAdmin()) {
-                parties_list = parties_list + '<li>' +
+                parties_list = parties_list + '<li id="' + data.data[x].id + '">' +
                     '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
                     'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
                     '  height="40" width="40">' +
                     '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
                     '<a class="edit" href="edit_party.html"><span onclick="">&#9998; </span></a>' +
-                  '<input type="checkbox" name="to_delete" class="action" value="" onclick="showDelete()"></li>';
+                  '<input type="checkbox" name="to_delete" class="action" value="' + data.data[x].id + '"></li>';
               }
               else {
                   parties_list = parties_list + '<li>' +
