@@ -1,3 +1,5 @@
+let ids = [];
+
 function addParty() {
     fetch(
     PARTIES,
@@ -28,6 +30,33 @@ function addParty() {
 
 }
 
+function delPartyHandler(partyId) {
+    fetch(
+    PARTIES + FWD_SLASH + partyId,
+    {
+     mode: 'cors', method: 'delete',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        showAlert('success', makeAlertMessage('', data.data[0].message));
+        loadParties();
+        //redirect('offices.html');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+        logToConsole(data);
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+
+}
 
 function showAddForm() {
     showById('add_party_form', block);
@@ -66,32 +95,34 @@ function showDelete() {
 }
 
 // get the confirm delete modal
-var confirm_delete_modal = getById('confirm_delete');
+let confirm_delete_modal = getById('confirm_delete');
 
 function closeDeleteListModal() {
     hide(confirm_delete_modal);
 }
 
 function deleteParty() {
-    var checked = [];
-    var count = 0;
-    var checks = document.getElementsByName("to_delete");
-    for (var i=0; i < checks.length; i++) {
+    let checked = [];
+    let count = 0;
+    let checks = document.getElementsByName("to_delete");
+    for (let i=0; i < checks.length; i++) {
         if(checks[i].checked) {checked.push(checks[i]); count++;}
         //else count--;
     }
     if (count > 0) {
-        var list = '<ul>';
+        let list = '<ul>';
         // get the party names from selected checkboxes
-        for (var x=0; x < checked.length; x++) {
-            list = list + '<li>' + checked[x].parentNode.childNodes[2].innerHTML + '</li>';
+        for (let x=0; x < checked.length; x++) {
+            list = list + '<li>' + checked[x].parentNode.childNodes[1].innerHTML + '</li>';
+            ids.push(checked[x].value);
         }
         list = list + '<ul>';
         getById('delete_list').innerHTML = list; // add the list of parties to the delete confirm list
         show(confirm_delete_modal, block);
+
     } else {
-        var no_party_modal = getById('no_party_selected');
-        var no_party_close = getByClass("close")[2];
+        let no_party_modal = getById('no_party_selected');
+        let no_party_close = getByClass("close")[2];
         show(no_party_modal, block);
         // When the user clicks on <span> (x), close the modal
         no_party_close.onclick = function() {
@@ -113,9 +144,12 @@ delete_success_close.onclick = function() {
 };
 
 getById('delete_yes').onclick = function() {
-    show(delete_success_modal, block);
-    redirect("admin_parties.html");
     closeDeleteListModal();
+    logToConsole(ids);
+    for (let e = 0; e < ids.length; e++)
+        delPartyHandler(ids[e]);
+    //show(delete_success_modal, block);
+    //redirect("admin_parties.html");
 };
 
 getById('delete_selected').onclick = deleteParty; 
