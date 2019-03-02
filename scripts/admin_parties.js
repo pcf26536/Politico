@@ -1,12 +1,14 @@
 function showAddForm() {
     showById('add_party_form', block);
-    hideById(['add_party', 'party_list', 'delete_party']);
+    hideById(['add_party', 'parties_list', 'delete_party']);
 }
+
+hideById('parties-ctrls');
 
 function cancelAdd() {
     hideById('add_party_form');
     showById(['add_party', 'delete_party'], inline);
-    showById('party_list', block);
+    showById('parties_list', block);
 }
 
 function cancelDelete() {
