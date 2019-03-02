@@ -327,7 +327,7 @@ function loadParties() {
                 }
             }
             toInnerHTML(getById('parties_list'), parties_list);
-            if (userIsAdmin()) showById('parties-ctrls', block);
+
         } else {
           toInnerHTML(
             getById('parties_list'),
@@ -337,6 +337,7 @@ function loadParties() {
           ' Parties Available' +
             ' Currently!</p>');
         }
+        if (userIsAdmin()) showById('parties-ctrls', block);
       }
       else if(invalidToken(data.status)) {
         logToConsole('Token has Expired');
@@ -819,4 +820,54 @@ function loadVoteProfile() {
           connectionError(err);
       });
 
+}
+
+function loadOffices() {
+  fetch(
+    OFFICES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let offices_list = '';
+        let offices_num = data.data.length;
+
+        if (offices_num > 0) {
+            for (let x = 0; x < offices_num; x++) {
+                let id = data.data[x].id;
+                let name = data.data[x].name;
+                let type = data.data[x].type;
+                office_ids.push(id);
+                office_names.push(name);
+                offices_list = offices_list + '<li class="office" id="' + id + '">' + name +
+                  ' &#183; ' + type + '</li>';
+            }
+            toInnerHTML(getById('officeList'), offices_list);
+
+        } else {
+          toInnerHTML(
+            getById('officeList'),
+            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+            '<p class="h_center">No' +
+            ' Political Offices Available Currently!</p>');
+        }
+        if (userIsAdmin()) showById('offices-ctrls', block);
+
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
 }
