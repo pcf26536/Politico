@@ -1,18 +1,47 @@
 hideById('offices-ctrls');
 
 function showAddForm() {
-    document.getElementById('add_office_form').style.display = "block";
-    document.getElementById('add_office').style.display = "none";
-    document.getElementById('officeList').style.display = "none";
+    showById('add_office_form', block);
+    hideById('add_office');
+    hideById('officeList');
 }
 
 document.getElementById('cancel_add_office').onclick = function () {
-    document.getElementById('add_office_form').style.display = "none";
+    hideById('add_office_form');
     showById('add_office', inline);
-    document.getElementById('officeList').style.display = "block";
+    showById('officeList', block);
 };
 
 function showDelete() {
-    document.getElementById('delete').style.display = "block";
-    document.getElementById('add_office').style.display = "none";
+    showById('delete', block);
+    hideById('add_office');
+}
+
+function addOffice() {
+    fetch(
+    OFFICES,
+    {
+    body: JSON.stringify({
+      name: getById('name').value,
+      type: getById('type').value
+    }), mode: 'cors', method: 'post',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 201) {
+        console.log(data.data[0]);
+        showAlert('success', makeAlertMessage(data.data[0].name, 'added successfully!'));
+        redirect('offices.html');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+
 }
