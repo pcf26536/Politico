@@ -49,7 +49,7 @@ function userIsAdmin() {
 }
 
 function redirectTo(url) {
-  window.location.replace(url);
+  return window.location.replace(url);
 }
 
 function invalidToken(status){
@@ -75,7 +75,7 @@ function getUrlVars() {
 }
 
 function getUrlParam(parameter){
-  var urlparameter = '';
+  let urlparameter = '';
   if(window.location.href.indexOf(parameter) > -1){
     urlparameter = getUrlVars()[parameter];
   }
@@ -91,9 +91,8 @@ function typeOf(variable) {
 }
 
 // redirection
-function redirect(url) {
-  setTimeout(
-    window.location.href = url, 5000);
+function redirect(url, timeout=5000) {
+  setTimeout(redirectTo(url), timeout);
 }
 
 //get elements by class, id or tag name
@@ -110,9 +109,9 @@ function hide(element) {
 
 // This function hides an element by Id
 function hideById(element_id) {
-  var type = typeOf(element_id);
+  let type = typeOf(element_id);
   if (type == object) {
-    for(var i = 0; i < element_id.length; i++) { hide(document.getElementById(element_id[i])); }
+    for(let i = 0; i < element_id.length; i++) { hide(document.getElementById(element_id[i])); }
   }
   else if(type == string) { hide(document.getElementById(element_id)); }
 }

@@ -36,11 +36,11 @@
                 </ol>
                 <div id="add_office_form" class="hide">
                         <span class="title">Add Government Office</span>
-                        <form onsubmit="">
+                        <form onsubmit="addOffice(); return false;">
                             <label for="office-name">Office Name</label>
-                                <input type="text" name="office-name" required>
+                                <input type="text" name="office-name" id="name" required>
                             <label for="office-type">Office Type</label>
-                                <select name="type" required>
+                                <select name="type" id="type" required>
                                         <option name="type" value="">-----</option>
                                         <option name="type" value="federal">Federal</option>
                                         <option name="type" value="legislative">Legislative</option>
