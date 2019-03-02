@@ -14,6 +14,7 @@ const RESET = API_URL + '/auth/reset';
 const PARTIES = API_URL + '/parties';
 const OFFICES = API_URL + '/offices';
 const OFFICE = API_URL + '/office/';
+const USER_VOTES = API_URL + '/votes/';
 const REGISTER = '/register';
 var office_ids = [];
 var office_names = [];
@@ -30,6 +31,10 @@ function fetchToken(){
     return token;
   window.location.replace(signin_url);
   return null
+}
+
+function getLSItem(key) {
+  return localStorage.getItem(key);
 }
 
 function justLoggedIn() {
@@ -252,6 +257,7 @@ function loginHandler(location) {
         logToConsole(user.admin);
         localStorage.setItem('token', data.data[0].token);
         localStorage.setItem('logged_in', 'true');
+        localStorage.setItem('id', user.id);
         localStorage.setItem('fname', user.fname);
         localStorage.setItem('lname', user.lname);
         localStorage.setItem('email', user.email);
@@ -442,6 +448,176 @@ function loadCandidates() {
       }
       else {
         showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+
+function loadVotePage() {
+  fetch(
+    OFFICES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let offices_list = '';
+        let offices_num = data.data.length;
+        if (offices_num > 0) {
+            for (let x = 0; x < offices_num; x++) {
+                let id = data.data[x].id;
+                let name = data.data[x].name;
+                office_ids.push(id);
+                office_names.push(name);
+                offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
+            }
+            toInnerHTML(getById('officeList'), offices_list);
+
+            for (let y = 0; y < office_ids.length; y++) {
+                fetch( // Nested fetch for candidate names per office
+                    OFFICE + office_ids[y] + REGISTER,
+                    {
+                        mode: 'cors', method: 'get',
+                          headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + fetchToken()
+                          }})
+                      .then(res=> res.json())
+                      .then((candid_data) => {
+                          // Examine the text in the response
+                          if (candid_data.status === 200) {
+                            console.log(candid_data.data);
+
+                            let candid_num = candid_data.data.length;
+                            candid_list = candid_list + '<div id="' + office_ids[y] + '-candidates"' +
+                                  ' class="hide dash candidates-item">' +
+                                      '<p class="h_center">Vote for ' + office_names[y] + ' Seat</p>' +
+                                      '<hr>';
+                            if (candid_num > 0) {
+                                //let shit = false;
+                                let shit = hasVoted(getLSItem('id'), office_ids[y]).then(function(stat) {});
+
+                                if ( shit ) {
+                                  candid_list = candid_list + '<div class="h_center">' +
+                                      '<img src="' + root_dir +'images/ok.png"></div>' +
+                                    '<p class="h_center">You have already voted for this office!' +
+                                    '</p>';
+
+                                } else {
+                                    candid_list = candid_list + '<form action="castVote(); return false;">' +
+                                      '<div class="col-6 col-s-6"><ul>';
+
+                                    for (let x = 0; x < candid_num; x++) {
+                                      candid_list = candid_list + '<li><label><input' +
+                                        ' type="radio" name="' + office_ids[y] + '" value="' + candid_data.data[x].id + '" required>' +
+                                        candid_data.data[x].first_name + ' '
+                                        + candid_data.data[x].last_name + ' &#183; '
+                                        + candid_data.data[x].party
+                                        + '</label></li>';
+                                    }
+                                    candid_list = candid_list + '</ul></div>' +
+                                      '<div class="col-2 col-s-2 submit-div">' +
+                                      '<input type="submit" name="' + office_ids[y] + '-vote" value="Vote">' +
+                                      '</div>' +
+                                      '</form>';
+                                }
+
+                            } else {
+                                candid_list = candid_list + '<div class="h_center">' +
+                                  '<img src="' + root_dir +'images/nothing.png"></div>' +
+                                '<p class="h_center">No' +
+                              ' Candidate(s) Registered for this Office' +
+                                '</p>';
+                            }
+                            candid_list = candid_list + '</div>';
+                            let div = document.createElement('div');
+                            div.innerHTML = candid_list;
+                            //getById('all-candidates')
+                            getById('all-candidates').appendChild(div);
+                            candid_list = '';
+                          }
+                          else if(invalidToken(candid_data.status)) {
+                            logToConsole(candid_data.error)
+                          }
+                          else {
+                            showAlert('danger', makeAlertMessage('', candid_data.error));
+                          }})
+                    .catch(function(err) {
+                      connectionError(err);
+                  });
+
+              }
+             let offices = getByClass('office');
+
+              for (let x = 0; x < offices.length; x++) {
+                offices[x].onclick = function () {
+                    //hideById('all-results');
+                    showById('all-candidates', block);
+                    hideByClass('candidates-item');
+                    showById(this.getAttribute('id') + '-candidates', block);
+                    listHide();
+                };
+              }
+
+              showById('show-all', inline);
+
+        } else {
+          toInnerHTML(
+            getById('officeList'),
+            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+            '<p class="h_center">No' +
+            ' Political' +
+          ' Offices Available' +
+            ' Currently!</p>');
+        }
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole(data.error)
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+function hasVoted(user, office) {
+  return fetch(
+    USER_VOTES + user,
+    {
+      mode: 'cors', method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + fetchToken()}})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        //console.log(data.data.length);
+        let votes = data.data.length;
+        if (votes > 0) {
+          for (let d = 0; d < votes; d++) {
+            if ( (parseInt(data.data[0].createdby) == parseInt(user)) && (parseInt(data.data[0].office) == parseInt(office)) ) {
+                console.log('Matched!');
+                return true;
+            }
+          }
+          return false;
+        }else {
+          return false;
+        }
+      }
+      else {
+        showAlert('danger', makeAlertMessage(data.status, data.error));
       }})
   .catch(function(err) {
     connectionError(err);
