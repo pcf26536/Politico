@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadVotePage()">
     <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -43,51 +43,18 @@
                         </a>Office List
                     </p>
                     <ul class="office-list" id="officeList">
-                        <li class="office" id="prezzo">Presidential</li>
-                        <li class="office" id="governer">Gubernatorial</li>
-                        <li class="office" id="senator">Senatorial</li>
-                        <li class="office">Women Representative</li>
-                        <li class="office">Member of County Assembly</li>
+                        <p class="h_center">
+                            <img src="./../../images/loading.gif">
+                        </p>
                     </ul>
                     <div class="submit-wrap" id="btn-ctrls">
-                        <button id="show-all" class="blend">Show All Offices</button> 
+                        <button id="show-all" class="blend">Show All Candidates</button>
                     </div>
                 </div>
     
                 <div class="col-6 col-s-6 candidates-and-offices">
                     <div id="all-candidates">
-                        <div id="prezzo-candidates" class="hide dash candidates-item">
-                            <p class="h_center">Presidential Candidates</p>
-                            <hr>
-                            <div class="col-6 col-s-6">
-                                <form enctype="text/plain" action="">
-                                    <ul>
-                                        <li><label class="container"><input type="radio" name="prezzo" value="rao" required> RAO Baba</label><span class="checkmark"></span></li>
-                                        <li><label class="container"><input type="radio" name="prezzo" value="ruto" required> Ruto MyFren</label><span class="checkmark"></span></li>
-                                        <li><label class="container"><input type="radio" name="prezzo" value="ruto" required> Bifwoli Wakoli</label><span class="checkmark"></span></li>
-                                    </ul>
-                                </div>
-                            <div class="col-3 col-s-3 submit-div">
-                                <input type="submit" name="prezzo-vote" id="vote" value="Submit Vote" onsubmit="addVote()">
-                            </div>
-                            </form>
-                        </div>
-                        <div id="governer-candidates" class="hide dash candidates-item">
-                            <p class="h_center">Gubernatorial Candidates</p>
-                            <hr>
-                            <div class="col-6 col-s-6">
-                                <form enctype="text/plain" action="">
-                                    <ul>
-                                    <li><label class="container"><input type="radio" name="gavana" value="waititu" required> Waititu Baba Yao</label><span class="checkmark"></span></li>
-                                    <li><label class="container"><input type="radio" name="gavana" value="mbuvi" required> Mbuvi Sonko Kioko</label><span class="checkmark"></span></li>
-                                    <li><label class="container"><input type="radio" name="gavana" value="kidero" required> Kidero Macho Nne</label><span class="checkmark"></span></li>
-                                    </ul>
-                            </div>
-                            <div class="col-3 col-s-3 submit-div">
-                                <input type="submit" name="governer-vote" id="vote" value="Submit Vote">
-                            </div>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
                 </div>
