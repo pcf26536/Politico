@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadVoteProfile()">
     <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -30,20 +30,10 @@
             <div class="center row">
             <h3 class="h_center">Profile Page</h3>
             <hr>
-                <div>
-                    <div class="vote-list-title">
-                        <span class="dash">Candidate Voted
-                            <span class="office-title-title">Office Title</span>
-                        </span>
-                    </div>
-                    <div class="vote-item">
-                        <span class="dash"><span class="office-title">Presidential</span>
-                            <span class="candidate-name">Bifwoli Wakwoli</span></span>
-                    </div>
-                    <div class="vote-item">
-                        <span class="dash"><span class="office-title">Gubernatorial</span>
-                            <span class="candidate-name">Mbuvi Sonko Kioko</span></span>
-                    </div>
+                <div id="vote-profile">
+                    <p class="h_center">
+                        <img src="./../../images/loading.gif">
+                    </p>
                 </div>
             </div>
             </div>
