@@ -2,7 +2,7 @@ function listHide() {
   if(getById('officeList').className=='office-list responsive') myFunction('results');
 }
 
-hideById('show-all');
+hideById('btn-ctrls');
 
 function showAllCandidates() {
   showById('all-candidates', block);

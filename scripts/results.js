@@ -2,18 +2,7 @@ function listHide() {
     if(getById('officeList').className=='office-list responsive') myFunction('results');
 }
 
-var offices = getByClass('office');
-
-for (var x = 0; x < offices.length; x++) {
-    offices[x].onclick = function () {
-        //hideById('all-results');
-        hideById('petition-div');
-        showById('all-results', block);
-        hideByClass('result-item');
-        showById(this.getAttribute('id') + '-results', block);
-        listHide();
-    };
-}
+hideById('btn-ctrls');
 
 getById('create-petition').onclick = function () {
     showById('petition-div', block);

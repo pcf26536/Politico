@@ -16,6 +16,7 @@ const OFFICES = API_URL + '/offices';
 const OFFICE = API_URL + '/office/';
 const USER_VOTES = API_URL + '/votes/';
 const REGISTER = '/register';
+const RESULT = '/result';
 var office_ids = [];
 var office_names = [];
 var candid_list = '';
@@ -362,6 +363,7 @@ function loadCandidates() {
                 offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
             }
             toInnerHTML(getById('officeList'), offices_list);
+            getById('all-candidates').innerHTML = '';
 
             for (let y = 0; y < office_ids.length; y++) {
                 fetch( // Nested fetch for candidate names per office
@@ -404,7 +406,6 @@ function loadCandidates() {
                             candid_list = candid_list + '</div>';
                             let div = document.createElement('div');
                             div.innerHTML = candid_list;
-                            //getById('all-candidates')
                             getById('all-candidates').appendChild(div);
                             candid_list = '';
                           }
@@ -431,7 +432,7 @@ function loadCandidates() {
                 };
               }
 
-              showById('show-all', inline);
+              showById('btn-ctrls', block);
 
         } else {
           toInnerHTML(
@@ -480,6 +481,7 @@ function loadVotePage() {
                 offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
             }
             toInnerHTML(getById('officeList'), offices_list);
+            getById('all-candidates').innerHTML = '';
 
             for (let y = 0; y < office_ids.length; y++) {
                 fetch( // Nested fetch for candidate names per office
@@ -540,7 +542,6 @@ function loadVotePage() {
                             candid_list = candid_list + '</div>';
                             let div = document.createElement('div');
                             div.innerHTML = candid_list;
-                            //getById('all-candidates')
                             getById('all-candidates').appendChild(div);
                             candid_list = '';
                           }
@@ -567,7 +568,7 @@ function loadVotePage() {
                 };
               }
 
-              showById('show-all', inline);
+              showById('btn-ctrls', block);
 
         } else {
           toInnerHTML(
@@ -618,6 +619,134 @@ function hasVoted(user, office) {
       }
       else {
         showAlert('danger', makeAlertMessage(data.status, data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+function loadVotes() {
+  fetch(
+    OFFICES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let offices_list = '';
+        let petition_offices = '<option name="office" value="">-----</option>';
+        let offices_num = data.data.length;
+        if (offices_num > 0) {
+            for (let x = 0; x < offices_num; x++) {
+                let id = data.data[x].id;
+                let name = data.data[x].name;
+                office_ids.push(id);
+                office_names.push(name);
+                offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
+                petition_offices = petition_offices + '<option name="office"  value="' + id + '">' + name + '</option>';
+            }
+            toInnerHTML(getById('officeList'), offices_list);
+            toInnerHTML(getById('petition-offices'), petition_offices);
+            getById('all-results').innerHTML = '';
+
+            for (let y = 0; y < office_ids.length; y++) {
+                fetch( // Nested fetch for candidate names per office
+                    OFFICE + office_ids[y] + RESULT,
+                    {
+                        mode: 'cors', method: 'get',
+                          headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + fetchToken()
+                          }})
+                      .then(res=> res.json())
+                      .then((candid_data) => {
+                          // Examine the text in the response
+                        candid_list = candid_list + '<div id="' + office_ids[y] + '-results"' +
+                                  ' class="hide dash result-item">' +
+                                      '<p class="h_center">' + office_names[y] + ' Results</p>' +
+                                      '<hr>';
+
+                          if (candid_data.status === 200) {
+                            console.log(candid_data.data);
+
+                            let candid_num = candid_data.data.length;
+
+                            if (candid_num > 0) {
+                                candid_list = candid_list + '<ol>';
+                                for (let x = 0; x < candid_num; x++) {
+                                      candid_list  = candid_list + '<li><span class="candidate">' +
+                                        candid_data.data[x].first_name + ' '
+                                        + candid_data.data[x].last_name
+                                        + '</span><span class="votes">'+
+                                          candid_data.data[x].votes
+                                        +' Vote(s)</span></li>';
+                                }
+                                candid_list = candid_list + '</ol>';
+
+                            }
+                          }
+                          else if (candid_data.status === 404) {
+                            candid_list = candid_list + '<div class="h_center">' +
+                                  '<img src="' + root_dir +'images/nothing.png"></div>' +
+                                '<p class="h_center">No' +
+                              ' Voting done for this Office' +
+                                '</p>';
+                          }
+                          else if(invalidToken(candid_data.status)) {
+                            logToConsole(candid_data.error)
+                          }
+
+                          else {
+                            showAlert('danger', makeAlertMessage('', candid_data.error));
+                          }
+                          candid_list = candid_list + '</div>';
+                            let div = document.createElement('div');
+                            div.innerHTML = candid_list;
+                            getById('all-results').appendChild(div);
+                            candid_list = '';
+
+                      })
+                    .catch(function(err) {
+                      connectionError(err);
+                  });
+
+              }
+              let offices = getByClass('office');
+
+              for (let x = 0; x < offices.length; x++) {
+                  offices[x].onclick = function () {
+                      //hideById('all-results');
+                      hideById('petition-div');
+                      showById('all-results', block);
+                      hideByClass('result-item');
+                      showById(this.getAttribute('id') + '-results', block);
+                      listHide();
+                  };
+              }
+
+              showById('btn-ctrls', block);
+
+        } else {
+          toInnerHTML(
+            getById('officeList'),
+            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+            '<p class="h_center">No' +
+            ' Political' +
+          ' Offices Available' +
+            ' Currently!</p>');
+        }
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole(data.error)
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
       }})
   .catch(function(err) {
     connectionError(err);

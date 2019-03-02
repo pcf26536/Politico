@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadVotes()">
     <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -44,11 +44,9 @@
                     </a>Office List
                 </p>
                 <ul class="office-list" id="officeList">
-                    <li class="office" id="prezzo">Presidential</li>
-                    <li class="office" id="governer">Gubernatorial</li>
-                    <li class="office" id="senator">Senatorial</li>
-                    <li class="office">Women Representative</li>
-                    <li class="office">Member of County Assembly</li>
+                    <p class="h_center">
+                        <img src="./../../images/loading.gif">
+                    </p>
                 </ul>
                 <div class="submit-wrap" id="btn-ctrls">
                     <button id="show-all" class="blend">Show All Results</button> 
@@ -58,34 +56,17 @@
 
             <div class="col-6 col-s-6 results">
                 <div id="all-results">
-                    <div id="prezzo-results" class="hide dash result-item">
-                        <p class="h_center">Presidential Seat</p>
-                        <hr>
-                        <ol>
-                            <li class="winner"><span class="candidate">RAO Baba*</span><span class="votes">12, 182, 685 votes*</span></li>
-                            <li><span class="candidate">Ruto MyFren</span><span class="votes">7, 658, 854 votes</span></li>
-                            <li><span class="candidate">Bifwoli Wakoli</span><span class="votes">2, 658, 854 votes</span></li>
-                        </ol>
-                    </div>
-                    <div id="governer-results" class="hide dash result-item">
-                        <p class="h_center">Gubernatorial Seat</p>
-                        <hr>
-                            <ol>
-                                <li class="winner"><span class="candidate">Waititu Baba Yao*</span><span class="votes">2,222, 125 votes*</span></li>
-                                <li><span class="candidate">Mbuvi Sonko</span><span class="votes">1,615,255 votes</span></li>
-                                <li><span class="candidate">Kidero Macho Nne</span><span class="votes">1,215,255 votes</span></li>
-                            </ol>
-                    </div>
+                    <p class="h_center">
+                        <img src="./../../images/loading.gif">
+                    </p>
                 </div>
                 <div id="petition-div" class="hide">
                     <h3 class="h_center">Create Petiton</h3>
                     <hr>
                     <form method="GET" enctype="text/plain" action="results.html">
                         <label for="office">Office</label>
-                            <select name="office" required>
-                                    <option name="office" value="">-----</option>
-                                <option name="office" value="Gubernatorial">Gubernatorial</option>
-                                <option name="office" value="Presidential">Presidential</option>
+                            <select name="office" required id="petition-offices">
+
                             </select>
                         <label for="body">Petiton Body</label>
                             <textarea rows="10"name="body" required></textarea>
