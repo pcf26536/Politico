@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body>
+<body onload="loadOffices()">
         <script src="./../../scripts/admin.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">Admin</a>
@@ -23,33 +23,30 @@
     </nav>
         <div class="content">
                 <div class="center row">
-            <h3 class="h_center">Government Offices</h5>
+            <h3 class="h_center">Government Offices</h3>
                 <hr>
-                <div class="submit-wrap"><button id="add_office" onclick="showAddForm()">Add Office</button></div>
+                <div class="submit-wrap" id="offices-ctrls"><button id="add_office"
+                                                         onclick="showAddForm()">Add
+                  Office</button></div>
                 <div id="alert_div"></div>
-                <ol id="offices_list" class="dash">
-                        <li>
-                            Member of County Assembly
-                        </li>
-                        <li>
-                            Women Representative
-                        </li>
-                        <li>
-                            Governer
-                        </li>
+                <ol id="officeList" class="dash">
+                      <p class="h_center">
+                          <img src="./../../images/loading.gif">
+                      </p>
                 </ol>
                 <div id="add_office_form" class="hide">
                         <span class="title">Add Government Office</span>
-                        <form method="GET" enctype="multipart/form-data" action="admin_offices.html">
+                        <form onsubmit="">
                             <label for="office-name">Office Name</label>
                                 <input type="text" name="office-name" required>
                             <label for="office-type">Office Type</label>
                                 <select name="type" required>
                                         <option name="type" value="">-----</option>
                                         <option name="type" value="federal">Federal</option>
-                                        <option name="type" value="legislagive">Legislative</option>
+                                        <option name="type" value="legislative">Legislative</option>
                                         <option name="type" value="state">State</option>
-                                        <option name="type" value="loc-govt">Local Government</option>
+                                        <option name="type" value="local government">Local
+                                          Government</option>
                                 </select>
                                 <div class="submit-wrap"><input type="submit" name="add" value="Add">
                                 <button class="cancel" type="button" id="cancel_add_office">Cancel</button></div>
@@ -67,8 +64,6 @@
             </div>
 
         </div>
-        <script src="./../../scripts/utilities.js"></script>
-        <script src="./../../scripts/user.js"></script>
         <script src="./../../scripts/admin_offices.js"></script>
 </body>
 </html>
