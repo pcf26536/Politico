@@ -58,6 +58,43 @@ function delPartyHandler(partyId) {
 
 }
 
+function editPartyHandler() {
+    fetch(
+    PARTIES + FWD_SLASH + getById('party').value + NAME,
+    {
+        body: JSON.stringify({
+            name: getById('new-name').value,
+        }),
+        mode: 'cors', method: 'post',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        showAlert('success', makeAlertMessage('', data.data[0].message));
+        loadParties();
+        redirect('parties.html');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+        logToConsole(data);
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+function editParty(link) {
+    showById('edit_party_form', block);
+    hideById(['add_party', 'parties_list', 'delete_party', 'add_party_form']);
+    getById('party').value = link.id;
+    getById('party-name').innerHTML = link.name;
+}
+
 function showAddForm() {
     showById('add_party_form', block);
     hideById(['add_party', 'parties_list', 'delete_party']);
@@ -71,6 +108,11 @@ function cancelAdd() {
     showById('parties_list', block);
 }
 
+function cancelEdit() {
+    cancelAdd();
+    hideById('edit_party_form');
+}
+
 function cancelDelete() {
     cancelAdd();
     hideById(['cancel_delete', 'delete_selected']);
@@ -79,6 +121,7 @@ function cancelDelete() {
 }
 
 getById('cancel_add_party').onclick = cancelAdd;
+getById('cancel_edit_party').onclick = cancelEdit;
 getById('cancel_delete').onclick = cancelDelete;
 
 
