@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body onload="loadVotes()">
+<body onload="loadResults()">
     <script src="./../../scripts/user.js"></script>
     <nav class="topnav" id="myTopnav">
         <a href="index.html" class="logo">User</a>
@@ -29,55 +29,56 @@
         <div class="row">
             <h3 class="h_center">Results Page</h3>
             <hr>
-            <div class="col-11 col-s-11">
-                <div id="alert_div">
-                    <div class="alert info"> 
-                            <span class="closebtn">&times;</span>
-                            Use the office list to view the results for each office
+            <div class="col-11 col-s-11" id="results-page">
+                <div class="col-11 col-s-11">
+                    <div id="alert_div">
+                        <div class="alert info">
+                                <span class="closebtn">&times;</span>
+                                Use the office list to view the results for each office
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-s-3 menu">
+                    <p class="dash" id="office-menu">
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction('results')">
+                            <i class="fa fa-bars" style="font-size:24px"></i>
+                        </a>Office List
+                    </p>
+                    <ul class="office-list" id="officeList">
+                        <p class="h_center">
+                            <img src="./../../images/loading.gif">
+                        </p>
+                    </ul>
+                    <div class="submit-wrap" id="btn-ctrls">
+                        <button id="show-all" class="blend">Show All Results</button>
+                        <button id="create-petition" class="blend">Create Petiton</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-s-6 results">
+                    <div id="all-results">
+                        <p class="h_center">
+                            <img src="./../../images/loading.gif">
+                        </p>
+                    </div>
+                    <div id="petition-div" class="hide">
+                        <h3 class="h_center">Create Petiton</h3>
+                        <hr>
+                        <form method="GET" enctype="text/plain" action="results.html">
+                            <label for="office">Office</label>
+                                <select name="office" required id="petition-offices">
+
+                                </select>
+                            <label for="body">Petiton Body</label>
+                                <textarea rows="10"name="body" required></textarea>
+                                <div class="submit-wrap">
+                                    <input type="submit" name="petition" value="Submit Petiton">
+                                    <Button class="cancel" id="cancel-petition">Cancel</Button>
+                                </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-3 col-s-3 menu">
-                <p class="dash" id="office-menu">
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction('results')">
-                        <i class="fa fa-bars" style="font-size:24px"></i>
-                    </a>Office List
-                </p>
-                <ul class="office-list" id="officeList">
-                    <p class="h_center">
-                        <img src="./../../images/loading.gif">
-                    </p>
-                </ul>
-                <div class="submit-wrap" id="btn-ctrls">
-                    <button id="show-all" class="blend">Show All Results</button> 
-                    <button id="create-petition" class="blend">Create Petiton</button>
-                </div>
-            </div>
-
-            <div class="col-6 col-s-6 results">
-                <div id="all-results">
-                    <p class="h_center">
-                        <img src="./../../images/loading.gif">
-                    </p>
-                </div>
-                <div id="petition-div" class="hide">
-                    <h3 class="h_center">Create Petiton</h3>
-                    <hr>
-                    <form method="GET" enctype="text/plain" action="results.html">
-                        <label for="office">Office</label>
-                            <select name="office" required id="petition-offices">
-
-                            </select>
-                        <label for="body">Petiton Body</label>
-                            <textarea rows="10"name="body" required></textarea>
-                            <div class="submit-wrap">
-                                <input type="submit" name="petition" value="Submit Petiton">
-                                <Button class="cancel" id="cancel-petition">Cancel</Button>
-                            </div>
-                    </form>
-                </div>
-            </div>
-
         </div>
     </div>
     <script type="text/javascript" src="./../../scripts/results.js"></script>

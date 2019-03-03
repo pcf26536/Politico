@@ -613,7 +613,7 @@ function loadVotePage() {
                                       '<hr>';
                             if (candid_num > 0) {
                                candid_list = candid_list + '<div id="office-' + office_ids[y] + '"><form' +
-                                 ' action="castVote();' +
+                                 ' onsubmit="castVote('+office_ids[y]+');' +
                                  ' return' +
                                  ' false;">' +
                                     '<div class="col-6 col-s-6"><ul>';
@@ -699,9 +699,9 @@ function loadVotePage() {
 }
 
 
-function loadVotes() {
+function loadResults() {
   fetch(
-    OFFICES,
+    USER_VOTES,
     {
     mode: 'cors', method: 'get',
       headers: {
@@ -715,11 +715,11 @@ function loadVotes() {
         console.log(data.data);
         let offices_list = '';
         let petition_offices = '<option name="office" value="">-----</option>';
-        let offices_num = data.data.length;
-        if (offices_num > 0) {
-            for (let x = 0; x < offices_num; x++) {
-                let id = data.data[x].id;
-                let name = data.data[x].name;
+        let results = data.data.length;
+        if (results > 0) {
+            for (let x = 0; x < results; x++) {
+                let id = data.data[x].office_id;
+                let name = data.data[x].office_name;
                 office_ids.push(id);
                 office_names.push(name);
                 offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
@@ -765,13 +765,7 @@ function loadVotes() {
 
                             }
                           }
-                          else if (candid_data.status === 404) {
-                            candid_list = candid_list + '<div class="h_center">' +
-                                  '<img src="' + root_dir +'images/nothing.png"></div>' +
-                                '<p class="h_center">No' +
-                              ' Voting done for this Office' +
-                                '</p>';
-                          }
+
                           else if(invalidToken(candid_data.status)) {
                             logToConsole(candid_data.error)
                           }
@@ -810,10 +804,7 @@ function loadVotes() {
           toInnerHTML(
             getById('officeList'),
             '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
-            '<p class="h_center">No' +
-            ' Political' +
-          ' Offices Available' +
-            ' Currently!</p>');
+            '<p class="h_center">No Voting Done Yet! Vote <a href="vote.html">here</a></p>');
         }
       }
       else if(invalidToken(data.status)) {

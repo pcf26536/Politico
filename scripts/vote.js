@@ -1,3 +1,47 @@
+function voteHandler(candidate) {
+  fetch(
+    USER_VOTES,
+    {
+    body: JSON.stringify({
+      candidate: candidate
+    }), mode: 'cors', method: 'post',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 201) {
+        console.log(data.data[0]);
+        showAlert('success', makeAlertMessage('', 'Vote casted successfully!'));
+        //redirect('offices.html');
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+
+function castVote(office) {
+  let candidates = document.getElementsByName(office);
+  for (let n = 0; n < candidates.length; n++) {
+    if (candidates[n].checked) {
+        logToConsole(candidates[n] + '----selected');
+        showLoading('user');
+        voteHandler(candidates[n].value);
+      break;
+    }
+  }
+}
+
+
 function listHide() {
   if(getById('officeList').className=='office-list responsive') myFunction('results');
 }
