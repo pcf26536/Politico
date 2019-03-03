@@ -75,7 +75,7 @@ p .icon {
     .submit-wrap button {
       display: none;
     }
-    .submit-wrap.responsive button { display: inline };
+    .submit-wrap.responsive button { display: inline; }
     
 
     .office-list.responsive {position: relative; top: 10%; left: 0%;} 
