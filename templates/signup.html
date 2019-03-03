@@ -10,8 +10,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/forms.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/grid.css" />
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -26,39 +24,37 @@
         <div class="center row">
                 <h2 class="h_center">Sign Up</h2>
                 <hr>
-                    <div class="large-form">
-                        <form method="GET" enctype="text/plain" action="signin.html">
+            <div id="alert_div"></div>
+                    <div class="large-form" id="signup-form">
+                        <form onsubmit="signUp(); return false;">
                             <div class="col-5 col-s-5">
-                                <label for="firstname">First Name</label>
-                                    <input type="text" name="firstname" required minlength="3">
+                                <label for="fname">First Name</label>
+                                    <input type="text" name="firstname" id="fname" required minlength="3">
                             </div>
                             <div class="col-5 col-s-5">
-                                <label for="lastname">Last Name</label>
-                                    <input type="text" name="lastname" required minlength="3">
+                                <label for="lname">Last Name</label>
+                                    <input type="text" name="lastname" id="lname" required minlength="3">
                             </div>
-                            <div class="col-5 col-s-5">
-                                <label for="othername">Other Name</label>
-                                    <input type="text" name="othername" minlength="3">
-                                </div>
                             <div class="col-5 col-s-5">
                                 <label for="email">Email</label>
-                                    <input type="email" name="email" required>
+                                    <input type="email" name="email" id="email" required>
                             </div>
                             <div class="col-5 col-s-5">
                                 <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone" required>
+                                    <input type="text" name="phone" id="phone" required>
                             </div>
-                            <div class="col-5 col-s-5">
+                            <div class="col-11 col-s-11">
                                 <label for="passport">Passport</label>
-                                    <input input type="file" accept="image/*" name="passport" required>
+                                    <input input type="file" accept="image/*" name="passport"
+                                           id="passport" required>
                             </div>
                             <div class="col-5 col-s-5">
                                 <label for="pass1">Password</label>
-                                    <input type="password" name="pass1" required>
+                                    <input type="password" name="pass1" id="pass1" required>
                             </div>
                             <div class="col-5 col-s-5">
                                 <label for="pass2">Password (Re-Enter)</label>
-                                    <input type="password" name="pass2" required>
+                                    <input type="password" name="pass2" id="pass2" required>
                             </div>
                             <div class="col-11 col-s-11">
                                 <div class="submit-wrap"><input type="submit" name="signup" value="Sign Up"></div>

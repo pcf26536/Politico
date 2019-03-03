@@ -181,6 +181,7 @@ function showModal(modalID, closeIndex, onParam) {
 }
 /*Show and close modal*/
 
+
 /*Show and close alerts*/
 function closeAlert() {
   // Get all elements with class="closebtn"
@@ -239,6 +240,41 @@ function myFunction(instance) {
 function connectionError(err) {
     console.log('Fetch Error :-S', err);
     showAlert('warning', 'Please check your connection');
+}
+
+function signUp() {
+  if (getById('pass1').value === getById('pass2').value) {
+        fetch(
+          SIGNUP,
+          {
+            body: JSON.stringify({
+              firstname: getById('fname').value,
+              lastname: getById('lname').value,
+              phoneNumber: getById('phone').value,
+              passportUrl: getById('passport').value,
+              email: getById('email').value,
+              password: getById('pass1').value
+            }), mode: 'cors', method: 'post', headers: { 'Content-Type': 'application/json' }
+          })
+        .then(res => res.json())
+        .then((data) => {
+          // Examine the text in the response
+          if (data.status === 201) {
+            console.log(data.data[0]);
+            showAlert('success', makeAlertMessage('Howdy ' + data.data[0].fname, 'You\'ve been signed' +
+              ' up. Please <a href="signin.html">login</a>'));
+            redirect('signin.html', 15000);
+          } else {
+            showAlert('danger', makeAlertMessage('', data.error));
+          }
+        })
+        .catch(function (err) {
+          connectionError(err);
+        });
+  }
+  else {
+    showAlert('danger', makeAlertMessage('Password Mismatch', 'Please try again!'));
+  }
 }
 
 function loginHandler(location) {
