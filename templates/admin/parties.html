@@ -52,6 +52,18 @@
                                 <button class="cancel" type="button" id="cancel_add_party">Cancel</button></div>
                         </form>
                 </div>
+                <div class="hide" id="edit_party_form">
+                    <h4>Edit Party <span id="party-name"></span>'s Name</h4>
+                    <form onsubmit="editPartyHandler(); return false;">
+                        <label for="party">New Party Name</label>
+                            <input type="hidden" value="" id="party">
+                            <input type="text" name="party" id="new-name" required>
+                            <div class="submit-wrap"><input type="submit" name="edit"
+                                                            value="Edit Name">
+                        <button class="cancel" type="button" id="cancel_edit_party">Cancel
+                        </button></div>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- Party Add Success Modal -->

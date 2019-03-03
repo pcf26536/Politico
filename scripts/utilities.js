@@ -21,6 +21,7 @@ var office_ids = [];
 var office_names = [];
 var candid_list = '';
 const FWD_SLASH = '/';
+const NAME = '/name';
 
 
 function logToConsole(value) {
@@ -180,6 +181,7 @@ function showModal(modalID, closeIndex, onParam) {
 }
 /*Show and close modal*/
 
+
 /*Show and close alerts*/
 function closeAlert() {
   // Get all elements with class="closebtn"
@@ -235,13 +237,68 @@ function myFunction(instance) {
   }
 }
 
+function showLoading(location) {
+  let dir = '';
+  if (location === 'index') {
+    dir = '';
+  }
+  if (location === 'templates') {
+    dir = './../';
+  }
+
+  if (location === 'admin' || location === 'user') {
+    dir = root_dir;
+  }
+  logToConsole(dir);
+  getById('alert_div').innerHTML = '<p class="h_center">' +
+                                        '<img src="' + dir + 'images/loading-smaller.gif">' +
+                                          '</p>';
+  showById('alert_div', block);
+}
+
 function connectionError(err) {
     console.log('Fetch Error :-S', err);
     showAlert('warning', 'Please check your connection');
 }
 
-function loginHandler(location) {
+function signUp() {
+  showLoading('templates');
+  if (getById('pass1').value === getById('pass2').value) {
+        fetch(
+          SIGNUP,
+          {
+            body: JSON.stringify({
+              firstname: getById('fname').value,
+              lastname: getById('lname').value,
+              phoneNumber: getById('phone').value,
+              passportUrl: getById('passport').value,
+              email: getById('email').value,
+              password: getById('pass1').value
+            }), mode: 'cors', method: 'post', headers: { 'Content-Type': 'application/json' }
+          })
+        .then(res => res.json())
+        .then((data) => {
+          // Examine the text in the response
+          if (data.status === 201) {
+            console.log(data.data[0]);
+            showAlert('success', makeAlertMessage('Howdy ' + data.data[0].fname, 'You\'ve been signed' +
+              ' up. Please <a href="signin.html">login</a>'));
+            redirect('signin.html', 15000);
+          } else {
+            showAlert('danger', makeAlertMessage('', data.error));
+          }
+        })
+        .catch(function (err) {
+          connectionError(err);
+        });
+  }
+  else {
+    showAlert('danger', makeAlertMessage('Password Mismatch', 'Please try again!'));
+  }
+}
 
+function loginHandler(location) {
+  showLoading(location);
   fetch(
     LOGIN,
     {
@@ -265,6 +322,7 @@ function loginHandler(location) {
         localStorage.setItem('phone', user.phone);
         localStorage.setItem('admin', user.admin);
 
+        //let admin_home = '', user_home = '';
         if (!location) {
           admin_url = templates_dir + admin_url;
           user_url = templates_dir + user_url;
@@ -274,7 +332,7 @@ function loginHandler(location) {
           window.location.replace(admin_url);
         else
           window.location.replace(user_url);
-        logToConsole(user_url);
+
       }
       else {
         showAlert('danger', makeAlertMessage('', data.error));
@@ -309,12 +367,14 @@ function loadParties() {
         if (parties_num > 0) {
             for (let x = 0; x < parties_num; x++) {
               if (userIsAdmin()) {
-                parties_list = parties_list + '<li id="' + data.data[x].id + '">' +
+                parties_list = parties_list + '<li id="p-' + data.data[x].id + '">' +
                     '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
                     'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
                     '  height="40" width="40">' +
                     '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
-                    '<a class="edit" href="edit_party.html"><span onclick="">&#9998; </span></a>' +
+                    '<a class="edit" name="'+ data.data[x].name +'" id="'+ data.data[x].id +'" onclick="editParty(this)"' +
+                  ' href="#"><span>&#9998;' +
+                  ' </span></a>' +
                   '<input type="checkbox" name="to_delete" class="action" value="' + data.data[x].id + '"></li>';
               }
               else {
@@ -469,6 +529,41 @@ function loadCandidates() {
 }
 
 
+function hasVoted(user, office) {
+  return fetch(
+    USER_VOTES + user,
+    {
+      mode: 'cors', method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + fetchToken()}})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let votes = data.data.length;
+        if (votes > 0) {
+          for (let d = 0; d < votes; d++) {
+            if ( data.data[0].office === office ) {
+                console.log('Matched!');
+                getById('office-' + office).innerHTML = '<div class="h_center">' +
+                              '<img src="' + root_dir +'images/ok.png"></div>' +
+                              '<p class="h_center">You have already voted for this office!' +
+                              '</p>';
+            }
+          }
+        }
+      }
+      else {
+        showAlert('danger', makeAlertMessage(data.status, data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+
 function loadVotePage() {
   fetch(
     OFFICES,
@@ -517,33 +612,26 @@ function loadVotePage() {
                                       '<p class="h_center">Vote for ' + office_names[y] + ' Seat</p>' +
                                       '<hr>';
                             if (candid_num > 0) {
-                                //let shit = false;
-                                let shit = hasVoted(getLSItem('id'), office_ids[y]).then(function(stat) {});
+                               candid_list = candid_list + '<div id="office-' + office_ids[y] + '"><form' +
+                                 ' action="castVote();' +
+                                 ' return' +
+                                 ' false;">' +
+                                    '<div class="col-6 col-s-6"><ul>';
 
-                                if ( shit ) {
-                                  candid_list = candid_list + '<div class="h_center">' +
-                                      '<img src="' + root_dir +'images/ok.png"></div>' +
-                                    '<p class="h_center">You have already voted for this office!' +
-                                    '</p>';
+                                  for (let x = 0; x < candid_num; x++) {
+                                    candid_list = candid_list + '<li><label><input' +
+                                      ' type="radio" name="' + office_ids[y] + '" value="' + candid_data.data[x].id + '" required>' +
+                                      candid_data.data[x].first_name + ' '
+                                      + candid_data.data[x].last_name + ' &#183; '
+                                      + candid_data.data[x].party
+                                      + '</label></li>';
+                                  }
+                                  candid_list = candid_list + '</ul></div>' +
+                                    '<div class="col-2 col-s-2 submit-div">' +
+                                    '<input type="submit" name="' + office_ids[y] + '-vote" value="Vote">' +
+                                    '</div>' +
+                                    '</form></div>';
 
-                                } else {
-                                    candid_list = candid_list + '<form action="castVote(); return false;">' +
-                                      '<div class="col-6 col-s-6"><ul>';
-
-                                    for (let x = 0; x < candid_num; x++) {
-                                      candid_list = candid_list + '<li><label><input' +
-                                        ' type="radio" name="' + office_ids[y] + '" value="' + candid_data.data[x].id + '" required>' +
-                                        candid_data.data[x].first_name + ' '
-                                        + candid_data.data[x].last_name + ' &#183; '
-                                        + candid_data.data[x].party
-                                        + '</label></li>';
-                                    }
-                                    candid_list = candid_list + '</ul></div>' +
-                                      '<div class="col-2 col-s-2 submit-div">' +
-                                      '<input type="submit" name="' + office_ids[y] + '-vote" value="Vote">' +
-                                      '</div>' +
-                                      '</form>';
-                                }
 
                             } else {
                                 candid_list = candid_list + '<div class="h_center">' +
@@ -569,6 +657,12 @@ function loadVotePage() {
                   });
 
               }
+
+
+            for (let v = 0; v < office_ids.length; v++) {
+                hasVoted(getLSItem('id'), office_names[v]);
+            }
+
              let offices = getByClass('office');
 
               for (let x = 0; x < offices.length; x++) {
@@ -604,39 +698,6 @@ function loadVotePage() {
   });
 }
 
-function hasVoted(user, office) {
-  return fetch(
-    USER_VOTES + user,
-    {
-      mode: 'cors', method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + fetchToken()}})
-  .then(res=> res.json())
-  .then((data) => {
-      // Examine the text in the response
-      if (data.status === 200) {
-        //console.log(data.data.length);
-        let votes = data.data.length;
-        if (votes > 0) {
-          for (let d = 0; d < votes; d++) {
-            if ( (parseInt(data.data[0].createdby) == parseInt(user)) && (parseInt(data.data[0].office) == parseInt(office)) ) {
-                console.log('Matched!');
-                return true;
-            }
-          }
-          return false;
-        }else {
-          return false;
-        }
-      }
-      else {
-        showAlert('danger', makeAlertMessage(data.status, data.error));
-      }})
-  .catch(function(err) {
-    connectionError(err);
-  });
-}
 
 function loadVotes() {
   fetch(
