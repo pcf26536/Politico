@@ -529,8 +529,8 @@ function loadCandidates() {
 }
 
 
-function hasVoted(user, office) {
-  return fetch(
+function hasVoted(user, office, id) {
+  fetch(
     USER_VOTES + user,
     {
       mode: 'cors', method: 'get',
@@ -545,12 +545,17 @@ function hasVoted(user, office) {
         let votes = data.data.length;
         if (votes > 0) {
           for (let d = 0; d < votes; d++) {
-            if ( data.data[0].office === office ) {
-                console.log('Matched!');
-                getById('office-' + office).innerHTML = '<div class="h_center">' +
-                              '<img src="' + root_dir +'images/ok.png"></div>' +
-                              '<p class="h_center">You have already voted for this office!' +
-                              '</p>';
+            if ( data.data[d].office === office ) {
+                console.log(office + ' : Matched!');
+                getById(id + 'div').innerHTML = '<div id="' + id + '-candidates"' +
+                                  ' class="hide dash candidates-item">' +
+                                      '<p class="h_center">Vote for ' + office + ' Seat</p>' +
+                                      '<hr>'
+                                    + '<div class="h_center">' +
+                                    '<img src="' + root_dir +'images/ok.png"></div>' +
+                                    '<p class="h_center">You have already voted for this office!' +
+                                    '</p></div>';
+                break;return;
             }
           }
         }
@@ -642,6 +647,7 @@ function loadVotePage() {
                             }
                             candid_list = candid_list + '</div>';
                             let div = document.createElement('div');
+                            div.setAttribute('id', office_ids[y] + 'div');
                             div.innerHTML = candid_list;
                             getById('all-candidates').appendChild(div);
                             candid_list = '';
@@ -660,7 +666,7 @@ function loadVotePage() {
 
 
             for (let v = 0; v < office_ids.length; v++) {
-                hasVoted(getLSItem('id'), office_names[v]);
+                hasVoted(getLSItem('id'), office_names[v], office_ids[v]);
             }
 
              let offices = getByClass('office');
