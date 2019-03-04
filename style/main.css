@@ -73,7 +73,7 @@ p .icon {
       display: block;
       text-align: left;
     }
-    .submit-wrap button {
+    .menu .submit-wrap button {
       display: none;
     }
     .submit-wrap.responsive button { display: inline; }
