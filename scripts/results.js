@@ -39,24 +39,27 @@ function listHide() {
 
 hideById('btn-ctrls');
 
-getById('create-petition').onclick = function () {
-    showById('petition-div', block);
-    hideById('all-results');
-    listHide();
-};
+if (!userIsAdmin()) {
+    getById('create-petition').onclick = function () {
+        showById('petition-div', block);
+        hideById('all-results');
+        listHide();
+    };
+}
 
 function showAllResults() {
     showById('all-results', block);
     showByClass('result-item', block); 
-    hideById('petition-div');
+    if (!userIsAdmin()) hideById('petition-div');
     listHide();
 }
 
-getById('cancel-petition').onclick = function () {
-    hideById('petition-div');
-    showAllResults();
-};
-
+if (!userIsAdmin()) {
+    getById('cancel-petition').onclick = function () {
+        hideById('petition-div');
+        showAllResults();
+    };
+}
 getById('show-all').onclick = showAllResults;
 
 getByClass("closebtn")[0].onclick = function(){
@@ -66,12 +69,3 @@ getByClass("closebtn")[0].onclick = function(){
     // Set the opacity of div to 0 (transparent)
     div.style.opacity = "0";
 };
-
-if (getUrlParam('petition')) {
-    showAlert(
-      'info',
-      makeAlertMessage(
-        'Success!',
-        "You've successfuly submitted the petition for the "
-        + getUrlParam('office') + " office."));
-}

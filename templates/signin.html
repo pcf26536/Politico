@@ -24,16 +24,17 @@
         <div class="row">
         <div class="center">
                 <h2 class="h_center">Sign In</h2>
+                <p class="h_center">Not registered? <a href="signup.html">Sign Up Here</a></p>
                 <hr>
                 <div id="alert_div"></div>
                     <form  onsubmit="loginHandler('templates'); return false;">
-                        <label for="user">Email Adress</label>
+                        <label for="user_email">Email Adress</label>
                             <input placeholder="Email Address" type="email" id="user_email" name="user" required>
-                        <label for="pass">Password</label>
+                        <label for="user_pass">Password</label>
                             <input type="password" name="pass" id="user_pass" required placeholder="password">
                             <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
                     </form>
-                    <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
+                    <p class="h_center">Can't sign in? <a href="reset_pass.html">Reset Password</a></p>
                     <p></p>
         </div>
     </div>
@@ -43,14 +44,6 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <p>Reset password success</p>
-        </div>
-
-    </div>
-    <div id="signup_succ" class="modal">
-
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>Registration success</p>
         </div>
 
     </div>

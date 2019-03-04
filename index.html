@@ -31,21 +31,18 @@ the season and help build a platform which both the politicians and citizens can
         </div>
             
         <div id="signup" class="col-5 col-s-5 border-form">
-                    <h3 class="h_center">Please login</h3>
-                        
-                    <hr>
-                <div id="alert_div"></div>
-                    <form onsubmit="loginHandler(); return false;">
-                        <label for="user">Email Adress</label>
-                            <input placeholder="Email Address" type="email" id="user_email" name="user" required>
-                        <label for="pass">Password</label>
-                            <input type="password" name="pass" id="user_pass" required placeholder="password">
-
-                            <div class="submit-wrap"><input type="submit" name="signin" value="Sign In"></div>
-                    </form>
-                    <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a>, Not registered? <a href="templates/signup.html">Sign Up</a></p>
-                    <p></p>
-            </div>
+            <h3 class="h_center dash">Let's Go!</h3>
+            <p class="h_center">Not registered? <a href="templates/signup.html">Sign Up Here</a></p>
+            <div id="alert_div"></div>
+                <form onsubmit="loginHandler(); return false;">
+                    <label for="user_email" class="dash">Email Address</label>
+                        <input placeholder="Email Address" type="email" id="user_email" name="user" required>
+                    <label for="user_pass" class="dash">Password</label>
+                        <input type="password" name="pass" id="user_pass" required placeholder="password">
+                    <div class="submit-wrap"><input type="submit" value="Log In"></div>
+                </form>
+                <p class="h_center">Can't sign in? <a href="templates/reset_pass.html">Reset Password</a></p>
+        </div>
     </div>
     </div>
 

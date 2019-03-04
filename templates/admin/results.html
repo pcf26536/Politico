@@ -3,42 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vote</title>
+    <title>Election Results</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
     <script src="./../../scripts/utilities.js"></script>
 </head>
-<body onload="loadVotePage()">
-    <script src="./../../scripts/user.js"></script>
+<body onload="loadResults()">
+    <script src="./../../scripts/admin.js"></script>
     <nav class="topnav" id="myTopnav">
-        <a href="index.html" class="logo">User</a>
+        <a href="index.html" class="logo">Admin</a>
+        <a href="candidates.html" class="menu">Candidates</a>
+        <a href="petitions.html" class="menu">Petitions</a>
+        <a href="users.html" class="menu">Users</a>
+        <a href="results.html" class="menu">Results</a>
         <a href="offices.html" class="menu">Offices</a>
         <a href="parties.html" class="menu">Parties</a>
-        <a href="vote.html" class="menu">Vote</a>
-        <a href="profile.html" class="menu">Profile</a>
-        <a href="results.html" class="menu">Results</a>
         <a href="#" class="menu" onclick="logoutHandler()">Sign Out</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
             <i class="fa fa-bars" style="font-size:24px"></i>
         </a>
     </nav>
-        <div class="content">
-            <div class="row">
-                <h3 class="h_center">Voting Page</h3>
-                <hr>
+
+    <div class="content">
+        <div class="row">
+            <h3 class="h_center">Results Page</h3>
+            <hr>
+            <div class="col-11 col-s-11" id="results-page">
                 <div class="col-11 col-s-11">
                     <div id="alert_div">
-                        <div class="alert info"> 
+                        <div class="alert info">
                                 <span class="closebtn">&times;</span>
-                                Use the office list to vote for each office; remember, only one vote per office!
+                                Use the office list to view the results for each office
                         </div>
                     </div>
                 </div>
                 <div class="col-3 col-s-3 menu">
                     <p class="dash" id="office-menu">
-                        <a href="javascript:void(0);" class="icon" onclick="myFunction('candidates')">
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction('results')">
                             <i class="fa fa-bars" style="font-size:24px"></i>
                         </a>Office List
                     </p>
@@ -48,30 +51,20 @@
                         </p>
                     </ul>
                     <div class="submit-wrap" id="btn-ctrls">
-                        <button id="show-all" class="blend">Show All Candidates</button>
+                        <button id="show-all" class="blend">Show All Results</button>
                     </div>
                 </div>
-    
-                <div class="col-7 col-s-7 candidates-and-offices">
-                    <div id="all-candidates">
+
+                <div class="col-6 col-s-6 results">
+                    <div id="all-results">
                         <p class="h_center">
                             <img src="./../../images/loading.gif">
                         </p>
                     </div>
                 </div>
-                </div>
             </div>
-
-        <!-- The Modal -->
-        <div id="vote_message" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Vote Submited</p>
-            </div>
-
         </div>
-        <script src="./../../scripts/vote.js"></script>
+    </div>
+    <script type="text/javascript" src="./../../scripts/results.js"></script>
 </body>
 </html>
