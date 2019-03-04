@@ -41,7 +41,7 @@ function checkRegistered() {
 
 function addCandidate() {
   showLoading('admin');
-  logToConsole(OFFICE + getById('office-name').value + REGISTER);
+
   fetch(
     OFFICE + getById('office-name').value + REGISTER,
     {

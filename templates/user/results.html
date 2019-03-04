@@ -64,13 +64,15 @@
                     <div id="petition-div" class="hide">
                         <h3 class="h_center">Create Petiton</h3>
                         <hr>
-                        <form method="GET" enctype="text/plain" action="results.html">
+                        <form onsubmit="createPetition(); return false;">
                             <label for="petition-offices">Office</label>
                                 <select name="office" required id="petition-offices">
-
                                 </select>
+                            <label for="evidence">Evidence</label>
+                                    <input input type="file" name="evidence"
+                                           id="evidence" required>
                             <label for="body">Petiton Body</label>
-                                <textarea rows="10" name="body" required></textarea>
+                                <textarea rows="10" id="body" required></textarea>
                                 <div class="submit-wrap">
                                     <input type="submit" name="petition" value="Submit Petiton">
                                     <Button class="cancel" id="cancel-petition">Cancel</Button>
