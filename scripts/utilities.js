@@ -754,10 +754,11 @@ function loadResults() {
                 office_ids.push(id);
                 office_names.push(name);
                 offices_list = offices_list + '<li class="office" id="' + id + '">' + name + '</li>';
-                petition_offices = petition_offices + '<option name="office"  value="' + id + '">' + name + '</option>';
+                if (!userIsAdmin()) petition_offices = petition_offices + '<option name="office"' +
+                  '  value="' + id + '">' + name + '</option>';
             }
             toInnerHTML(getById('officeList'), offices_list);
-            toInnerHTML(getById('petition-offices'), petition_offices);
+            if (!userIsAdmin()) toInnerHTML(getById('petition-offices'), petition_offices);
             getById('all-results').innerHTML = '';
 
             for (let y = 0; y < office_ids.length; y++) {
@@ -821,7 +822,7 @@ function loadResults() {
               for (let x = 0; x < offices.length; x++) {
                   offices[x].onclick = function () {
                       //hideById('all-results');
-                      hideById('petition-div');
+                      if (!userIsAdmin()) hideById('petition-div');
                       showById('all-results', block);
                       hideByClass('result-item');
                       showById(this.getAttribute('id') + '-results', block);

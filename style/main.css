@@ -20,9 +20,10 @@
   display: block;
   color: #00ff85;
   text-align: center;
-  padding: 1.5% 1.5%;
+  padding: 1.5% 1% 1.5% 1%;
   text-decoration: none;
   font-size: 111%;
+  width: fit-content;
 }
 
 .menu {
@@ -127,10 +128,9 @@ body.home .topnav a {
 }*/
 
 .content {
-  padding:5%;
+  padding: 5% 5% 10% 5%;
   margin-top:0;
-  padding-bottom: 10%;
-  margin-bottom: 0%;
+  margin-bottom: 0;
   height: 110%;
   border-radius: 5px;
   width: 100%;
@@ -273,7 +273,7 @@ input[type=email], input[type=password], input[type=text], input[type=number], i
     padding-top: 3%;
 }
 
-input[type=submit]:hover, button:hover {
+input[type=submit]:hover, button:hover, .blend:hover {
   background-color: #00ff85;
   color: #38003c;
 }
@@ -304,12 +304,14 @@ button.cancel:hover {
   padding: 2%;
   align-items: center;
   /*background-image: url("../images/background2.png");*/
-  color:#00ff85;
+  color: white;
 }
 
 .border-form input[type=submit] {
   background-color: #00ff85;
   color: #38003c;
+  font-weight: bolder;
+  font-size: 120%;
 }
 
 .border-form input[type=email]:focus,.border-form input[type=password]:focus{
