@@ -16,6 +16,7 @@ function voteHandler(candidate) {
         console.log(data.data[0]);
         showAlert('success', makeAlertMessage('', 'Vote casted successfully!'));
         //redirect('offices.html');
+        loadVotePage();
       }
       else if(invalidToken(data.status)) {
         logToConsole('Token has Expired');

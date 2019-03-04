@@ -10,6 +10,7 @@ let user_url = 'user/index.html';
 const API_URL = 'https://gvotie.herokuapp.com/api/v2';
 const LOGIN = API_URL + '/auth/login';
 const SIGNUP = API_URL + '/auth/signup';
+const USERS = API_URL + '/auth/users';
 const RESET = API_URL + '/auth/reset';
 const PARTIES = API_URL + '/parties';
 const OFFICES = API_URL + '/offices';
@@ -22,6 +23,7 @@ var office_names = [];
 var candid_list = '';
 const FWD_SLASH = '/';
 const NAME = '/name';
+const CANDIDATES = API_URL + '/candidates';
 
 
 function logToConsole(value) {
@@ -101,6 +103,8 @@ function redirect(url, timeout=5000) {
 function getById(id) { return document.getElementById(id); }
 
 function getByClass(elem_class) { return document.getElementsByClassName(elem_class); }
+
+function getByName(elem_name) { return document.getElementsByName(elem_name); }
 
 
 /*hide elements functions*/
@@ -348,7 +352,7 @@ function logoutHandler(){
     //showAlert('warning', 'You\'re now logged out!');
 }
 
-function loadParties() {
+function loadParties(element) {
   fetch(
     PARTIES,
     {
@@ -365,43 +369,63 @@ function loadParties() {
         let parties_list = '';
         let parties_num = data.data.length;
         if (parties_num > 0) {
-            for (let x = 0; x < parties_num; x++) {
-              if (userIsAdmin()) {
-                parties_list = parties_list + '<li id="p-' + data.data[x].id + '">' +
-                    '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
-                    'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
-                    '  height="40" width="40">' +
-                    '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
-                    '<a class="edit" name="'+ data.data[x].name +'" id="'+ data.data[x].id +'" onclick="editParty(this)"' +
-                  ' href="#"><span>&#9998;' +
-                  ' </span></a>' +
-                  '<input type="checkbox" name="to_delete" class="action" value="' + data.data[x].id + '"></li>';
-              }
-              else {
-                  parties_list = parties_list + '<li>' +
-                    '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
-                    'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
-                    '  height="40" width="40">' +
-                    '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
-                    '</li>';
+            if (!element) {
+                for (let x = 0; x < parties_num; x++) {
+                  if (userIsAdmin()) {
+                    parties_list = parties_list + '<li id="p-' + data.data[x].id + '">' +
+                        '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
+                        'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
+                        '  height="40" width="40">' +
+                        '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
+                        '<a class="edit" name="'+ data.data[x].name +'" id="'+ data.data[x].id +'" onclick="editParty(this)"' +
+                      ' href="#"><span>&#9998;' +
+                      ' </span></a>' +
+                      '<input type="checkbox" name="to_delete" class="action" value="' + data.data[x].id + '"></li>';
+                  }
+                  else {
+                      parties_list = parties_list + '<li>' +
+                        '<img src="' + root_dir + 'images/logo' + x + '.png" ' +
+                        'alt="'+ data.data[x].logo_url +'" title="'+ data.data[x].logo_url +'"' +
+                        '  height="40" width="40">' +
+                        '<span>'+ data.data[x].name +' &#183; '+ data.data[x].hq_address +'</span>' +
+                        '</li>';
+                    }
+
+                }
+                toInnerHTML(getById('parties_list'), parties_list);
+
+            } else {
+                for (let x = 0; x < parties_num; x++) {
+                    let option = document.createElement('option');
+                    option.setAttribute('name', 'party');
+                    option.setAttribute('value', data.data[x].id);
+                    option.innerHTML = data.data[x].name;
+                    getById('party-name').appendChild(option);
+
                 }
             }
-            toInnerHTML(getById('parties_list'), parties_list);
 
         } else {
-          toInnerHTML(
-            getById('parties_list'),
-            '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
-            '<p class="h_center">No' +
-            ' Political' +
-          ' Parties Available' +
-            ' Currently!</p>');
+          if (!element) {
+              toInnerHTML(
+                getById('parties_list'),
+                '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+                '<p class="h_center">No' +
+                ' Political' +
+              ' Parties Available' +
+                ' Currently!</p>');
+          } else
+              showAlert('warning', makeAlertMessage('', 'No parties registered yet!'));
+
         }
-        if (userIsAdmin()) showById('parties-ctrls', block);
+          if (!element) if (userIsAdmin()) showById('parties-ctrls', block);
+
       }
+
       else if(invalidToken(data.status)) {
         logToConsole('Token has Expired');
       }
+
       else {
         showAlert('danger', makeAlertMessage('', data.error));
       }})
@@ -541,12 +565,12 @@ function hasVoted(user, office, id) {
   .then((data) => {
       // Examine the text in the response
       if (data.status === 200) {
-        console.log(data.data);
+        //console.log(data.data);
         let votes = data.data.length;
         if (votes > 0) {
           for (let d = 0; d < votes; d++) {
             if ( data.data[d].office === office ) {
-                console.log(office + ' : Matched!');
+                //console.log(office + ' : Matched!');
                 getById(id + 'div').innerHTML = '<div id="' + id + '-candidates"' +
                                   ' class="hide dash candidates-item">' +
                                       '<p class="h_center">Vote for ' + office + ' Seat</p>' +
@@ -860,7 +884,7 @@ function loadVoteProfile() {
         }else { // not vote yet
           profile = '<div class="h_center">' +
                     '<img src="' + root_dir +'images/nothing.png"></div>' +
-                    '<p class="h_center">You haven\'t casted any vote yet! ' +
+                    '<p class="h_center dash">You haven\'t casted any vote yet! ' +
                     'Vote <a href="vote.html">here</a></p>';
         }
           toInnerHTML(getById('vote-profile'), profile);
@@ -880,7 +904,7 @@ function loadVoteProfile() {
 
 }
 
-function loadOffices() {
+function loadOffices(element) {
   fetch(
     OFFICES,
     {
@@ -898,26 +922,130 @@ function loadOffices() {
         let offices_num = data.data.length;
 
         if (offices_num > 0) {
-            for (let x = 0; x < offices_num; x++) {
-                let id = data.data[x].id;
-                let name = data.data[x].name;
-                let type = data.data[x].type;
-                office_ids.push(id);
-                office_names.push(name);
-                offices_list = offices_list + '<li class="office" id="' + id + '">' + name +
-                  ' &#183; ' + type + '</li>';
+            if (!element) {
+              for (let x = 0; x < offices_num; x++) {
+                  let id = data.data[x].id;
+                  let name = data.data[x].name;
+                  let type = data.data[x].type;
+                  office_ids.push(id);
+                  office_names.push(name);
+                  offices_list = offices_list + '<li class="office" id="' + id + '">' + name +
+                    ' &#183; ' + type + '</li>';
+              }
+              toInnerHTML(getById('officeList'), offices_list);
+
+            } else {
+              for (let x = 0; x < offices_num; x++) {
+                  let option = document.createElement('option');
+                  option.setAttribute('name', 'office');
+                  option.setAttribute('value', data.data[x].id);
+                  option.innerHTML = data.data[x].name;
+                  getById('office-name').appendChild(option);
+
+              }
             }
-            toInnerHTML(getById('officeList'), offices_list);
+
+        } else {
+
+            if (!element) {
+              toInnerHTML(
+                getById('officeList'),
+                '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
+                '<p class="h_center">No' +
+                ' Political Offices Available Currently!</p>');
+            } else {
+              showAlert('warning', makeAlertMessage('', 'No office registered yet!'));
+            }
+        }
+        if (!element) if (userIsAdmin()) showById('offices-ctrls', block);
+
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+function loadAllCandidates() {
+  fetch(
+    CANDIDATES,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let candid_list = '';
+        let candid_num = data.data.length;
+        if (candid_num > 0) {
+            for (let x = 0; x < candid_num; x++) {
+
+                  candid_list = candid_list + '<li>' +
+                    '<span id="name">'+ data.data[x].first_name + ' '+ data.data[x].last_name +  '</span>' +
+                    ' &#183; <span id="party">' + data.data[x].party + ' </span>' +
+                    ' &#183; <span id="party">' + data.data[x].office + ' </span>' +
+                    '</li>';
+
+            }
+            toInnerHTML(getById('candidates_list'), candid_list);
 
         } else {
           toInnerHTML(
-            getById('officeList'),
+            getById('candidates_list'),
             '<div class="h_center"><img src="' + root_dir +'images/nothing.png"></div>' +
-            '<p class="h_center">No' +
-            ' Political Offices Available Currently!</p>');
+            '<p class="h_center">No Candidates Parties Registered Yet!</p>');
         }
-        if (userIsAdmin()) showById('offices-ctrls', block);
 
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+}
+
+function loadUsers() {
+  fetch(
+    USERS,
+    {
+    mode: 'cors', method: 'get',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + fetchToken()
+      }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 200) {
+        console.log(data.data);
+        let user_num = data.data.length;
+        if (user_num > 0) {
+            for (let x = 0; x < user_num; x++) {
+
+                  let option = document.createElement('option');
+                  option.setAttribute('name', 'candidate');
+                  option.setAttribute('value', data.data[x].id);
+                  option.innerHTML = data.data[x].fname + ' ' + data.data[x].lname;
+                  getById('candidate-name').appendChild(option);
+
+            }
+
+        } else
+          showAlert('warning', makeAlertMessage('', 'No users registered yet!'));
       }
       else if(invalidToken(data.status)) {
         logToConsole('Token has Expired');
