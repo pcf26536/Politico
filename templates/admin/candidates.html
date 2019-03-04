@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Political Parties</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./../../style/main.css" />
+    <script src="./../../scripts/utilities.js"></script>
+</head>
+<body onload="loadAllCandidates(); loadUsers(); loadOffices('option'); loadParties('option');
+checkRegistered();">
+        <script src="./../../scripts/admin.js"></script>
+    <nav class="topnav" id="myTopnav">
+        <a href="index.html" class="logo">Admin</a>
+        <a href="candidates.html" class="menu">Candidates</a>
+        <a href="offices.html" class="menu">Government Offices</a>
+        <a href="parties.html" class="menu">Political Parties</a>
+        <a href="#" class="menu" onclick="logoutHandler()">Sign Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction('menu')">
+            <i class="fa fa-bars" style="font-size:24px"></i>
+        </a>
+    </nav>
+        <div class="content">
+                <div class="center row">
+            <h3 class="h_center">Candidates Manager</h3>
+                <hr>
+                <div id="alert_div"></div>
+                <div class="submit-wrap" id="candidates-ctrls">
+                    <button id="add_candidate" onclick="showAddForm()">Add Candidate</button>
+                    <button id="delete_candidate" class="cancel">Delete Candidate</button>
+                    <button class="hide" id="cancel_delete">Cancel Delete</button>
+                    <button class="hide cancel" id="delete_selected">Delete Selected</button>
+                </div>
+                <ul id="candidates_list" class="dash">
+                    <p class="h_center"><img src="./../../images/loading.gif"></p>
+                </ul>
+                <div id="add_candidate_form" hidden>
+                        <p>Add Party Form</p>
+                        <form onsubmit="addCandidate(); return false;">
+                            <label for="candidate-name">Candidate Name</label>
+                                <select required id="candidate-name">
+                                    <option name="candidate" value="">-----</option>
+                                    </select>
+                            <label for="office-name">Office</label>
+                                <select required id="office-name">
+                                    <option name="office" value="">-----</option>
+                                </select>
+                            <label for="party-name">Party Name</label>
+                                <select required id="party-name">
+                                    <option name="party" value="">-----</option>
+                                    </select>
+                                <div class="submit-wrap"><input type="submit" name="add"
+                                                                value="Add Candidate">
+                                <button class="cancel" type="button" id="cancel_add_candidate">
+                                    Cancel</button></div>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <!-- Party Add Success Modal -->
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p class="success">Party added successfully</p>
+            </div>
+
+        </div>
+    <script src="./../../scripts/candidates.js"></script>
+</body>
+</html>
