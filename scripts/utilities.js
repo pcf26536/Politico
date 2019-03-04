@@ -24,6 +24,7 @@ var candid_list = '';
 const FWD_SLASH = '/';
 const NAME = '/name';
 const CANDIDATES = API_URL + '/candidates';
+const PETITION = API_URL + '/petitions/';
 
 
 function logToConsole(value) {

@@ -1,3 +1,38 @@
+function createPetition() {
+  showLoading('admin');
+
+  fetch(
+    PETITION,
+    {
+    body: JSON.stringify({
+        office: getById('petition-offices').value,
+        body: getById('body').value,
+        evidence: getById('evidence').value
+    }), mode: 'cors', method: 'post',
+        headers: {
+        'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + fetchToken()
+    }})
+  .then(res=> res.json())
+  .then((data) => {
+      // Examine the text in the response
+      if (data.status === 201) {
+        console.log(data.data[0]);
+        showAlert('success', makeAlertMessage('', 'Petition created successfully!'));
+      }
+      else if(invalidToken(data.status)) {
+        logToConsole('Token has Expired');
+      }
+      else {
+        showAlert('danger', makeAlertMessage('', data.error));
+      }})
+  .catch(function(err) {
+    connectionError(err);
+  });
+
+}
+
+
 function listHide() {
     if(getById('officeList').className=='office-list responsive') myFunction('results');
 }
