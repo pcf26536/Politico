@@ -12,6 +12,7 @@ const LOGIN = API_URL + '/auth/login';
 const SIGNUP = API_URL + '/auth/signup';
 const USERS = API_URL + '/auth/users';
 const RESET = API_URL + '/auth/reset';
+const LINK = '/link/';
 const PARTIES = API_URL + '/parties';
 const OFFICES = API_URL + '/offices';
 const OFFICE = API_URL + '/office/';
@@ -35,12 +36,18 @@ function fetchToken(){
   let token = localStorage.getItem('token');
   if(token)
     return token;
+  //localStorage.clear();
+  localStorage.setItem('expired', 'true');
   window.location.replace(signin_url);
   return null
 }
 
 function getLSItem(key) {
   return localStorage.getItem(key);
+}
+
+function setLSItem(key, value) {
+  return localStorage.setItem(key, value);
 }
 
 function justLoggedIn() {
@@ -229,8 +236,8 @@ function myFunction(instance) {
     }
   }
   else if (instance == 'results' || instance == 'candidates') {
-    var y = getById("officeList");
-    var ctrls = getById("btn-ctrls");
+    let y = getById("officeList");
+    let ctrls = getById("btn-ctrls");
     if (y.className === "office-list") {
       y.className += " responsive";
       ctrls.className += " responsive";
