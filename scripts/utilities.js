@@ -35,6 +35,8 @@ function fetchToken(){
   let token = localStorage.getItem('token');
   if(token)
     return token;
+  //localStorage.clear();
+  localStorage.setItem('expired', 'true');
   window.location.replace(signin_url);
   return null
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/forms.css" />
+    <script src="../scripts/utilities.js"></script>
 </head>
 <body>
     <nav class="topnav" id="myTopnav">
@@ -21,16 +21,35 @@
     </nav>  
         <div class="content">
             <div class="center">
-                <h1 class="info h_center">Password Reset</h1>
-                <hr>
-                    <form method="GET" enctype="text/plain" action="signin.html">
-                        <label for="email">Enter Your Email</label>
-                            <input type="email" name="email" required>
-                            <div class="submit-wrap"><input type="submit" name="reset" value="Reset Password"></div>
-                    </form>
+                <div class="row">
+                    <h1 class="info h_center">Password Reset</h1>
+                    <hr>
+                    <div id="alert_div"></div>
+                        <div id="email_form">
+                            <form onsubmit="resetRequest()">
+                                <label for="email">Enter Your Email</label>
+                                    <input type="email" name="email" id="email" required>
+                                    <div class="submit-wrap"><input type="submit" name="reset" value="Reset Password"></div>
+                            </form>
+                        </div>
 
+                        <div id="password_form" class="hide">
+                            <form onsubmit="resetPassword()">
+                                <div class="col-11 col-s-10">
+                                    <label for="pass1">Password</label>
+                                        <input type="password" name="pass1" id="pass1" required>
+                                </div>
+                                <div class="col-11 col-s-10">
+                                    <label for="pass2">Password (Re-Enter)</label>
+                                        <input type="password" name="pass2" id="pass2" required>
+                                </div>
+                                <div
+                                  class="submit-wrap col-11 col-s-10"><input type="submit"
+                                                             value="Update Password"></div>
+                            </form>
+                        </div>
+                </div>
             </div>
         </div>
-        <script src="../scripts/utilities.js"></script>
 </body>
 </html>
