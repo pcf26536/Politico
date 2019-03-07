@@ -26,11 +26,15 @@
                     <hr>
                     <div id="alert_div"></div>
                         <div id="email_form">
-                            <form onsubmit="resetRequest()">
+                            <form onsubmit="resetRequest(); return false;">
                                 <label for="email">Enter Your Email</label>
                                     <input type="email" name="email" id="email" required>
                                     <div class="submit-wrap"><input type="submit" name="reset" value="Reset Password"></div>
                             </form>
+                        </div>
+
+                        <div id="success_msg_div">
+
                         </div>
 
                         <div id="password_form" class="hide">
@@ -51,5 +55,6 @@
                 </div>
             </div>
         </div>
+    <script src="../scripts/reset_pass.js"></script>
 </body>
 </html>
