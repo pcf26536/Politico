@@ -12,6 +12,7 @@ const LOGIN = API_URL + '/auth/login';
 const SIGNUP = API_URL + '/auth/signup';
 const USERS = API_URL + '/auth/users';
 const RESET = API_URL + '/auth/reset';
+const LINK = '/link/';
 const PARTIES = API_URL + '/parties';
 const OFFICES = API_URL + '/offices';
 const OFFICE = API_URL + '/office/';
