@@ -1,9 +1,10 @@
 let url_token = getUrlParam('token');
+let local_token = getLSItem('token');
 
 if (url_token) {
-  let local_token = getLSItem('token');
   showById('password_form', block);
   hideById(['success_msg_div', 'email_form']);
+  getById('msg').innerHTML = 'Hi ' + getLSItem('email') + ', Input Your New Password'
 }
 
 function resetRequest() {
@@ -23,6 +24,8 @@ function resetRequest() {
       // Examine the text in the response
       if (data.status === 200) {
         console.log(data.data[0]);
+        setLSItem('email', data.data[0].email);
+        setLSItem('token', data.data[0].token);
         showAlert('success', makeAlertMessage('Success', 'Reset link sent!'));
         hideById(['email_form', 'password_form']);
         let message = '<p class="dash h_center">Hey <a href="mailto:' + data.data[0].email + '" target="_top">' + data.data[0].email + '</a>, ' +
@@ -41,12 +44,18 @@ function resetRequest() {
 
 function resetPassword() {
   showLoading('templates');
+
   let len1 = getById('pass1').value.length > 6;
   let len2 = getById('pass2').value.length > 6;
+
+  if (getById('pass1').value !== getById('pass2').value) {
+    showAlert('danger', makeAlertMessage('Error', 'Password Mismatch!'));
+    return;
+  }
   if (len1 && len2) {
 
     fetch(
-      RESET + LINK + url_token,
+      RESET + LINK + local_token,
       {
         body: JSON.stringify({
           password1: getById('pass1').value,
@@ -54,7 +63,7 @@ function resetPassword() {
         }), mode: 'cors', method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + url_token
+          'Authorization': 'Bearer ' + local_token
         }
       })
     .then(res => res.json())
