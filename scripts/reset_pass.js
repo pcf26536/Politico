@@ -2,18 +2,8 @@ let url_token = getUrlParam('token');
 
 if (url_token) {
   let local_token = getLSItem('token');
-  hideById('email_form', block);
-
-  if (local_token === url_token) {
-        hideById('success_msg_div');
-        showById('success_msg_div', block);
-
-  } else {
-        hideById('password_form');
-        let message = '<p class="dash h_center">Invalid Url Token</p>';
-        getById('success_msg_div').innerHTML = message;
-        showById('success_msg_div', block);
-  }
+  hideById(['success_msg_div', 'email_form']);
+  showById('success_msg_div', block);
 }
 
 function resetRequest() {
@@ -64,7 +54,7 @@ function resetPassword() {
         }), mode: 'cors', method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + fetchToken()
+          'Authorization': 'Bearer ' + url_token
         }
       })
     .then(res => res.json())
@@ -72,15 +62,17 @@ function resetPassword() {
       // Examine the text in the response
       if (data.status === 200) {
         console.log(data.data[0]);
-        setLSItem('email', data.data[0].email);
-        setLSItem('token', data.data[0].token);
-        showAlert('success', makeAlertMessage('Success', 'Reset link sent!'));
+        showAlert('success', makeAlertMessage('Success', 'Password has been reset!'));
         hideById(['email_form', 'password_form']);
-        let message = '<p class="dash h_center">Hey <a href="mailto:' + data.data[0].email + '" target="_top">' + data.data[0].email + '</a>, ' +
-          data.data[0].message + '</p>';
+        let message = '<p class="dash h_center">' + data.data[0].message + '<a' +
+          ' href="signin.html">here</a></p>';
         getById('success_msg_div').innerHTML = message;
         showById('success_msg_div', block);
-      } else {
+
+      } else if(data.status === 201) {
+        showAlert('warning', makeAlertMessage('', 'Your token has expired, try resetting again!'));
+      }
+      else {
         showAlert('danger', makeAlertMessage('', data.error));
       }
     })
