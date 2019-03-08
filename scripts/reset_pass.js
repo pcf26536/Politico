@@ -2,18 +2,8 @@ let url_token = getUrlParam('token');
 
 if (url_token) {
   let local_token = getLSItem('token');
-  hideById('email_form', block);
-
-  if (local_token === url_token) {
-        hideById('success_msg_div');
-        showById('success_msg_div', block);
-
-  } else {
-        hideById('password_form');
-        let message = '<p class="dash h_center">Invalid Url Token</p>';
-        getById('success_msg_div').innerHTML = message;
-        showById('success_msg_div', block);
-  }
+  hideById(['success_msg_div', 'email_form']);
+  showById('success_msg_div', block);
 }
 
 function resetRequest() {
