@@ -3,7 +3,7 @@ let url_token = getUrlParam('token');
 if (url_token) {
   let local_token = getLSItem('token');
   hideById(['success_msg_div', 'email_form']);
-  showById('success_msg_div', block);
+  showById('password_form', block);
 }
 
 function resetRequest() {
