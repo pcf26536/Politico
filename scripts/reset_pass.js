@@ -2,8 +2,8 @@ let url_token = getUrlParam('token');
 
 if (url_token) {
   let local_token = getLSItem('token');
-  hideById(['success_msg_div', 'email_form']);
   showById('password_form', block);
+  hideById(['success_msg_div', 'email_form']);
 }
 
 function resetRequest() {
@@ -69,7 +69,7 @@ function resetPassword() {
         getById('success_msg_div').innerHTML = message;
         showById('success_msg_div', block);
 
-      } else if(data.status === 201) {
+      } else if(data.status === 401) {
         showAlert('warning', makeAlertMessage('', 'Your token has expired, try resetting again!'));
       }
       else {
