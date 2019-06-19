@@ -6,12 +6,12 @@ The general elections are around the corner, hence it’s a political season. Ge
 Politico™  - gVotie is a platform which enables citizens give their mandate to politicians running for different government offices.
 
 ## Homepage
-goto : https://pcf26536.github.io/Politico/
+goto : https://pcf26536.github.io/politico-ui/
 
 ## Admin Templates
-goto : https://pcf26536.github.io/Politico/templates/admin
+goto : https://pcf26536.github.io/politico-ui/templates/admin
 
 ## User Templates
-goto : https://pcf26536.github.io/Politico/templates/user
+goto : https://pcf26536.github.io/politico-ui/templates/user
 
 
